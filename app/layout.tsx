@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Noto_Sans } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const notoSans = Noto_Sans({ 
@@ -10,8 +11,20 @@ const notoSans = Noto_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'oluwatimilehin - music, culture, technology.',
-  description: 'Portfolio of oluwatimilehin - Music Producer, Audio Engineer, and Creative Technologist',
+  title: 'oluwatimilehin - audio, music, culture, technology.',
+  description: 'portfolio of oluwatimilehin',
+  openGraph: {
+    title: 'oluwatimilehin - audio, music, culture, technology.',
+    description: 'portfolio of oluwatimilehin',
+    url: 'https://www.oluwatimilehin.com',
+    siteName: 'oluwatimilehin',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'oluwatimilehin - audio, music, culture, technology.',
+    description: 'portfolio of oluwatimilehin',
+  },
 }
 
 export default function RootLayout({
@@ -21,7 +34,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={notoSans.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }

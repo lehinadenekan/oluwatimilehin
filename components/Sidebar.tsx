@@ -1,7 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import Link from 'next/link'
+
+// Context for sidebar collapsed state
+const SidebarContext = createContext<{ isCollapsed: boolean }>({ isCollapsed: false })
+export const useSidebar = () => useContext(SidebarContext)
 
 const navigationItems = [
   { id: 'home', label: 'Home', href: '#home' },
@@ -11,9 +15,9 @@ const navigationItems = [
   { id: 'services', label: "Let's Work Together", href: '#services' },
 ]
 
-
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false) // Mobile menu state
+  const [isCollapsed, setIsCollapsed] = useState(false) // Desktop collapse state
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
@@ -48,7 +52,7 @@ export default function Sidebar() {
   }
 
   return (
-    <>
+    <SidebarContext.Provider value={{ isCollapsed }}>
       {/* Floating Hamburger Button */}
       {!isOpen && (
         <button
@@ -74,11 +78,13 @@ export default function Sidebar() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-gray-900 border-r border-gray-800 z-50 transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-full bg-gray-900 border-r border-gray-800 z-50 transition-all duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 w-64`}
+        } lg:translate-x-0 ${
+          isCollapsed ? 'lg:w-16' : 'lg:w-64'
+        } w-64`}
       >
-        <div className="flex flex-col h-full p-6">
+        <div className="flex flex-col h-full p-6 relative">
           {/* Close Button (Mobile) */}
           <button
             onClick={() => setIsOpen(false)}
@@ -90,14 +96,31 @@ export default function Sidebar() {
             </svg>
           </button>
 
+          {/* Collapse Toggle Button (Desktop) - Positioned in the middle */}
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="hidden lg:flex absolute top-1/2 -translate-y-1/2 right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
+            aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          >
+            {isCollapsed ? (
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+              </svg>
+            )}
+          </button>
+
           {/* Name and Title */}
-          <div className="mb-8">
-            <h1 className="text-2xl font-bold text-white mb-1">oluwatimilehin</h1>
-            <p className="text-sm text-gray-400">music, culture, technology.</p>
+          <div className={`mb-8 transition-opacity duration-300 ${isCollapsed ? 'lg:opacity-0 lg:pointer-events-none' : ''}`}>
+            <h1 className="text-2xl font-bold text-white mb-1 whitespace-nowrap">oluwatimilehin</h1>
+            <p className="text-sm text-gray-400 whitespace-nowrap">audio, music, culture, technology.</p>
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1">
+          <nav className={`flex-1 ${isCollapsed ? 'lg:hidden' : ''}`}>
             <ul className="space-y-2">
               {navigationItems.map((item) => (
                 <li key={item.id}>
@@ -110,7 +133,7 @@ export default function Sidebar() {
                         : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                     }`}
                   >
-                    {item.label}
+                    <span className="whitespace-nowrap">{item.label}</span>
                   </Link>
                 </li>
               ))}
@@ -118,7 +141,7 @@ export default function Sidebar() {
           </nav>
         </div>
       </aside>
-    </>
+    </SidebarContext.Provider>
   )
 }
 

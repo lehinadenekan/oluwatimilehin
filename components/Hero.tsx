@@ -9,6 +9,7 @@ const pauseDuration = 4000 // 4 seconds pause before restart
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [showTagline, setShowTagline] = useState(false)
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -19,12 +20,22 @@ export default function Hero() {
       }, typingSpeed)
       return () => clearTimeout(timer)
     } else {
-      // Finished typing, wait 4 seconds then restart
-      const timer = setTimeout(() => {
+      // Finished typing - show tagline after a brief delay
+      const taglineTimer = setTimeout(() => {
+        setShowTagline(true)
+      }, 300) // Small delay after typing completes
+      
+      // Wait 4 seconds then restart
+      const restartTimer = setTimeout(() => {
         setDisplayedText('')
         setCurrentIndex(0)
+        setShowTagline(false)
       }, pauseDuration)
-      return () => clearTimeout(timer)
+      
+      return () => {
+        clearTimeout(taglineTimer)
+        clearTimeout(restartTimer)
+      }
     }
   }, [currentIndex])
 
@@ -35,6 +46,13 @@ export default function Hero() {
           {displayedText}
           <span className="animate-blink text-purple-500">|</span>
         </h1>
+        <p 
+          className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 transition-opacity duration-1000 ${
+            showTagline ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          audio, music, culture, technology.
+        </p>
       </div>
     </section>
   )
