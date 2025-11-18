@@ -177,7 +177,7 @@ export default function Services() {
                 )}
               </button>
               {submitStatus === 'success' && (
-                <p className="text-green-400 text-sm">Message sent successfully! I'll get back to you soon.</p>
+                <p className="text-green-400 text-sm">Message sent successfully! I&apos;ll get back to you soon.</p>
               )}
               {submitStatus === 'error' && (
                 <p className="text-red-400 text-sm">Failed to send message. Please try again or email directly at lehinadenekan@gmail.com</p>

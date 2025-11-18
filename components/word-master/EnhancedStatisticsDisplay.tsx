@@ -408,7 +408,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
               <div className="bg-gray-700 rounded-lg p-5">
                 <h4 className="font-semibold mb-3 text-white">Example: Your Best Score ({overall.bestScore})</h4>
                 <div className="text-sm text-gray-300 space-y-1">
-                  <p>Let's say you scored {overall.bestScore} points:</p>
+                  <p>Let&apos;s say you scored {overall.bestScore} points:</p>
                   <div className="mt-2 space-y-1 text-xs">
                     <div className="flex justify-between">
                       <span>Base points (3 guesses):</span>

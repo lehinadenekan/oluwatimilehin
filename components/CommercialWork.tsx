@@ -118,7 +118,7 @@ export default function CommercialWork() {
                 BBC Podcast Production
               </h3>
               <p className="text-gray-300">
-                Professional field recording and audio editing for BBC podcast series "The Reset" by Jade Scott.
+                Professional field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott.
               </p>
             </div>
             <div style={{ height: '600px', marginTop: '-50px' }}>
