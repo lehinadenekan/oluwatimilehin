@@ -6,6 +6,7 @@ import Script from 'next/script'
 export default function Services() {
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     subject: '',
     message: '',
   })
@@ -35,7 +36,7 @@ export default function Services() {
 
       if (response.ok) {
         setSubmitStatus('success')
-        setFormData({ name: '', subject: '', message: '' })
+        setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
         setSubmitStatus('error')
       }
@@ -118,6 +119,17 @@ export default function Services() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your Name"
+                  required
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your Email"
                   required
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />

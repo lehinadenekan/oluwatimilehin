@@ -3,10 +3,10 @@ import { Resend } from 'resend'
 
 export async function POST(request: Request) {
   try {
-    const { name, subject, message } = await request.json()
+    const { name, email, subject, message } = await request.json()
 
     // Validate input
-    if (!name || !subject || !message) {
+    if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
@@ -39,13 +39,14 @@ export async function POST(request: Request) {
       await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
         to: 'lehinadenekan@gmail.com',
-        replyTo: name, // This won't work without a verified domain, but included for reference
+        replyTo: email,
         subject: `Contact Form: ${subject}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2 style="color: #7c3aed;">New Contact Form Submission</h2>
             <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <p><strong>From:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
               <p><strong>Subject:</strong> ${subject}</p>
             </div>
             <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
@@ -54,7 +55,7 @@ export async function POST(request: Request) {
             </div>
           </div>
         `,
-        text: `New Contact Form Submission\n\nFrom: ${name}\nSubject: ${subject}\n\nMessage:\n${message}`,
+        text: `New Contact Form Submission\n\nFrom: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
       })
 
       return NextResponse.json(
