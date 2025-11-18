@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: Request) {
   try {
     const { name, subject, message } = await request.json()
@@ -32,6 +30,9 @@ export async function POST(request: Request) {
         { status: 200 }
       )
     }
+
+    // Initialize Resend only when needed and API key is available
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     // Send email using Resend
     try {
