@@ -12,6 +12,7 @@ export default function Services() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -34,14 +35,22 @@ export default function Services() {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (response.ok) {
         setSubmitStatus('success')
+        setErrorMessage('')
         setFormData({ name: '', email: '', subject: '', message: '' })
       } else {
+        const errorMsg = data.error || data.details || 'Unknown error occurred'
+        console.error('Contact form error:', errorMsg, data)
         setSubmitStatus('error')
+        setErrorMessage(errorMsg)
       }
     } catch (error) {
+      console.error('Contact form submission error:', error)
       setSubmitStatus('error')
+      setErrorMessage('Network error. Please check your connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
@@ -192,7 +201,11 @@ export default function Services() {
                 <p className="text-green-400 text-sm">Message sent successfully! I&apos;ll get back to you soon.</p>
               )}
               {submitStatus === 'error' && (
-                <p className="text-red-400 text-sm">Failed to send message. Please try again or email directly at lehinadenekan@gmail.com</p>
+                <div className="text-red-400 text-sm">
+                  <p className="font-semibold mb-1">Failed to send message:</p>
+                  <p className="mb-2">{errorMessage}</p>
+                  <p>Please try again or email directly at <a href="mailto:lehinadenekan@gmail.com" className="underline">lehinadenekan@gmail.com</a></p>
+                </div>
               )}
             </form>
           </div>

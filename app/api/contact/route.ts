@@ -16,18 +16,21 @@ export async function POST(request: Request) {
     // Check if Resend API key is configured
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not configured')
-      // In development, log the email instead of failing
       console.log('Contact form submission (email service not configured):', {
         to: 'lehinadenekan@gmail.com',
         subject: `Contact Form: ${subject}`,
         from: name,
+        email: email,
         message: message,
       })
       
-      // Return success even without email service (for development)
+      // Return error so user knows email wasn't sent
       return NextResponse.json(
-        { message: 'Message received successfully' },
-        { status: 200 }
+        { 
+          error: 'Email service not configured. Please contact directly at lehinadenekan@gmail.com',
+          message: 'Message received but email service is not configured on the server.'
+        },
+        { status: 500 }
       )
     }
 
@@ -36,7 +39,7 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     try {
-      await resend.emails.send({
+      const result = await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
         to: 'lehinadenekan@gmail.com',
         replyTo: email,
@@ -58,14 +61,41 @@ export async function POST(request: Request) {
         text: `New Contact Form Submission\n\nFrom: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`,
       })
 
+      console.log('Resend API response:', JSON.stringify(result, null, 2))
+
+      // Check if result has an error
+      if (result.error) {
+        console.error('Resend API returned an error:', result.error)
+        return NextResponse.json(
+          { 
+            error: 'Failed to send email',
+            details: result.error.message || JSON.stringify(result.error)
+          },
+          { status: 500 }
+        )
+      }
+
       return NextResponse.json(
-        { message: 'Message sent successfully' },
+        { 
+          message: 'Message sent successfully',
+          emailId: result.data?.id || 'unknown'
+        },
         { status: 200 }
       )
-    } catch (emailError) {
+    } catch (emailError: any) {
       console.error('Error sending email:', emailError)
+      // Log more details for debugging
+      if (emailError?.message) {
+        console.error('Resend error message:', emailError.message)
+      }
+      if (emailError?.response) {
+        console.error('Resend error response:', emailError.response)
+      }
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { 
+          error: 'Failed to send email',
+          details: emailError?.message || 'Unknown error occurred'
+        },
         { status: 500 }
       )
     }
