@@ -237,42 +237,42 @@ export default function YorubaWordMasterEmbed({
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <h1 className="text-lg sm:text-2xl font-bold tracking-wide uppercase flex-shrink-0">Yorùbá Word Master</h1>
           <div className="flex gap-2 flex-wrap">
-            {showSettings && (
-              <button
-                onClick={handleSettings}
+          {showSettings && (
+            <button
+              onClick={handleSettings}
                 data-tour="settings"
                 className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
-                aria-label="Settings"
-              >
-                Settings
-              </button>
-            )}
-            {showStatistics && (
-              <button
-                onClick={handleStats}
+              aria-label="Settings"
+            >
+              Settings
+            </button>
+          )}
+          {showStatistics && (
+            <button
+              onClick={handleStats}
                 data-tour="statistics"
                 className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
-                aria-label="Statistics"
-              >
-                Stats
-              </button>
-            )}
-            <button
-              onClick={handleHelp}
+              aria-label="Statistics"
+            >
+              Stats
+            </button>
+          )}
+          <button
+            onClick={handleHelp}
               data-tour="help"
               className="px-2 py-1 sm:px-3 sm:py-1.5 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
-              aria-label="Help"
-            >
-              Help
-            </button>
-            <button
-              onClick={handleNewGame}
+            aria-label="Help"
+          >
+            Help
+          </button>
+          <button
+            onClick={handleNewGame}
               data-tour="new-game"
               className="px-2 py-1 sm:px-3 sm:py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
-              aria-label="New Game"
-            >
-              New Game
-            </button>
+            aria-label="New Game"
+          >
+            New Game
+          </button>
           </div>
         </div>
       </div>

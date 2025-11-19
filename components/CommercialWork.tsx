@@ -88,11 +88,11 @@ export default function CommercialWork() {
             <div className="mb-6" style={{ height: '180px' }}>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Chanel x Vogue Magazine
-              </h3>
+                </h3>
               <p className="text-gray-300">
                 Soundtrack composition and sound design for the collaborative luxury fashion commercial.
               </p>
-            </div>
+              </div>
             <div style={{ height: '600px' }}>
               <video
                 ref={videoRef}
@@ -108,8 +108,8 @@ export default function CommercialWork() {
                 <source src="/videos/chanel-vogue-magazine-sound-design-copy.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-            </div>
-          </div>
+                </div>
+              </div>
 
           {/* BBC Card */}
           <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-500 transition-all duration-300">

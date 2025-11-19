@@ -25,15 +25,20 @@ export default function Hero() {
         setShowTagline(true)
       }, 300) // Small delay after typing completes
       
+      // Hide tagline 1 second before restart (to allow fade-out to complete)
+      const hideTaglineTimer = setTimeout(() => {
+        setShowTagline(false)
+      }, pauseDuration - 1000) // 3 seconds (1 second before restart)
+      
       // Wait 4 seconds then restart
       const restartTimer = setTimeout(() => {
         setDisplayedText('')
         setCurrentIndex(0)
-        setShowTagline(false)
       }, pauseDuration)
       
       return () => {
         clearTimeout(taglineTimer)
+        clearTimeout(hideTaglineTimer)
         clearTimeout(restartTimer)
       }
     }

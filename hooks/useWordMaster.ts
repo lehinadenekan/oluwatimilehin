@@ -856,6 +856,18 @@ const useWordMaster = (difficulty?: 'easy' | 'intermediate', initialWordLength?:
   // Handle keyboard events
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
+      // Don't intercept keyboard events if user is typing in an input field or textarea
+      const target = event.target as HTMLElement
+      if (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target?.isContentEditable ||
+        target?.tagName === 'INPUT' ||
+        target?.tagName === 'TEXTAREA'
+      ) {
+        return // Allow normal input behavior in form fields
+      }
+
       const key = event.key.toLowerCase();
       
       // Prevent default behavior for game keys
