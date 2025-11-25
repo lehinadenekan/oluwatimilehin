@@ -5,6 +5,15 @@ export async function POST(request: Request) {
   try {
     const { name, email, subject, message } = await request.json()
 
+    // Log all contact form submissions for tracking
+    console.log('=== CONTACT FORM SUBMISSION ===')
+    console.log('Timestamp:', new Date().toISOString())
+    console.log('From:', name)
+    console.log('Email:', email)
+    console.log('Subject:', subject)
+    console.log('Message:', message)
+    console.log('==============================')
+
     // Validate input
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
