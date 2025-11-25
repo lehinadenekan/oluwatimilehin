@@ -75,7 +75,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
             <p className="text-sm text-gray-400"><strong className="text-white">Correct:</strong> The letter is in the word and in the correct spot.</p>
           </div>
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-purple-500 flex items-center justify-center text-2xl font-bold text-white rounded-md">B</div>
+            <div className="w-10 h-10 bg-purple-700 flex items-center justify-center text-2xl font-bold text-white rounded-md">B</div>
             <p className="text-sm text-gray-400"><strong className="text-white">Present:</strong> The letter is in the word but in the wrong spot.</p>
           </div>
           <div className="flex items-center gap-4">
@@ -123,7 +123,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
             Reveal Word
           </button>
         ) : (
-          <div className="mt-4 p-3 bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg">
+          <div className="mt-4 p-3 bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg">
             <p className="text-purple-200 font-medium">
               Today&apos;s word: <span className="text-purple-100 text-xl">{solution}</span>
             </p>
@@ -159,7 +159,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
               </button>
               <button
                 onClick={handleRevealWord}
-                className="flex-1 px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors"
+                className="flex-1 px-4 py-2 bg-purple-700 hover:bg-purple-800 rounded-lg font-medium transition-colors"
               >
                 Yes, Reveal
               </button>
@@ -175,7 +175,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
       <h4 className="text-sm font-medium mb-2 text-white">Interactive Walkthrough</h4>
       <div className="space-y-3 text-sm text-gray-400">
         <p>Take a guided tour of all game features and controls.</p>
-        <div className="bg-purple-900/30 border border-purple-600 rounded-lg p-3">
+        <div className="bg-purple-900/30 border border-purple-700 rounded-lg p-3">
           <h5 className="font-medium mb-2 text-purple-200">Walkthrough Covers:</h5>
           <ul className="space-y-1 text-sm text-purple-300">
             <li>• Game board and keyboard</li>
@@ -228,7 +228,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
               <button
                 key={tab.id}
                 className={`flex-1 py-2 px-1 sm:px-4 text-sm font-medium flex items-center justify-center gap-2
-                  ${activeTab === tab.id ? 'text-purple-300 border-b-2 border-purple-500 bg-purple-900/30' : 'text-gray-400 hover:text-purple-200'}
+                  ${activeTab === tab.id ? 'text-purple-300 border-b-2 border-purple-700 bg-purple-900/30' : 'text-gray-400 hover:text-purple-200'}
                 `}
                 onClick={() => setActiveTab(tab.id as any)}
                 aria-current={activeTab === tab.id ? 'page' : undefined}
@@ -250,7 +250,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
         <div className="flex-shrink-0 p-6 pt-4 border-t border-gray-700">
           <button
             onClick={onClose}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-colors text-lg"
+            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 rounded-lg transition-colors text-lg"
           >
             Got it!
           </button>

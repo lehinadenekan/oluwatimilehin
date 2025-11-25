@@ -90,7 +90,7 @@ const GameEndModal: React.FC<GameEndModalProps> = ({
       {/* Centered modal */}
       <div
         ref={modalRef}
-        className="relative bg-gray-800 border-2 border-purple-500 rounded-lg p-6 mx-4 max-w-md w-full z-10 shadow-xl text-center"
+        className="relative bg-gray-800 border-2 border-purple-700 rounded-lg p-6 mx-4 max-w-md w-full z-10 shadow-xl text-center"
       >
         <h2 className="text-2xl font-bold text-white mb-4">
           {isGameWon ? 'Congratulations!' : 'Game Over'}
@@ -128,7 +128,7 @@ const GameEndModal: React.FC<GameEndModalProps> = ({
         <div className="flex gap-3 justify-center mb-2 flex-col sm:flex-row">
           <button
             onClick={onReset}
-            className="w-full sm:w-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
+            className="w-full sm:w-auto px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors"
           >
             Play Again
           </button>
@@ -140,7 +140,7 @@ const GameEndModal: React.FC<GameEndModalProps> = ({
           </button>
           <button
             onClick={handleShare}
-            className="w-full sm:w-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
+            className="w-full sm:w-auto px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors"
           >
             {hasCopied ? 'Copied!' : 'Share'}
           </button>

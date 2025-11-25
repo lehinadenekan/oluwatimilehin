@@ -81,7 +81,7 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
         <div className="px-6 pb-6">
           <div className="space-y-4">
             {/* Progress Indicator */}
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
                 <h3 className="font-medium text-purple-200">Good Progress!</h3>
@@ -100,7 +100,7 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
               You have the right letters, but pay attention to tonal marks!
             </p>
             
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <h3 className="font-medium mb-2 text-purple-200">💡 Tonal Marks Tip</h3>
               <p className="text-sm text-purple-300">
                 Tonal marks change word meanings in Yorùbá. For example:
@@ -112,7 +112,7 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
               </div>
             </div>
 
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <h3 className="font-medium mb-2 text-purple-200">⚙️ Settings Tip</h3>
               <p className="text-sm text-purple-300">
                 Turn on &quot;Show tonal accents&quot; in Settings to see the accents before guessing!
@@ -121,7 +121,7 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-full px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors min-h-[44px]"
+              className="w-full px-4 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors min-h-[44px]"
             >
               Continue Playing
             </button>

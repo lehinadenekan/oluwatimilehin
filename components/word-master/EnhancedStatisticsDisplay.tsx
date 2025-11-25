@@ -75,7 +75,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                   onClick={() => setActiveTab(tab.id as TabType)}
                   className={`flex-1 flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                     activeTab === tab.id
-                      ? 'bg-purple-600 text-white'
+                      ? 'bg-purple-700 text-white'
                       : 'text-gray-300 hover:text-white hover:bg-gray-600'
                   }`}
                 >
@@ -94,7 +94,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
             <>
               {/* Hero Metrics */}
               <div className="text-center space-y-4">
-                <div className="bg-purple-600 rounded-xl p-6 relative overflow-hidden">
+                <div className="bg-purple-700 rounded-xl p-6 relative overflow-hidden">
                   <div className="absolute top-0 right-0 opacity-10">
                     <Zap size={80} />
                   </div>
@@ -106,7 +106,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-purple-600 rounded-lg p-4 text-center">
+                  <div className="bg-purple-700 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-white">{overall.winPercentage}%</div>
                     <div className="text-purple-200 text-sm">Win Rate</div>
                   </div>
@@ -119,7 +119,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
 
               {/* Next Milestone */}
               {nextMilestone && (
-                <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+                <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
                   <div className="flex items-center mb-2">
                     <Target className="mr-2" size={20} />
                     <h3 className="font-semibold text-purple-200">Next Milestone</h3>
@@ -127,7 +127,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                   <div className="text-purple-300">{nextMilestone.description}</div>
                   <div className="mt-2 bg-gray-700 rounded-full h-2">
                     <div 
-                      className="bg-purple-600 h-2 rounded-full transition-all duration-500"
+                      className="bg-purple-700 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${nextMilestone.progress}%` }}
                     />
                   </div>
@@ -162,7 +162,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                               className={`h-5 rounded-full flex items-center justify-end pr-2 transition-all duration-300 ${
                                 isUsersBest 
                                   ? 'bg-green-600' 
-                                  : 'bg-purple-600'
+                                  : 'bg-purple-700'
                               }`}
                               style={{ width: `${Math.max(percentage, count > 0 ? 15 : 0)}%` }}
                             >
@@ -207,7 +207,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                       key={achievement.id}
                       className={`rounded-lg p-3 border-2 transition-all ${
                         achievement.unlocked 
-                          ? 'bg-purple-900/50 border-purple-500' 
+                          ? 'bg-purple-900/50 border-purple-700' 
                           : 'bg-gray-600 border-gray-500'
                       }`}
                     >
@@ -223,7 +223,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                         <div className="mt-2">
                           <div className="bg-gray-700 rounded-full h-1.5">
                             <div 
-                              className="bg-purple-600 h-1.5 rounded-full transition-all duration-500"
+                              className="bg-purple-700 h-1.5 rounded-full transition-all duration-500"
                               style={{ width: `${Math.min(achievement.progress, 100)}%` }}
                             />
                           </div>
@@ -272,7 +272,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
               )}
 
               {/* Dynamic Encouragement */}
-              <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4 text-center">
+              <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4 text-center">
                 <div className="text-purple-300 text-sm leading-relaxed">
                   {getEncouragementMessage(overall, learning)}
                 </div>
@@ -283,7 +283,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
           {activeTab === 'scoring' && (
             <>
               {/* Scoring Overview */}
-              <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-5">
+              <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-5">
                 <h3 className="text-lg font-semibold mb-3 flex items-center text-white">
                   <Calculator size={20} className="mr-2" />
                   How Scoring Works
@@ -375,7 +375,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
               </div>
 
               {/* Optimization Tips */}
-              <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-5">
+              <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-5">
                 <h4 className="font-semibold mb-3 text-purple-200 flex items-center">
                   <Lightbulb className="mr-2" size={18} />
                   Score Optimization Tips

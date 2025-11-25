@@ -1,14 +1,6 @@
 import type { Metadata } from 'next'
-import { Noto_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
-
-const notoSans = Noto_Sans({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-noto',
-  weight: ['400', '500', '600', '700', '800', '900'],
-})
 
 export const metadata: Metadata = {
   title: 'oluwatimilehin - audio, music, culture, technology.',
@@ -33,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={notoSans.variable}>
+    <html lang="en">
       <body>
         {children}
         <Analytics />

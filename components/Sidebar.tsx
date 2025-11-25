@@ -129,7 +129,7 @@ export default function Sidebar() {
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={`block px-4 py-2 rounded-lg transition-all duration-200 ${
                       activeSection === item.id
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                        ? 'bg-purple-700 text-white'
                         : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                     }`}
                   >

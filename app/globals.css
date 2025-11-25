@@ -3,9 +3,37 @@
 @tailwind utilities;
 
 :root {
+  /* Legacy RGB variables for body */
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+  
+  /* Design System Color Variables */
+  /* Backgrounds */
+  --bg-primary: #000000;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  /* Purple Accents */
+  --accent-primary: #7e22ce;
+  --accent-hover: #6b21a8;
+  --accent-text-light: #a78bfa;
+  --accent-text-lighter: #c4b5fd;
+  --accent-dark: #581c87;
+  
+  /* Border Colors */
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  
+  /* Scrollbar */
+  --scrollbar-track: #000000;
+  --scrollbar-thumb: #4a4a4a;
+  --scrollbar-thumb-hover: #6a6a6a;
 }
 
 * {
@@ -16,14 +44,15 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 18px; /* Increased from default 16px by 2px */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Calibri', 'Calibri Light', 'Candara', 'Segoe UI', 'Segoe UI Light', 'Segoe UI Semibold', 'Segoe UI Bold', 'Trebuchet MS', 'Arial', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -32,12 +61,32 @@ body {
   font-kerning: normal;
 }
 
-/* Improve diacritic rendering */
-h1, h2, h3 {
+/* Headers with letter-spacing and font weights */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-feature-settings: "kern" 1;
   font-feature-settings: "kern" 1;
+}
+
+/* Specific letter-spacing for different header sizes */
+h1 {
+  letter-spacing: 0.05em;
+}
+
+h2 {
+  letter-spacing: 0.04em;
+}
+
+h3 {
+  letter-spacing: 0.03em;
+}
+
+h4, h5, h6 {
+  letter-spacing: 0.02em;
 }
 
 /* Custom scrollbar */
@@ -46,15 +95,15 @@ h1, h2, h3 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4a4a4a;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6a6a6a;
+  background: var(--scrollbar-thumb-hover);
 }
 

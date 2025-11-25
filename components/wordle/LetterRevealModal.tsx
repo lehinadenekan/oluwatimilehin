@@ -44,7 +44,7 @@ const LetterRevealModal: React.FC<LetterRevealModalProps> = ({
               Would you like to reveal a random letter from the word?
             </p>
             
-            <div className="bg-purple-900 bg-opacity-30 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-30 border border-purple-700 rounded-lg p-4">
               <h3 className="font-medium mb-2 text-purple-200">💡 Hint System</h3>
               <p className="text-sm text-purple-300">
                 This will show you one random letter in its correct position. 
@@ -61,7 +61,7 @@ const LetterRevealModal: React.FC<LetterRevealModalProps> = ({
               </button>
               <button
                 onClick={onReveal}
-                className="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
+                className="flex-1 px-4 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors"
               >
                 Yes, reveal letter
               </button>

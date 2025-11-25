@@ -49,7 +49,7 @@ export default function Hero() {
       <div className="text-center px-4 sm:px-0 w-full">
         <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif', fontVariant: 'normal', textRendering: 'optimizeLegibility', fontFeatureSettings: '"kern" 1, "liga" 1' }}>
           {displayedText}
-          <span className="animate-blink text-purple-500">|</span>
+          <span className="animate-blink text-purple-700">|</span>
         </h1>
         <p 
           className={`text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 transition-opacity duration-1000 ${

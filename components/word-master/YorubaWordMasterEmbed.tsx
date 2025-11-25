@@ -241,7 +241,7 @@ export default function YorubaWordMasterEmbed({
             <button
               onClick={handleSettings}
                 data-tour="settings"
-                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
+                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
               aria-label="Settings"
             >
               Settings
@@ -251,7 +251,7 @@ export default function YorubaWordMasterEmbed({
             <button
               onClick={handleStats}
                 data-tour="statistics"
-                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
+                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
               aria-label="Statistics"
             >
               Stats
@@ -279,7 +279,7 @@ export default function YorubaWordMasterEmbed({
 
       {/* Project Description Card - Matching Commercial Work Style */}
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-500 transition-all duration-300">
+        <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
           <div className="mb-6">
             <p className="text-gray-300 mb-4">
               I created Yorùbá Word Master to help myself improve my Yorùbá vocabulary and tonal mark accuracy. Yorùbá is a tonal language in which tonal accuracy is essential to preserve the true meaning of words.
@@ -435,7 +435,7 @@ export default function YorubaWordMasterEmbed({
                 <div className="flex gap-2 justify-center items-center">
                   <button
                     onClick={resetGame}
-                    className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors text-sm"
+                    className="px-3 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors text-sm"
                   >
                     Play Again
                   </button>

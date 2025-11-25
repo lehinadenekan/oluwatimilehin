@@ -31,7 +31,7 @@ export default function ToastNotification({
 
   return (
     <div className="fixed top-4 right-4 z-[60] animate-in slide-in-from-right-2 duration-300">
-      <div className="bg-purple-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px]">
+      <div className="bg-purple-700 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 min-w-[300px]">
         <CheckCircle size={20} className="text-purple-200" />
         <span className="flex-1">{message}</span>
         <button

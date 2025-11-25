@@ -34,10 +34,10 @@ export default function NewGameButton({
       disabled={disabled || isLoading}
       className={
         `px-6 py-3 rounded-lg font-semibold text-white
-        bg-purple-600 hover:bg-purple-700 
+        bg-purple-700 hover:bg-purple-800 
         disabled:bg-gray-400 disabled:cursor-not-allowed
         transition-colors duration-200
-        focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2
+        focus:outline-none focus:ring-2 focus:ring-purple-700 focus:ring-offset-2
         ${className}`
       }
       aria-label="Start a new game with a different word"

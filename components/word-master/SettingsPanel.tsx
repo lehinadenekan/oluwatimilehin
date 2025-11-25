@@ -85,7 +85,7 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
               <select 
                 value={difficulty}
                 onChange={(e) => handleDifficultyChange(e.target.value)}
-                className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white"
+                className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-transparent text-white"
               >
                 <option value="easy">Easy</option>
                 <option value="intermediate">Intermediate</option>
@@ -100,7 +100,7 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
               <select 
                 value={wordLength}
                 onChange={(e) => handleWordLengthChange(Number(e.target.value))}
-                className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-white"
+                className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-700 focus:border-transparent text-white"
               >
                 <option value={2}>2 Letters</option>
                 <option value={3}>3 Letters</option>
@@ -151,7 +151,7 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
             </div>
 
             {/* Info Box */}
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <h3 className="font-medium mb-2 text-purple-200">Game Settings</h3>
               <p className="text-sm text-purple-300">
                 Currently available: 2-3 letter words with Easy and Intermediate difficulty. More options coming soon!
@@ -171,7 +171,7 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
             </button>
             <button
               onClick={handleApplySettings}
-              className="flex-1 px-4 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg font-medium transition-colors text-white"
+              className="flex-1 px-4 py-3 bg-purple-700 hover:bg-purple-800 rounded-lg font-medium transition-colors text-white"
             >
               Apply & New Game
             </button>

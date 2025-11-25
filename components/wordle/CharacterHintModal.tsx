@@ -88,7 +88,7 @@ const CharacterHintModal: React.FC<CharacterHintModalProps> = ({
         <div className="px-6 pb-6">
           <div className="space-y-5">
             {/* Progress Indicator */}
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
                 <h3 className="font-medium text-purple-200">Good Progress!</h3>
@@ -102,7 +102,7 @@ const CharacterHintModal: React.FC<CharacterHintModalProps> = ({
             </div>
 
             {/* Tonal Marks Tip */}
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <h3 className="font-medium mb-2 text-purple-200">💡 Tonal Marks Tip</h3>
               <p className="text-sm text-purple-300">
                 Tonal marks change word meanings in Yorùbá. For example:
@@ -111,11 +111,11 @@ const CharacterHintModal: React.FC<CharacterHintModalProps> = ({
                 <p><code className="bg-gray-700 px-1 rounded">oko</code> = farm</p>
                 <p><code className="bg-gray-700 px-1 rounded">ọkọ</code> = husband</p>
                 <p><code className="bg-gray-700 px-1 rounded">ọkọ́</code> = spear</p>
-              </div>
-            </div>
+                      </div>
+                    </div>
                     
             {/* Settings Tip */}
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-600 rounded-lg p-4">
+            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
               <h3 className="font-medium mb-2 text-purple-200">⚙️ Settings Tip</h3>
               <p className="text-sm text-purple-300">
                 Turn on &quot;Show tonal accents&quot; in Settings to see the accents before guessing!
@@ -124,7 +124,7 @@ const CharacterHintModal: React.FC<CharacterHintModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-full px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors min-h-[44px]"
+              className="w-full px-4 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors min-h-[44px]"
             >
               Continue Playing
             </button>

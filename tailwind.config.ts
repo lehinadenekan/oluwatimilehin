@@ -9,6 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Design System Colors using CSS Variables
+        'bg-primary': 'var(--bg-primary)',
+        'bg-secondary': 'var(--bg-secondary)',
+        'bg-tertiary': 'var(--bg-tertiary)',
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-muted': 'var(--text-muted)',
+        'accent-primary': 'var(--accent-primary)',
+        'accent-hover': 'var(--accent-hover)',
+        'accent-text-light': 'var(--accent-text-light)',
+        'accent-text-lighter': 'var(--accent-text-lighter)',
+        'accent-dark': 'var(--accent-dark)',
+        'border-primary': 'var(--border-primary)',
+        'border-secondary': 'var(--border-secondary)',
+        // Keep existing custom colors for backward compatibility
         purple: {
           accent: '#a855f7',
           dark: '#7c3aed',

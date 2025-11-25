@@ -84,8 +84,8 @@ export default function CommercialWork() {
         </div>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {/* Chanel Card */}
-          <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-500 transition-all duration-300">
-            <div className="mb-6" style={{ height: '180px' }}>
+          <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
+            <div className="mb-6" style={{ height: '10rem' }}>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Chanel x Vogue Magazine
                 </h3>
@@ -93,13 +93,13 @@ export default function CommercialWork() {
                 Soundtrack composition and sound design for the collaborative luxury fashion commercial.
               </p>
               </div>
-            <div style={{ height: '600px' }}>
+            <div style={{ height: '37.5rem' }}>
               <video
                 ref={videoRef}
                 controls
                 poster="/videos/chanel-vogue-magazine-poster.jpg"
                 className="w-full rounded-lg bg-black"
-                style={{ height: '600px', objectFit: 'contain' }}
+                style={{ height: '37.5rem', objectFit: 'contain' }}
                 preload="metadata"
                 playsInline
               >
@@ -112,8 +112,8 @@ export default function CommercialWork() {
               </div>
 
           {/* BBC Card */}
-          <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-500 transition-all duration-300">
-            <div className="mb-6" style={{ height: '180px' }}>
+          <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
+            <div className="mb-6" style={{ height: '10rem' }}>
               <h3 className="text-3xl font-bold text-white mb-4">
                 BBC Podcast Production
               </h3>
@@ -121,12 +121,12 @@ export default function CommercialWork() {
                 Professional field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott.
               </p>
             </div>
-            <div style={{ height: '600px', marginTop: '-50px' }}>
+            <div style={{ height: '37.5rem', marginTop: '-3.125rem' }}>
               <img
                 src="/images/bbc-podcast-the-reset.webp"
                 alt="BBC Podcast The Reset"
                 className="w-full rounded-lg"
-                style={{ height: '600px', objectFit: 'contain' }}
+                style={{ height: '37.5rem', objectFit: 'contain' }}
               />
             </div>
             <div className="mt-6 flex justify-center">
@@ -134,7 +134,7 @@ export default function CommercialWork() {
                 href="https://www.bbc.co.uk/sounds/play/p0cw9yfk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-all duration-300"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 <span>Listen on BBC Sounds</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -85,7 +85,7 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-purple-500 transition-all duration-300 hover:transform hover:scale-105 w-full max-w-sm"
+              className="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-purple-700 transition-all duration-300 hover:transform hover:scale-105 w-full max-w-sm"
             >
               <h3 className="text-xl font-semibold text-white mb-3">
                 {service.title}
@@ -106,7 +106,7 @@ export default function Services() {
               <div 
                 className="calendly-inline-widget" 
                 data-url="https://calendly.com/oluwatimilehinonline"
-                style={{ minWidth: '320px', height: '700px' }}
+                style={{ minWidth: '20rem', height: '43.75rem' }}
               />
               <Script
                 src="https://assets.calendly.com/assets/external/widget.js"
@@ -129,7 +129,7 @@ export default function Services() {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:border-transparent"
                 />
               </div>
               <div>
@@ -140,7 +140,7 @@ export default function Services() {
                   onChange={handleChange}
                   placeholder="Your Email"
                   required
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:border-transparent"
                 />
               </div>
               <div>
@@ -151,7 +151,7 @@ export default function Services() {
                   onChange={handleChange}
                   placeholder="Subject"
                   required
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:border-transparent"
                 />
               </div>
               <div>
@@ -162,13 +162,13 @@ export default function Services() {
                   placeholder="Your Message"
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:border-transparent resize-none"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

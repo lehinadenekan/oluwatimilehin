@@ -63,10 +63,10 @@ const HintSystem: React.FC<HintSystemProps> = ({ partOfSpeech, englishTranslatio
       <style jsx>{`
         .toggle-checkbox {
           appearance: none;
-          width: 40px;
-          height: 20px;
+          width: 2.22rem;
+          height: 1.11rem;
           background-color: #4a5568;
-          border-radius: 10px;
+          border-radius: 0.56rem;
           position: relative;
           cursor: pointer;
           transition: background-color 0.2s;
@@ -74,12 +74,12 @@ const HintSystem: React.FC<HintSystemProps> = ({ partOfSpeech, englishTranslatio
         .toggle-checkbox:before {
           content: '';
           position: absolute;
-          width: 16px;
-          height: 16px;
+          width: 0.89rem;
+          height: 0.89rem;
           border-radius: 50%;
           background-color: white;
-          top: 2px;
-          left: 2px;
+          top: 0.11rem;
+          left: 0.11rem;
           transition: transform 0.2s;
         }
         .toggle-checkbox:checked {

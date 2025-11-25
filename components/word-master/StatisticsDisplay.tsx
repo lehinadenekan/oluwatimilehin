@@ -77,7 +77,7 @@ export default function StatisticsDisplay({ isOpen, onClose }: StatisticsDisplay
                     <div className="w-4 text-center text-sm text-gray-400">{guess}</div>
                     <div className="flex-1 mx-2 bg-gray-700 rounded">
                       <div 
-                        className="bg-purple-600 h-6 rounded flex items-center justify-end pr-2"
+                        className="bg-purple-700 h-6 rounded flex items-center justify-end pr-2"
                         style={{ width: `${Math.max(percentage, 5)}%` }}
                       >
                         <span className="text-sm text-white">{count}</span>

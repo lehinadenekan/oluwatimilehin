@@ -56,7 +56,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
                     key={colIndex}
                     className={`w-10 h-10 sm:w-16 sm:h-16 border border-gray-600 flex items-center justify-center text-sm sm:text-3xl font-bold uppercase
                       ${tile.status === 'correct' ? 'bg-green-500 border-green-500' : ''}
-                      ${tile.status === 'present' ? 'bg-purple-500 border-purple-500' : ''}
+                      ${tile.status === 'present' ? 'bg-purple-700 border-purple-700' : ''}
                       ${tile.status === 'absent' ? 'bg-gray-700 border-gray-700' : ''}
                     `}
                   >

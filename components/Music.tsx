@@ -11,11 +11,11 @@ function SongCard({ title, artist, plays, spotifyUrl }: SongCardProps) {
   const trackId = spotifyUrl.split('/track/')[1]?.split('?')[0]
 
   return (
-    <div className="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-purple-500 transition-all duration-300">
+    <div className="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-purple-700 transition-all duration-300">
       <div className="mb-4">
         <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
         <p className="text-gray-400 text-sm">{artist}</p>
-        <p className="text-purple-400 text-sm mt-2">{plays} plays</p>
+        <p className="text-purple-700 text-sm mt-2">{plays} plays</p>
       </div>
       {trackId && (
         <div className="mt-4">
