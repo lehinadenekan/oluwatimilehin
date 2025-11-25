@@ -47,6 +47,7 @@
 - Spotify embeds for tracks
 - Manual play counts (automatic updates removed per user request)
 - Fixed "Road to Damascus" track loading issue
+- Play stats use `text-purple-400` for better legibility
 
 ### 4. Commercial Work Section
 - **File:** `components/CommercialWork.tsx`
@@ -69,8 +70,14 @@
   - Full game functionality with keyboard, hints, statistics
   - Walkthrough integration with react-joyride
   - Mobile responsive
-  - Description text: "Enter the correct Yorùbá word, with the correct tonal marks, to match the English translation below."
+  - Description text: "Enter the correct Yorùbá word, with the correct tonal marks. You have 6 attempts."
   - Fixed keyboard input interference with contact form
+  - **Button Color Scheme:**
+    - Settings: Purple (bg-purple-700)
+    - Stats: Gray (bg-gray-600)
+    - Help: Gray (bg-gray-600)
+    - New Game: Dark Green (bg-green-700)
+  - All buttons standardized to match "Listen on BBC Sounds" style (px-6 py-3, font-semibold, transition-all duration-300)
 
 ### 6. Services / Let's Work Together Section
 - **File:** `components/Services.tsx`
@@ -130,11 +137,24 @@
 - Added check to ignore keyboard events when user is typing in form inputs
 - Contact form now fully functional for all keyboard input
 
-### 5. Modal Styling Standardization
-- Standardized all modals to match SettingsPanel aesthetic
-- Consistent color palette: gray-800 backgrounds, purple-600 primary buttons
-- Removed excessive gradients and colors
-- Clean, minimal design
+### 5. Button and Text Standardization
+- **All Buttons:** Standardized to match "Listen on BBC Sounds" button style
+  - Consistent padding: `px-6 py-3`
+  - Consistent font: `font-semibold`
+  - Consistent transitions: `transition-all duration-300`
+  - Consistent layout: `inline-flex items-center space-x-2`
+- **Button Colors:**
+  - Primary actions: Purple (bg-purple-700 hover:bg-purple-800)
+  - Secondary actions: Gray (bg-gray-600 hover:bg-gray-700)
+  - Special actions: Green (bg-green-700 hover:bg-green-800) for "New Game"
+- **Sidebar Navigation:**
+  - Updated to match button styling (px-6 py-3, font-semibold, white text)
+  - Active state: bg-purple-700
+  - Inactive state: text-white hover:bg-gray-800
+- **Text Improvements:**
+  - All descriptive text uses `text-gray-200` (lighter gray, not white)
+  - Larger font sizes: `text-base`, `text-xl` instead of `text-sm`, `text-xs`
+  - Consistent across: game descriptions, service descriptions, "Get in touch" text, Part of Speech/English translations
 
 ### 6. Mobile Responsiveness
 - Fixed typewriter text overflow on mobile
@@ -273,10 +293,13 @@ oluwatimilehin/
 ## Design Decisions
 
 ### Color Scheme
-- Primary: Purple (#7c3aed) and Pink (#ec4899) gradients
-- Background: Black (#000000) and Gray-950 (#030712)
-- Cards: Gray-900 (#111827) with Gray-800 borders
-- Text: White with Gray-400 for secondary text
+- **Primary Accent:** Purple (#7e22ce, purple-700) for buttons, active states, borders
+- **Hover States:** Purple (#6b21a8, purple-800)
+- **Text Accents:** Purple (#a78bfa, purple-400) for play stats and accent text
+- **Background:** Black (#000000) and Gray-950 (#030712)
+- **Cards:** Gray-900 (#111827) with Gray-800 borders
+- **Text:** White for primary, Gray-200 for descriptive text (larger, lighter gray)
+- **Button Colors:** Purple (primary), Gray (secondary), Green (special actions like "New Game")
 
 ### Typography
 - Primary: Inter (via Next.js font optimization)

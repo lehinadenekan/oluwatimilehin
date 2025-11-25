@@ -128,19 +128,19 @@ const GameEndModal: React.FC<GameEndModalProps> = ({
         <div className="flex gap-3 justify-center mb-2 flex-col sm:flex-row">
           <button
             onClick={onReset}
-            className="w-full sm:w-auto px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Play Again
           </button>
           <button
             onClick={onReturnToBoard}
-            className="w-full sm:w-auto px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Return to Game Board
           </button>
           <button
             onClick={handleShare}
-            className="w-full sm:w-auto px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             {hasCopied ? 'Copied!' : 'Share'}
           </button>

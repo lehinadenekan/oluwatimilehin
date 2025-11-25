@@ -77,7 +77,7 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-200 text-xl">
             Get in touch to discuss your project or book a session
           </p>
         </div>
@@ -90,7 +90,7 @@ export default function Services() {
               <h3 className="text-xl font-semibold text-white mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-400 text-sm">{service.description}</p>
+              <p className="text-gray-200 text-base">{service.description}</p>
             </div>
           ))}
         </div>
@@ -168,7 +168,7 @@ export default function Services() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

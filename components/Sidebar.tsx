@@ -127,10 +127,10 @@ export default function Sidebar() {
                   <Link
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`block px-4 py-2 rounded-lg transition-all duration-200 ${
+                    className={`block px-6 py-3 rounded-lg transition-all duration-300 font-semibold ${
                       activeSection === item.id
                         ? 'bg-purple-700 text-white'
-                        : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                        : 'text-white hover:bg-gray-800'
                     }`}
                   >
                     <span className="whitespace-nowrap">{item.label}</span>

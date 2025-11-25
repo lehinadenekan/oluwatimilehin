@@ -55,13 +55,13 @@ const LetterRevealModal: React.FC<LetterRevealModalProps> = ({
             <div className="flex gap-3 pt-2">
               <button
                 onClick={onDecline}
-                className="flex-1 px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 No, I&apos;ll keep trying
               </button>
               <button
                 onClick={onReveal}
-                className="flex-1 px-4 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 Yes, reveal letter
               </button>

@@ -153,13 +153,13 @@ const HelpModal: React.FC<HelpModalProps> = ({
             <div className="flex gap-3">
               <button
                 onClick={() => setShowRevealConfirmation(false)}
-                className="flex-1 px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg font-medium transition-colors"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 Cancel
               </button>
               <button
                 onClick={handleRevealWord}
-                className="flex-1 px-4 py-2 bg-purple-700 hover:bg-purple-800 rounded-lg font-medium transition-colors"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 Yes, Reveal
               </button>
@@ -192,7 +192,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
               onClose();
             }
           }}
-          className="w-full mt-4 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
+          className="w-full mt-4 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
         >
           🔄 Start Interactive Walkthrough
         </button>

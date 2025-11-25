@@ -165,13 +165,13 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 px-4 py-3 bg-gray-600 hover:bg-gray-700 rounded-lg font-medium transition-colors text-white"
+              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Cancel
             </button>
             <button
               onClick={handleApplySettings}
-              className="flex-1 px-4 py-3 bg-purple-700 hover:bg-purple-800 rounded-lg font-medium transition-colors text-white"
+              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Apply & New Game
             </button>

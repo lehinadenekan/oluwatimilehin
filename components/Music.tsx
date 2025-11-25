@@ -15,7 +15,7 @@ function SongCard({ title, artist, plays, spotifyUrl }: SongCardProps) {
       <div className="mb-4">
         <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
         <p className="text-gray-400 text-sm">{artist}</p>
-        <p className="text-purple-700 text-sm mt-2">{plays} plays</p>
+        <p className="text-purple-400 text-sm mt-2">{plays} plays</p>
       </div>
       {trackId && (
         <div className="mt-4">

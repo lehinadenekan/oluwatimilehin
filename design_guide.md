@@ -37,17 +37,25 @@ Use these guidelines when creating any frontend components or pages.
 
 **Text:**
 
-- White: #ffffff (primary text)
-- Off-white: #9ca3af (gray-400) for secondary text
-- Light gray: #6b7280 (gray-500) for muted text
+- White: #ffffff (primary text, headers)
+- Light gray: #e5e7eb (gray-200) for descriptive text, game instructions, service descriptions
+- Off-white: #9ca3af (gray-400) for less prominent secondary text
+- Muted gray: #6b7280 (gray-500) for very muted text
 
 **Accents:**
 
 - **Purple (Implemented):**
-  - Main purple: #7e22ce (purple-700) - used for buttons, active states, borders, cursor
+  - Main purple: #7e22ce (purple-700) - used for buttons, active states, borders, cursor, Settings button
   - Hover purple: #6b21a8 (purple-800) - used for hover states
-  - Text purple: #a78bfa (purple-400), #c4b5fd (purple-300) - used for accent text
+  - Text purple: #a78bfa (purple-400) - used for play stats and accent text
+  - Light purple: #c4b5fd (purple-300) - used for lighter accent text
   - Dark purple: #581c87 (purple-900) - used for dark backgrounds
+- **Gray (Secondary Actions):**
+  - Gray: #4b5563 (gray-600) - used for Stats and Help buttons
+  - Gray hover: #374151 (gray-700) - used for hover states
+- **Green (Special Actions):**
+  - Green: #15803d (green-700) - used for "New Game" button
+  - Green hover: #166534 (green-800) - used for hover state
 
 ## Layout
 
@@ -90,14 +98,21 @@ Use these guidelines when creating any frontend components or pages.
 
 - **Implemented:**
   - Mobile-first responsive design ✅
-  - High contrast for readability ✅ (white on black/dark gray)
+  - High contrast for readability ✅ (white on black/dark gray, gray-200 for descriptive text)
   - Smooth transitions on interactive elements ✅ (300ms standard)
   - CSS variables for colors ✅ (comprehensive color system implemented)
-- **Implemented:**
   - Rem/em units for spacing ✅
     - Tailwind spacing utilities already use rem units (each unit = 0.25rem)
     - Inline styles converted from px to rem
     - Base font size: 18px (1.125rem) for proper rem scaling
+  - **Button Standardization:**
+    - All buttons use consistent styling: `px-6 py-3`, `font-semibold`, `transition-all duration-300`
+    - Consistent layout: `inline-flex items-center space-x-2`
+    - Color scheme: Purple (primary), Gray (secondary), Green (special actions)
+  - **Text Legibility:**
+    - Descriptive text uses `text-gray-200` (lighter gray, not white) for better readability
+    - Larger font sizes: `text-base`, `text-xl` instead of `text-sm`, `text-xs`
+    - Consistent across all sections: game descriptions, service descriptions, instructions
 
 ## Avoid
 
@@ -143,7 +158,10 @@ body {
   - Buttons/Active States: `bg-purple-700` or `bg-accent-primary` (#7e22ce)
   - Hover States: `hover:bg-purple-800` or `hover:bg-accent-hover` (#6b21a8)
   - Borders/Focus: `border-purple-700`, `focus:ring-purple-700`
-  - Text Accents: `text-purple-400`, `text-purple-300`
+  - Text Accents: `text-purple-400` (for play stats), `text-purple-300` (for lighter accents)
+  - Descriptive Text: `text-gray-200` (for game descriptions, service descriptions, instructions)
+  - Secondary Buttons: `bg-gray-600 hover:bg-gray-700` (for Stats, Help)
+  - Special Actions: `bg-green-700 hover:bg-green-800` (for "New Game")
   - Backgrounds: `bg-black`, `bg-gray-900`, `bg-gray-800` (or use `bg-bg-primary`, `bg-bg-secondary`, `bg-bg-tertiary`)
 
 ## Not Yet Implemented
@@ -175,5 +193,33 @@ The following items from the original design guide are **not yet implemented**:
      - Tailwind spacing utilities use rem units by default (each unit = 0.25rem)
      - Inline styles converted from px to rem
      - Base font size set to 18px (1.125rem) for proper rem scaling
+
+## Button Styling Standard
+
+All buttons should follow this standard pattern:
+
+```tsx
+className =
+  "inline-flex items-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300";
+```
+
+**Variations:**
+
+- **Primary Actions:** `bg-purple-700 hover:bg-purple-800` (Settings, Send Message, etc.)
+- **Secondary Actions:** `bg-gray-600 hover:bg-gray-700` (Stats, Help, Cancel)
+- **Special Actions:** `bg-green-700 hover:bg-green-800` (New Game)
+
+## Text Styling Standard
+
+**Descriptive Text:**
+
+- Use `text-gray-200` (not white, not gray-400)
+- Use larger sizes: `text-base`, `text-xl` (not `text-sm`, `text-xs`)
+- Examples: Game descriptions, service descriptions, "Get in touch" text, Part of Speech/English translations
+
+**Play Stats:**
+
+- Use `text-purple-400` for better legibility
+- Example: "155K plays", "911K plays"
 
 Apply these principles to all frontend work automatically.

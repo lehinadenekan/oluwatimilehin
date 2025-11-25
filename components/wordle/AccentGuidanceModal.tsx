@@ -121,7 +121,7 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
 
             <button
               onClick={onClose}
-              className="w-full px-4 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors min-h-[44px]"
+              className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300 min-h-[44px]"
             >
               Continue Playing
             </button>

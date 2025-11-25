@@ -241,7 +241,7 @@ export default function YorubaWordMasterEmbed({
             <button
               onClick={handleSettings}
                 data-tour="settings"
-                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               aria-label="Settings"
             >
               Settings
@@ -251,7 +251,7 @@ export default function YorubaWordMasterEmbed({
             <button
               onClick={handleStats}
                 data-tour="statistics"
-                className="px-2 py-1 sm:px-3 sm:py-1.5 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
+                className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
               aria-label="Statistics"
             >
               Stats
@@ -260,7 +260,7 @@ export default function YorubaWordMasterEmbed({
           <button
             onClick={handleHelp}
               data-tour="help"
-              className="px-2 py-1 sm:px-3 sm:py-1.5 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
             aria-label="Help"
           >
             Help
@@ -268,7 +268,7 @@ export default function YorubaWordMasterEmbed({
           <button
             onClick={handleNewGame}
               data-tour="new-game"
-              className="px-2 py-1 sm:px-3 sm:py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors text-xs sm:text-sm"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-lg transition-all duration-300"
             aria-label="New Game"
           >
             New Game
@@ -281,10 +281,10 @@ export default function YorubaWordMasterEmbed({
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
           <div className="mb-6">
-            <p className="text-gray-300 mb-4">
+            <p className="text-gray-200 text-base mb-4">
               I created Yorùbá Word Master to help myself improve my Yorùbá vocabulary and tonal mark accuracy. Yorùbá is a tonal language in which tonal accuracy is essential to preserve the true meaning of words.
             </p>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-200 text-base">
               I built this using React, Next.js, Tailwind CSS, Typescript.
             </p>
           </div>
@@ -379,7 +379,7 @@ export default function YorubaWordMasterEmbed({
       <div className="flex flex-col items-center min-h-screen bg-gray-900 text-white overflow-y-auto pt-4">
         {/* Game Title Header */}
         <header className="w-full text-center py-1 px-2 mb-8">
-          <p className="text-xs sm:text-lg text-gray-400 hidden sm:block">Enter the correct Yorùbá word, with the correct tonal marks, to match the English translation below.</p>
+          <p className="text-base sm:text-xl text-gray-200 hidden sm:block">Enter the correct Yorùbá word, with the correct tonal marks. You have 6 attempts.</p>
         </header>
         
         {/* Main Game Area */}
@@ -401,7 +401,7 @@ export default function YorubaWordMasterEmbed({
             
             {/* Inline Hints Display */}
             {(showPartOfSpeech || showEnglishTranslation) && (
-              <div className="text-center text-sm text-gray-300 px-2 mt-2">
+              <div className="text-center text-base text-gray-200 px-2 mt-2">
                 {showPartOfSpeech && solutionInfo.partOfSpeech && (
                   <p><strong>Part of Speech:</strong> {solutionInfo.partOfSpeech}</p>
                 )}
@@ -435,19 +435,19 @@ export default function YorubaWordMasterEmbed({
                 <div className="flex gap-2 justify-center items-center">
                   <button
                     onClick={resetGame}
-                    className="px-3 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-lg font-medium transition-colors text-sm"
+                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
                   >
                     Play Again
                   </button>
                   <button
                     onClick={() => setShowGameEndModal(true)}
-                    className="px-3 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors text-sm"
+                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
                   >
                     View Results
                   </button>
                   <button
                     onClick={handleShare}
-                    className="px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-medium transition-colors text-sm"
+                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
                   >
                     Share
                   </button>

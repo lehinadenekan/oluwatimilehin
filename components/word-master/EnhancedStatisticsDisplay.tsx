@@ -441,7 +441,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 px-4 py-3 bg-gray-600 hover:bg-gray-700 rounded-lg font-medium transition-colors text-white"
+              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Close
             </button>
@@ -451,7 +451,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                   resetStatistics();
                 }
               }}
-              className="px-4 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-medium transition-colors text-white"
+              className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Reset All
             </button>
