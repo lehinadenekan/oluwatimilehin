@@ -115,7 +115,7 @@ export default function Sidebar() {
 
           {/* Name and Title */}
           <div className={`mb-8 transition-opacity duration-300 ${isCollapsed ? 'lg:opacity-0 lg:pointer-events-none' : ''}`}>
-            <h1 className="text-2xl font-bold text-white mb-1 whitespace-nowrap">oluwatimilehin</h1>
+            <h1 className="text-2xl font-bold text-white mb-1 whitespace-nowrap">olúwatìmílẹ́hìn</h1>
             <p className="text-sm text-gray-400 whitespace-nowrap">audio, music, culture, technology.</p>
           </div>
 
