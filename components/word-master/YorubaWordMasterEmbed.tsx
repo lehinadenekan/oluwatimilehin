@@ -134,6 +134,7 @@ export default function YorubaWordMasterEmbed({
 
   const resetGame = async () => {
     setShowGameEndModal(false);
+    setIsWordRevealed(false);
     await startNewGame();
   };
 
@@ -175,11 +176,13 @@ export default function YorubaWordMasterEmbed({
 
   const handleConfirmNewGame = () => {
     setShowNewGameConfirmation(false);
+    setIsWordRevealed(false);
     startNewGame();
   };
 
   const handleSettingsAppliedWithLength = async (newWordLength: number) => {
     setIsSettingsOpen(false);
+    setIsWordRevealed(false);
     await startNewGameWithLength(newWordLength);
     setWordLength(newWordLength);
     setShowToast(true);
@@ -292,41 +295,6 @@ export default function YorubaWordMasterEmbed({
       </div>
 
       {/* Modals */}
-      <HelpModal 
-        isOpen={isHelpOpen} 
-        onClose={() => setIsHelpOpen(false)} 
-        solution={solution}
-        revealWord={handleRevealWord}
-        wordLength={currentWordLength}
-        onRestartWalkthrough={handleRestartWalkthrough}
-      />
-      {showSettings && (
-        <SettingsPanel 
-          isOpen={isSettingsOpen}
-          onClose={() => setIsSettingsOpen(false)}
-          onNewGameWithLength={handleSettingsAppliedWithLength}
-          showTonalAccents={showTonalAccents}
-          setShowTonalAccents={setShowTonalAccents}
-          showPartOfSpeech={showPartOfSpeech}
-          setShowPartOfSpeech={setShowPartOfSpeech}
-          showEnglishTranslation={showEnglishTranslation}
-          setShowEnglishTranslation={setShowEnglishTranslation}
-        />
-      )}
-      {showStatistics && (
-        <EnhancedStatisticsDisplay 
-          isOpen={isStatsOpen}
-          onClose={() => setIsStatsOpen(false)}
-          key={statisticsKey}
-        />
-      )}
-      <ConfirmationModal
-        isOpen={showNewGameConfirmation}
-        onConfirm={handleConfirmNewGame}
-        onCancel={() => setShowNewGameConfirmation(false)}
-        title="Start New Game?"
-        message="Your current progress will be lost. Are you sure you want to start a new game?"
-      />
       <ToastNotification
         isVisible={showToast}
         message="Settings applied successfully!"
@@ -456,6 +424,42 @@ export default function YorubaWordMasterEmbed({
                 confusions={characterHint ? [characterHint] : []}
                 guessWord={currentGuess}
                 correctWord={solution}
+              />
+              <HelpModal 
+                isOpen={isHelpOpen} 
+                onClose={() => setIsHelpOpen(false)} 
+                solution={solution}
+                revealWord={handleRevealWord}
+                wordLength={currentWordLength}
+                onRestartWalkthrough={handleRestartWalkthrough}
+              />
+              {showSettings && (
+                <SettingsPanel 
+                  isOpen={isSettingsOpen}
+                  onClose={() => setIsSettingsOpen(false)}
+                  onNewGameWithLength={handleSettingsAppliedWithLength}
+                  currentWordLength={currentWordLength}
+                  showTonalAccents={showTonalAccents}
+                  setShowTonalAccents={setShowTonalAccents}
+                  showPartOfSpeech={showPartOfSpeech}
+                  setShowPartOfSpeech={setShowPartOfSpeech}
+                  showEnglishTranslation={showEnglishTranslation}
+                  setShowEnglishTranslation={setShowEnglishTranslation}
+                />
+              )}
+              {showStatistics && (
+                <EnhancedStatisticsDisplay 
+                  isOpen={isStatsOpen}
+                  onClose={() => setIsStatsOpen(false)}
+                  key={statisticsKey}
+                />
+              )}
+              <ConfirmationModal
+                isOpen={showNewGameConfirmation}
+                onConfirm={handleConfirmNewGame}
+                onCancel={() => setShowNewGameConfirmation(false)}
+                title="Start New Game?"
+                message="Your current progress will be lost. Are you sure you want to start a new game?"
               />
             </div>
           </div>

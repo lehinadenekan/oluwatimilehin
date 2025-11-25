@@ -86,11 +86,14 @@
     - Play Again: Green (bg-green-700) - matches New Game
     - Return to Game Board: Gray (bg-gray-600) - matches Stats/Help
     - No, I'll keep trying: Gray (bg-gray-600) - matches Stats/Help
+    - Cancel: Gray (bg-gray-600) - in all modals (Settings, Stats, Reveal confirmation)
+    - Reset All: Purple (bg-purple-700) - primary action in Stats modal
   - All buttons standardized to match "Listen on BBC Sounds" style (px-6 py-3, font-semibold, transition-all duration-300)
   - **Modal Positioning:**
-    - All game modals (GameEndModal, LetterRevealModal, AccentGuidanceModal, CharacterHintModal) positioned relative to game board area
+    - All game modals (GameEndModal, LetterRevealModal, AccentGuidanceModal, CharacterHintModal, HelpModal, SettingsPanel, EnhancedStatisticsDisplay, ConfirmationModal) positioned relative to game board area
     - Use `absolute` positioning instead of `fixed` to center over game board specifically
     - Modals appear in the middle of the game board, not the entire viewport
+    - All modals rendered inside the game board container for proper positioning context
 
 ### 6. Services / Let's Work Together Section
 - **File:** `components/Services.tsx`
@@ -168,10 +171,22 @@
   - All descriptive text uses `text-gray-200` (lighter gray, not white)
   - Larger font sizes: `text-base`, `text-xl` instead of `text-sm`, `text-xs`
   - Consistent across: game descriptions, service descriptions, "Get in touch" text, Part of Speech/English translations
-- **Modal Styling:**
-  - AccentGuidanceModal: Gray info sections (bg-gray-700, border-gray-600), only "Continue Playing" button is purple
-  - All game modals positioned relative to game board area (absolute positioning)
-  - Modals center over game board specifically, not entire viewport
+  - **Modal Styling:**
+    - AccentGuidanceModal: Gray info sections (bg-gray-700, border-gray-600), only "Continue Playing" button is purple
+    - All game modals positioned relative to game board area (absolute positioning)
+    - Modals center over game board specifically, not entire viewport
+    - **Stats Modal (EnhancedStatisticsDisplay):**
+      - Simplified color scheme: Gray backgrounds (gray-700, gray-600) for consistency
+      - Standardized text sizes: text-base for headers, text-sm for body, text-xs for fine print
+      - Consistent spacing: p-6 for sections, p-4 for cards, space-y-4 between sections
+      - Close and Reset All buttons same size (both use flex-1)
+      - Close button grey (bg-gray-600), Reset All purple (bg-purple-700)
+    - **Settings Modal (SettingsPanel):**
+      - Cancel button grey (bg-gray-600)
+      - Word length synchronized with game board (uses currentWordLength prop)
+    - **Solution Display:**
+      - Solution only appears when "Reveal Word" is clicked
+      - Solution automatically resets when starting a new game (Play Again, New Game, Settings applied)
 
 ### 6. Mobile Responsiveness
 - Fixed typewriter text overflow on mobile

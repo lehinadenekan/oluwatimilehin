@@ -9,6 +9,7 @@ interface SettingsPanelProps {
   onClose: () => void;
   onNewGame?: () => void;
   onNewGameWithLength?: (length: number) => void;
+  currentWordLength?: number;
   showTonalAccents?: boolean;
   setShowTonalAccents?: (show: boolean) => void;
   showPartOfSpeech?: boolean;
@@ -17,12 +18,12 @@ interface SettingsPanelProps {
   setShowEnglishTranslation?: (show: boolean) => void;
 }
 
-export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWithLength, showTonalAccents, setShowTonalAccents, showPartOfSpeech, setShowPartOfSpeech, showEnglishTranslation, setShowEnglishTranslation }: SettingsPanelProps) {
+export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWithLength, currentWordLength, showTonalAccents, setShowTonalAccents, showPartOfSpeech, setShowPartOfSpeech, showEnglishTranslation, setShowEnglishTranslation }: SettingsPanelProps) {
   const { preferences, updatePreference } = usePreferences();
   
-  // Use preferences for state
+  // Use preferences for difficulty, but use currentWordLength prop for word length to match game board
   const difficulty = preferences.difficulty;
-  const wordLength = preferences.wordLength;
+  const wordLength = currentWordLength !== undefined ? currentWordLength : preferences.wordLength;
 
   if (!isOpen) return null;
 
@@ -51,7 +52,7 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
+      className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
       onClick={onClose}
     >
       <div 
@@ -165,7 +166,7 @@ export default function SettingsPanel({ isOpen, onClose, onNewGame, onNewGameWit
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Cancel
             </button>

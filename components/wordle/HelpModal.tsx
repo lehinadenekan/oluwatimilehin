@@ -118,7 +118,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
         {!isWordRevealed ? (
           <button
             onClick={() => setShowRevealConfirmation(true)}
-            className="w-full mt-4 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
+            className="w-full mt-4 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Reveal Word
           </button>
@@ -144,7 +144,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
         )}
       </div>
       {showRevealConfirmation && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[70]">
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[70]">
           <div className="bg-gray-800 p-6 rounded-lg shadow-xl max-w-md mx-4">
             <h4 className="text-2xl font-bold text-white mb-4">Reveal the word?</h4>
             <p className="text-sm text-gray-400 mb-6">
@@ -153,7 +153,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
             <div className="flex gap-3">
               <button
                 onClick={() => setShowRevealConfirmation(false)}
-                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 Cancel
               </button>
@@ -192,9 +192,9 @@ const HelpModal: React.FC<HelpModalProps> = ({
               onClose();
             }
           }}
-          className="w-full mt-4 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+          className="w-full mt-4 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
         >
-          🔄 Start Interactive Walkthrough
+          Start Interactive Walkthrough
         </button>
       </div>
     </div>
@@ -202,7 +202,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
+      className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
       onClick={onClose}
     >
       <div 
@@ -250,7 +250,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
         <div className="flex-shrink-0 p-6 pt-4 border-t border-gray-700">
           <button
             onClick={onClose}
-            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 rounded-lg transition-colors text-lg"
+            className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Got it!
           </button>

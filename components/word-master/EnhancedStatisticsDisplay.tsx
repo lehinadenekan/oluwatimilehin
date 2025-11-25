@@ -42,7 +42,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
+      className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
       onClick={onClose}
     >
       <div 
@@ -52,8 +52,8 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
         {/* Header with Tabs */}
         <div className="flex-shrink-0 p-6 pb-4 border-b border-gray-700">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-white flex items-center">
-              <Trophy className="mr-3" size={28} />
+            <h2 className="text-xl font-bold text-white flex items-center">
+              <Trophy className="mr-3" size={24} />
               Your Statistics
             </h2>
             <button
@@ -61,7 +61,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
               className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700"
               aria-label="Close statistics"
             >
-              <X size={24} />
+              <X size={20} />
             </button>
           </div>
 
@@ -88,65 +88,60 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <div className="flex-1 overflow-y-auto p-6 space-y-4" style={{ WebkitOverflowScrolling: 'touch' }}>
           
           {activeTab === 'progress' && (
             <>
               {/* Hero Metrics */}
               <div className="text-center space-y-4">
-                <div className="bg-purple-700 rounded-xl p-6 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 opacity-10">
-                    <Zap size={80} />
-                  </div>
-                  <div className="relative">
-                    <div className="text-4xl font-bold text-white mb-2">{overall.currentStreak}</div>
-                    <div className="text-purple-200 text-lg">Current Streak</div>
-                    <div className="text-purple-300 text-sm mt-1">Best: {overall.maxStreak}</div>
-                  </div>
+                <div className="bg-gray-700 rounded-lg p-6">
+                  <div className="text-3xl font-bold text-white mb-2">{overall.currentStreak}</div>
+                  <div className="text-gray-200 text-base">Current Streak</div>
+                  <div className="text-gray-300 text-sm mt-1">Best: {overall.maxStreak}</div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-purple-700 rounded-lg p-4 text-center">
+                  <div className="bg-gray-700 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-white">{overall.winPercentage}%</div>
-                    <div className="text-purple-200 text-sm">Win Rate</div>
+                    <div className="text-gray-200 text-sm">Win Rate</div>
                   </div>
                   <div className="bg-gray-700 rounded-lg p-4 text-center">
                     <div className="text-2xl font-bold text-white">{overall.gamesPlayed}</div>
-                    <div className="text-gray-300 text-sm">Games Played</div>
+                    <div className="text-gray-200 text-sm">Games Played</div>
                   </div>
                 </div>
               </div>
 
               {/* Next Milestone */}
               {nextMilestone && (
-                <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
+                <div className="bg-gray-700 border border-gray-600 rounded-lg p-4">
                   <div className="flex items-center mb-2">
                     <Target className="mr-2" size={20} />
-                    <h3 className="font-semibold text-purple-200">Next Milestone</h3>
+                    <h3 className="font-semibold text-white text-base">Next Milestone</h3>
                   </div>
-                  <div className="text-purple-300">{nextMilestone.description}</div>
-                  <div className="mt-2 bg-gray-700 rounded-full h-2">
+                  <div className="text-gray-200 text-sm">{nextMilestone.description}</div>
+                  <div className="mt-2 bg-gray-600 rounded-full h-2">
                     <div 
                       className="bg-purple-700 h-2 rounded-full transition-all duration-500"
                       style={{ width: `${nextMilestone.progress}%` }}
                     />
                   </div>
-                  <div className="text-xs text-purple-300 mt-1">
+                  <div className="text-xs text-gray-300 mt-1">
                     {nextMilestone.current} / {nextMilestone.target}
                   </div>
                 </div>
               )}
 
               {/* Performance Section */}
-              <div className="bg-gray-700 rounded-lg p-5">
-                <h3 className="text-lg font-semibold mb-4 flex items-center text-white">
+              <div className="bg-gray-700 rounded-lg p-6">
+                <h3 className="text-base font-semibold mb-4 flex items-center text-white">
                   <Target size={20} className="mr-2" />
                   Performance
                 </h3>
                 
                 {/* Guess Distribution */}
                 <div className="mb-4">
-                  <div className="text-sm text-gray-400 mb-3">Guess Distribution</div>
+                  <div className="text-sm text-gray-200 mb-3">Guess Distribution</div>
                   <div className="space-y-2">
                     {[1, 2, 3, 4, 5, 6].map(guess => {
                       const count = overall.guessDistribution[guess];
@@ -156,12 +151,12 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                       
                       return (
                         <div key={guess} className="flex items-center">
-                          <div className="w-6 text-center text-sm text-gray-400 font-medium">{guess}</div>
+                          <div className="w-6 text-center text-sm text-gray-300 font-medium">{guess}</div>
                           <div className="flex-1 mx-3 bg-gray-600 rounded-full h-5 relative">
                             <div 
                               className={`h-5 rounded-full flex items-center justify-end pr-2 transition-all duration-300 ${
                                 isUsersBest 
-                                  ? 'bg-green-600' 
+                                  ? 'bg-green-700' 
                                   : 'bg-purple-700'
                               }`}
                               style={{ width: `${Math.max(percentage, count > 0 ? 15 : 0)}%` }}
@@ -181,23 +176,23 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                 </div>
 
                 {/* Quick Stats Grid */}
-                <div className="grid grid-cols-2 gap-4 text-sm">
-                  <div className="bg-gray-600 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-purple-400">{overall.bestScore}</div>
-                    <div className="text-gray-400">Best Score</div>
-                    <div className="text-xs text-gray-500 mt-1">Avg: {overall.averageScore}</div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-gray-600 rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-white">{overall.bestScore}</div>
+                    <div className="text-gray-200 text-sm">Best Score</div>
+                    <div className="text-xs text-gray-300 mt-1">Avg: {overall.averageScore}</div>
                   </div>
-                  <div className="bg-gray-600 rounded-lg p-3 text-center">
-                    <div className="text-2xl font-bold text-green-400">{learning.perfectGames}</div>
-                    <div className="text-gray-400">Perfect Games</div>
-                    <div className="text-xs text-gray-500 mt-1">No hints used</div>
+                  <div className="bg-gray-600 rounded-lg p-4 text-center">
+                    <div className="text-2xl font-bold text-white">{learning.perfectGames}</div>
+                    <div className="text-gray-200 text-sm">Perfect Games</div>
+                    <div className="text-xs text-gray-300 mt-1">No hints used</div>
                   </div>
                 </div>
               </div>
 
               {/* Achievement Progress */}
-              <div className="bg-gray-700 rounded-lg p-5">
-                <h3 className="text-lg font-semibold mb-4 flex items-center text-white">
+              <div className="bg-gray-700 rounded-lg p-6">
+                <h3 className="text-base font-semibold mb-4 flex items-center text-white">
                   <Award size={20} className="mr-2" />
                   Achievements ({statistics.achievements.length}/10)
                 </h3>
@@ -205,16 +200,16 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                   {achievementProgress.slice(0, 4).map(achievement => (
                     <div 
                       key={achievement.id}
-                      className={`rounded-lg p-3 border-2 transition-all ${
+                      className={`rounded-lg p-4 border-2 transition-all ${
                         achievement.unlocked 
-                          ? 'bg-purple-900/50 border-purple-700' 
+                          ? 'bg-gray-600 border-purple-700' 
                           : 'bg-gray-600 border-gray-500'
                       }`}
                     >
                       <div className="flex items-center mb-2">
                         <span className="text-lg mr-2">{achievement.icon}</span>
                         <div className="flex-1 min-w-0">
-                          <div className={`text-xs font-medium truncate ${achievement.unlocked ? 'text-purple-200' : 'text-gray-400'}`}>
+                          <div className={`text-sm font-medium truncate ${achievement.unlocked ? 'text-white' : 'text-gray-300'}`}>
                             {achievement.name}
                           </div>
                         </div>
@@ -227,7 +222,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                               style={{ width: `${Math.min(achievement.progress, 100)}%` }}
                             />
                           </div>
-                          <div className="text-xs text-gray-400 mt-1">
+                          <div className="text-xs text-gray-300 mt-1">
                             {Math.round(achievement.progress)}% complete
                           </div>
                         </div>
@@ -239,8 +234,8 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
 
               {/* Learning Section - Only if there are confusions */}
               {topConfusions.length > 0 && (
-                <div className="bg-gray-700 border border-gray-600 rounded-lg p-5">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center text-white">
+                <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                  <h3 className="text-base font-semibold mb-4 flex items-center text-white">
                     <Lightbulb size={20} className="mr-2" />
                     Areas to Improve
                   </h3>
@@ -248,21 +243,21 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                     {topConfusions.map(([pattern, stats]) => {
                       const successRate = Math.round((stats.resolved / stats.occurrences) * 100);
                       return (
-                        <div key={pattern} className="flex items-center justify-between bg-gray-600 rounded-lg p-3">
+                        <div key={pattern} className="flex items-center justify-between bg-gray-600 rounded-lg p-4">
                           <div>
-                            <div className="font-medium text-white">{pattern}</div>
-                            <div className="text-sm text-gray-300">
+                            <div className="font-medium text-white text-base">{pattern}</div>
+                            <div className="text-sm text-gray-200">
                               {stats.occurrences} times confused
                             </div>
                           </div>
                           <div className="text-right">
                             <div className={`text-lg font-semibold ${
                               successRate >= 70 ? 'text-green-400' : 
-                              successRate >= 40 ? 'text-purple-400' : 'text-gray-400'
+                              successRate >= 40 ? 'text-purple-400' : 'text-gray-300'
                             }`}>
                               {successRate}%
                             </div>
-                            <div className="text-xs text-gray-400">resolved</div>
+                            <div className="text-xs text-gray-300">resolved</div>
                           </div>
                         </div>
                       );
@@ -272,8 +267,8 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
               )}
 
               {/* Dynamic Encouragement */}
-              <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4 text-center">
-                <div className="text-purple-300 text-sm leading-relaxed">
+              <div className="bg-gray-700 border border-gray-600 rounded-lg p-4 text-center">
+                <div className="text-gray-200 text-sm leading-relaxed">
                   {getEncouragementMessage(overall, learning)}
                 </div>
               </div>
@@ -283,133 +278,133 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
           {activeTab === 'scoring' && (
             <>
               {/* Scoring Overview */}
-              <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-5">
-                <h3 className="text-lg font-semibold mb-3 flex items-center text-white">
+              <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                <h3 className="text-base font-semibold mb-3 flex items-center text-white">
                   <Calculator size={20} className="mr-2" />
                   How Scoring Works
                 </h3>
-                <p className="text-purple-300 text-sm leading-relaxed">
+                <p className="text-gray-200 text-sm leading-relaxed">
                   Your score is calculated based on guesses, difficulty, hints used, and bonuses. 
                   Understanding this helps you maximize your points!
                 </p>
               </div>
 
               {/* Base Points */}
-              <div className="bg-gray-700 rounded-lg p-5">
-                <h4 className="font-semibold mb-3 text-white flex items-center">
+              <div className="bg-gray-700 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 text-white text-base flex items-center">
                   <Target className="mr-2" size={18} />
                   Base Points by Guesses
                 </h4>
                 <div className="space-y-2">
                   {Object.entries(SCORING_CONFIG.BASE_POINTS).map(([guesses, points]) => (
-                    <div key={guesses} className="flex justify-between items-center bg-gray-600 rounded p-2">
-                      <span className="text-gray-300">{guesses} guess{guesses !== '1' ? 'es' : ''}</span>
-                      <span className="font-semibold text-white">{points} points</span>
+                    <div key={guesses} className="flex justify-between items-center bg-gray-600 rounded p-3">
+                      <span className="text-gray-200 text-sm">{guesses} guess{guesses !== '1' ? 'es' : ''}</span>
+                      <span className="font-semibold text-white text-sm">{points} points</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Difficulty Multipliers */}
-              <div className="bg-gray-700 rounded-lg p-5">
-                <h4 className="font-semibold mb-3 text-white flex items-center">
+              <div className="bg-gray-700 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 text-white text-base flex items-center">
                   <Zap className="mr-2" size={18} />
                   Difficulty Multipliers
                 </h4>
                 <div className="space-y-2">
                   {Object.entries(SCORING_CONFIG.DIFFICULTY_MULTIPLIERS).map(([difficulty, multiplier]) => (
-                    <div key={difficulty} className="flex justify-between items-center bg-gray-600 rounded p-2">
-                      <span className="text-gray-300 capitalize">{difficulty}</span>
-                      <span className="font-semibold text-white">×{multiplier}</span>
+                    <div key={difficulty} className="flex justify-between items-center bg-gray-600 rounded p-3">
+                      <span className="text-gray-200 text-sm capitalize">{difficulty}</span>
+                      <span className="font-semibold text-white text-sm">×{multiplier}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Bonuses */}
-              <div className="bg-green-900/30 border border-green-600 rounded-lg p-5">
-                <h4 className="font-semibold mb-3 text-green-200 flex items-center">
+              <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 text-white text-base flex items-center">
                   <Star className="mr-2" size={18} />
                   Bonus Opportunities
                 </h4>
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center bg-green-900/30 rounded p-2">
-                    <span className="text-green-100">Perfect Game (No hints)</span>
-                    <span className="font-semibold text-green-300">+{SCORING_CONFIG.BONUSES.NO_HINTS}</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">Perfect Game (No hints)</span>
+                    <span className="font-semibold text-white text-sm">+{SCORING_CONFIG.BONUSES.NO_HINTS}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-green-900/30 rounded p-2">
-                    <span className="text-green-100">First Try Success</span>
-                    <span className="font-semibold text-green-300">+{SCORING_CONFIG.BONUSES.FIRST_TRY}</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">First Try Success</span>
+                    <span className="font-semibold text-white text-sm">+{SCORING_CONFIG.BONUSES.FIRST_TRY}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-green-900/30 rounded p-2">
-                    <span className="text-green-100">Streak Bonus (per win)</span>
-                    <span className="font-semibold text-green-300">+{SCORING_CONFIG.BONUSES.STREAK_PER_GAME} (max 50)</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">Streak Bonus (per win)</span>
+                    <span className="font-semibold text-white text-sm">+{SCORING_CONFIG.BONUSES.STREAK_PER_GAME} (max 50)</span>
                   </div>
-                  <div className="flex justify-between items-center bg-green-900/30 rounded p-2">
-                    <span className="text-green-100">Speed Bonus (&lt;30s)</span>
-                    <span className="font-semibold text-green-300">Up to +{SCORING_CONFIG.BONUSES.SPEED_BONUS_MAX}</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">Speed Bonus (&lt;30s)</span>
+                    <span className="font-semibold text-white text-sm">Up to +{SCORING_CONFIG.BONUSES.SPEED_BONUS_MAX}</span>
                   </div>
                 </div>
               </div>
 
               {/* Penalties */}
-              <div className="bg-gray-700 border border-gray-600 rounded-lg p-5">
-                <h4 className="font-semibold mb-3 text-white flex items-center">
+              <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 text-white text-base flex items-center">
                   <X className="mr-2" size={18} />
                   Hint Penalties
                 </h4>
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center bg-gray-600 rounded p-2">
-                    <span className="text-gray-300">Character Hint</span>
-                    <span className="font-semibold text-white">{SCORING_CONFIG.PENALTIES.CHARACTER_HINT}</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">Character Hint</span>
+                    <span className="font-semibold text-white text-sm">{SCORING_CONFIG.PENALTIES.CHARACTER_HINT}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-gray-600 rounded p-2">
-                    <span className="text-gray-300">Tone Guidance</span>
-                    <span className="font-semibold text-white">{SCORING_CONFIG.PENALTIES.TONE_GUIDANCE}</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">Tone Guidance</span>
+                    <span className="font-semibold text-white text-sm">{SCORING_CONFIG.PENALTIES.TONE_GUIDANCE}</span>
                   </div>
-                  <div className="flex justify-between items-center bg-gray-600 rounded p-2">
-                    <span className="text-gray-300">Letter Reveal</span>
-                    <span className="font-semibold text-white">{SCORING_CONFIG.PENALTIES.LETTER_REVEAL}</span>
+                  <div className="flex justify-between items-center bg-gray-600 rounded p-3">
+                    <span className="text-gray-200 text-sm">Letter Reveal</span>
+                    <span className="font-semibold text-white text-sm">{SCORING_CONFIG.PENALTIES.LETTER_REVEAL}</span>
                   </div>
                 </div>
               </div>
 
               {/* Optimization Tips */}
-              <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-5">
-                <h4 className="font-semibold mb-3 text-purple-200 flex items-center">
+              <div className="bg-gray-700 border border-gray-600 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 text-white text-base flex items-center">
                   <Lightbulb className="mr-2" size={18} />
                   Score Optimization Tips
                 </h4>
-                <ul className="space-y-2 text-purple-300 text-sm">
+                <ul className="space-y-2 text-gray-200 text-sm">
                   <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
+                    <span className="text-gray-300 mr-2">•</span>
                     <span>Aim for fewer guesses - each guess costs you points</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
+                    <span className="text-gray-300 mr-2">•</span>
                     <span>Avoid hints when possible for the +15 perfect game bonus</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
+                    <span className="text-gray-300 mr-2">•</span>
                     <span>Build win streaks for +2 points per consecutive win</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
+                    <span className="text-gray-300 mr-2">•</span>
                     <span>Try advanced difficulty for 2x multiplier</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-purple-400 mr-2">•</span>
+                    <span className="text-gray-300 mr-2">•</span>
                     <span>Play quickly for speed bonuses (under 30 seconds)</span>
                   </li>
                 </ul>
               </div>
 
               {/* Score Calculator Example */}
-              <div className="bg-gray-700 rounded-lg p-5">
-                <h4 className="font-semibold mb-3 text-white">Example: Your Best Score ({overall.bestScore})</h4>
-                <div className="text-sm text-gray-300 space-y-1">
+              <div className="bg-gray-700 rounded-lg p-6">
+                <h4 className="font-semibold mb-3 text-white text-base">Example: Your Best Score ({overall.bestScore})</h4>
+                <div className="text-sm text-gray-200 space-y-2">
                   <p>Let&apos;s say you scored {overall.bestScore} points:</p>
-                  <div className="mt-2 space-y-1 text-xs">
+                  <div className="mt-2 space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Base points (3 guesses):</span>
                       <span>80 points</span>
@@ -422,12 +417,12 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                       <span>Perfect game bonus:</span>
                       <span>+15 points</span>
                     </div>
-                    <div className="flex justify-between border-t border-gray-600 pt-1 font-semibold">
+                    <div className="flex justify-between border-t border-gray-600 pt-2 font-semibold">
                       <span>Total:</span>
                       <span>95 points</span>
                     </div>
                   </div>
-                  <p className="text-xs text-gray-400 mt-2">
+                  <p className="text-xs text-gray-300 mt-2">
                     *This is an estimate. Actual calculation includes streak bonuses and other factors.
                   </p>
                 </div>
@@ -441,7 +436,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
           <div className="flex gap-3">
             <button
               onClick={onClose}
-              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Close
             </button>
@@ -451,7 +446,7 @@ export default function EnhancedStatisticsDisplay({ isOpen, onClose }: EnhancedS
                   resetStatistics();
                 }
               }}
-              className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+              className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
             >
               Reset All
             </button>

@@ -124,10 +124,20 @@ Use these guidelines when creating any frontend components or pages.
     - All game modals use `absolute` positioning relative to game board container
     - Modals center over game board area specifically (not entire viewport)
     - Game board container has `relative` positioning to establish positioning context
+    - All modals (GameEndModal, LetterRevealModal, AccentGuidanceModal, CharacterHintModal, HelpModal, SettingsPanel, EnhancedStatisticsDisplay, ConfirmationModal) rendered inside game board container
   - **Modal Styling:**
     - Info sections use gray backgrounds (bg-gray-700) with gray borders (border-gray-600)
-    - Only primary action buttons use purple (e.g., "Continue Playing")
+    - Only primary action buttons use purple (e.g., "Continue Playing", "Reset All", "Apply & New Game")
+    - Secondary buttons (Cancel, Close) use gray (bg-gray-600 hover:bg-gray-700)
     - Secondary buttons and info sections avoid purple for cleaner appearance
+    - **Stats Modal:**
+      - Simplified color scheme: Consistent gray backgrounds (gray-700, gray-600)
+      - Standardized text sizes: text-base for section headers, text-sm for body text, text-xs for fine print
+      - Consistent spacing: p-6 for sections, p-4 for cards, space-y-4 between sections
+      - Buttons: Close (gray) and Reset All (purple) same size (flex-1)
+    - **Settings Modal:**
+      - Cancel button grey (bg-gray-600)
+      - Word length synchronized with game board using currentWordLength prop
 
 ## Avoid
 
@@ -220,8 +230,8 @@ className =
 
 **Variations:**
 
-- **Primary Actions:** `bg-purple-700 hover:bg-purple-800` (Settings, Send Message, Share, Continue Playing)
-- **Secondary Actions:** `bg-gray-600 hover:bg-gray-700` (Stats, Help, Cancel, Return to Game Board, No/I'll keep trying)
+- **Primary Actions:** `bg-purple-700 hover:bg-purple-800` (Settings, Send Message, Share, Continue Playing, Reset All, Apply & New Game)
+- **Secondary Actions:** `bg-gray-600 hover:bg-gray-700` (Stats, Help, Cancel, Close, Return to Game Board, No/I'll keep trying)
 - **Special Actions:** `bg-green-700 hover:bg-green-800` (New Game, Play Again)
 
 ## Text Styling Standard
