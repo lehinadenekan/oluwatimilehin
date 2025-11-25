@@ -84,9 +84,9 @@ const GameEndModal: React.FC<GameEndModalProps> = ({
     .filter((variant, index, arr) => arr.indexOf(variant) === index); // Remove duplicates
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Full screen backdrop */}
-      <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
+    <div className="absolute inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       {/* Centered modal */}
       <div
         ref={modalRef}
@@ -128,13 +128,13 @@ const GameEndModal: React.FC<GameEndModalProps> = ({
         <div className="flex gap-3 justify-center mb-2 flex-col sm:flex-row">
           <button
             onClick={onReset}
-            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Play Again
           </button>
           <button
             onClick={onReturnToBoard}
-            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Return to Game Board
           </button>

@@ -108,11 +108,26 @@ Use these guidelines when creating any frontend components or pages.
   - **Button Standardization:**
     - All buttons use consistent styling: `px-6 py-3`, `font-semibold`, `transition-all duration-300`
     - Consistent layout: `inline-flex items-center space-x-2`
-    - Color scheme: Purple (primary), Gray (secondary), Green (special actions)
+    - Color scheme:
+      - Purple (primary): Settings, Send Message, Share, Continue Playing
+      - Gray (secondary): Stats, Help, Cancel, Return to Game Board, No/I'll keep trying
+      - Green (special actions): New Game, Play Again
   - **Text Legibility:**
     - Descriptive text uses `text-gray-200` (lighter gray, not white) for better readability
     - Larger font sizes: `text-base`, `text-xl` instead of `text-sm`, `text-xs`
     - Consistent across all sections: game descriptions, service descriptions, instructions
+  - **Mobile Layout:**
+    - Component ordering optimized for mobile (description → buttons → content)
+    - Responsive spacing: Use `mb-12` on mobile, `mb-6` on desktop for proper visual hierarchy
+    - Buttons positioned directly above interactive content, not above descriptive text
+  - **Modal Positioning:**
+    - All game modals use `absolute` positioning relative to game board container
+    - Modals center over game board area specifically (not entire viewport)
+    - Game board container has `relative` positioning to establish positioning context
+  - **Modal Styling:**
+    - Info sections use gray backgrounds (bg-gray-700) with gray borders (border-gray-600)
+    - Only primary action buttons use purple (e.g., "Continue Playing")
+    - Secondary buttons and info sections avoid purple for cleaner appearance
 
 ## Avoid
 
@@ -205,9 +220,9 @@ className =
 
 **Variations:**
 
-- **Primary Actions:** `bg-purple-700 hover:bg-purple-800` (Settings, Send Message, etc.)
-- **Secondary Actions:** `bg-gray-600 hover:bg-gray-700` (Stats, Help, Cancel)
-- **Special Actions:** `bg-green-700 hover:bg-green-800` (New Game)
+- **Primary Actions:** `bg-purple-700 hover:bg-purple-800` (Settings, Send Message, Share, Continue Playing)
+- **Secondary Actions:** `bg-gray-600 hover:bg-gray-700` (Stats, Help, Cancel, Return to Game Board, No/I'll keep trying)
+- **Special Actions:** `bg-green-700 hover:bg-green-800` (New Game, Play Again)
 
 ## Text Styling Standard
 
@@ -221,5 +236,21 @@ className =
 
 - Use `text-purple-400` for better legibility
 - Example: "155K plays", "911K plays"
+
+## Modal Positioning Standard
+
+**Game Modals:**
+
+- All game modals (GameEndModal, LetterRevealModal, AccentGuidanceModal, CharacterHintModal) use `absolute` positioning
+- Positioned relative to game board container (not viewport)
+- Game board container must have `relative` positioning to establish positioning context
+- Modals center over game board area specifically using `flex items-center justify-center`
+- Backdrop uses `absolute inset-0` to cover only the game board area
+
+**Modal Styling:**
+
+- Info sections: Gray backgrounds (`bg-gray-700`) with gray borders (`border-gray-600`)
+- Avoid purple in info sections - only use for primary action buttons
+- Modal container: Gray background (`bg-gray-800`) with gray border (`border-gray-700`)
 
 Apply these principles to all frontend work automatically.

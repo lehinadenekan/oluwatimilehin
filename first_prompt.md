@@ -56,6 +56,7 @@
   - Multiple video format sources (WebM, MP4) for browser compatibility
   - Fixed height: 600px
   - Error handling and logging for video playback issues
+  - **Mobile spacing:** `mb-12` on mobile, `mb-6` on desktop for proper spacing between text and video
 - **BBC Podcast Production:**
   - Image display with matching height (600px) to video
   - Top-aligned with video section
@@ -72,12 +73,24 @@
   - Mobile responsive
   - Description text: "Enter the correct Yorùbá word, with the correct tonal marks. You have 6 attempts."
   - Fixed keyboard input interference with contact form
+  - **Mobile Layout:**
+    - Description card appears first
+    - Header bar with buttons appears after description (directly above game)
+    - Game content appears last
+    - Ensures buttons are positioned correctly above the game on mobile
   - **Button Color Scheme:**
     - Settings: Purple (bg-purple-700)
     - Stats: Gray (bg-gray-600)
     - Help: Gray (bg-gray-600)
     - New Game: Dark Green (bg-green-700)
+    - Play Again: Green (bg-green-700) - matches New Game
+    - Return to Game Board: Gray (bg-gray-600) - matches Stats/Help
+    - No, I'll keep trying: Gray (bg-gray-600) - matches Stats/Help
   - All buttons standardized to match "Listen on BBC Sounds" style (px-6 py-3, font-semibold, transition-all duration-300)
+  - **Modal Positioning:**
+    - All game modals (GameEndModal, LetterRevealModal, AccentGuidanceModal, CharacterHintModal) positioned relative to game board area
+    - Use `absolute` positioning instead of `fixed` to center over game board specifically
+    - Modals appear in the middle of the game board, not the entire viewport
 
 ### 6. Services / Let's Work Together Section
 - **File:** `components/Services.tsx`
@@ -144,9 +157,9 @@
   - Consistent transitions: `transition-all duration-300`
   - Consistent layout: `inline-flex items-center space-x-2`
 - **Button Colors:**
-  - Primary actions: Purple (bg-purple-700 hover:bg-purple-800)
-  - Secondary actions: Gray (bg-gray-600 hover:bg-gray-700)
-  - Special actions: Green (bg-green-700 hover:bg-green-800) for "New Game"
+  - Primary actions: Purple (bg-purple-700 hover:bg-purple-800) - Settings, Send Message, Share, Continue Playing
+  - Secondary actions: Gray (bg-gray-600 hover:bg-gray-700) - Stats, Help, Cancel, Return to Game Board, No/I'll keep trying
+  - Special actions: Green (bg-green-700 hover:bg-green-800) - New Game, Play Again
 - **Sidebar Navigation:**
   - Updated to match button styling (px-6 py-3, font-semibold, white text)
   - Active state: bg-purple-700
@@ -155,12 +168,19 @@
   - All descriptive text uses `text-gray-200` (lighter gray, not white)
   - Larger font sizes: `text-base`, `text-xl` instead of `text-sm`, `text-xs`
   - Consistent across: game descriptions, service descriptions, "Get in touch" text, Part of Speech/English translations
+- **Modal Styling:**
+  - AccentGuidanceModal: Gray info sections (bg-gray-700, border-gray-600), only "Continue Playing" button is purple
+  - All game modals positioned relative to game board area (absolute positioning)
+  - Modals center over game board specifically, not entire viewport
 
 ### 6. Mobile Responsiveness
 - Fixed typewriter text overflow on mobile
 - Fixed game button overflow on mobile
 - Responsive font sizing throughout
 - Proper flex layouts for mobile
+- **Mobile Layout Fixes:**
+  - Yoruba Word Master: Reordered components so buttons appear directly above game (not above description text)
+  - Commercial Work: Increased spacing (`mb-12` on mobile, `mb-6` on desktop) between text and video in Chanel x Vogue section to match BBC Podcast spacing
 
 ## Deployment and Infrastructure
 

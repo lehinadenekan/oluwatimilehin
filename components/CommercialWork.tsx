@@ -85,7 +85,7 @@ export default function CommercialWork() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {/* Chanel Card */}
           <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
-            <div className="mb-6" style={{ height: '10rem' }}>
+            <div className="mb-12 md:mb-6" style={{ height: '10rem' }}>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Chanel x Vogue Magazine
                 </h3>

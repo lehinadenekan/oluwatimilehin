@@ -18,7 +18,7 @@ const LetterRevealModal: React.FC<LetterRevealModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
+      className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4" 
       onClick={onDecline}
     >
       <div 
@@ -55,7 +55,7 @@ const LetterRevealModal: React.FC<LetterRevealModalProps> = ({
             <div className="flex gap-3 pt-2">
               <button
                 onClick={onDecline}
-                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+                className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 No, I&apos;ll keep trying
               </button>

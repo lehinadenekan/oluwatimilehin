@@ -49,10 +49,10 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+    <div className="absolute inset-0 z-[9999] flex items-center justify-center">
       {/* Backdrop */}
       <div 
-        className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         style={{ 
           WebkitBackdropFilter: 'blur(4px)',
           touchAction: 'none'
@@ -62,7 +62,7 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
       {/* Modal */}
       <div 
         ref={modalRef}
-        className="relative bg-gray-800 rounded-lg shadow-xl text-left max-w-md w-full mx-4 text-gray-300 z-10 max-h-[80vh] overflow-y-auto"
+        className="relative bg-gray-800 border border-gray-700 rounded-lg shadow-xl text-left max-w-md w-full mx-4 text-gray-300 z-10 max-h-[80vh] overflow-y-auto"
         style={{ WebkitOverflowScrolling: 'touch' }}
       >
         {/* Header */}
@@ -81,16 +81,16 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
         <div className="px-6 pb-6">
           <div className="space-y-4">
             {/* Progress Indicator */}
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
+            <div className="bg-gray-700 border border-gray-600 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <h3 className="font-medium text-purple-200">Good Progress!</h3>
+                <h3 className="font-medium text-white">Good Progress!</h3>
               </div>
-              <p className="text-sm text-purple-300">
+              <p className="text-sm text-gray-300">
                 You got the right letters! Now let&apos;s work on the tonal marks.
               </p>
               {currentTurn && (
-                <p className="text-xs text-purple-300 mt-2">
+                <p className="text-xs text-gray-400 mt-2">
                   Attempt {currentTurn} of 6 - Keep going!
                 </p>
               )}
@@ -100,21 +100,21 @@ const AccentGuidanceModal: React.FC<AccentGuidanceModalProps> = ({
               You have the right letters, but pay attention to tonal marks!
             </p>
             
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
-              <h3 className="font-medium mb-2 text-purple-200">💡 Tonal Marks Tip</h3>
-              <p className="text-sm text-purple-300">
+            <div className="bg-gray-700 border border-gray-600 rounded-lg p-4">
+              <h3 className="font-medium mb-2 text-white">💡 Tonal Marks Tip</h3>
+              <p className="text-sm text-gray-300">
                 Tonal marks change word meanings in Yorùbá. For example:
               </p>
               <div className="mt-2 text-sm space-y-1">
-                <p><code className="bg-gray-700 px-1 rounded">oko</code> = farm</p>
-                <p><code className="bg-gray-700 px-1 rounded">ọkọ</code> = husband</p>
-                <p><code className="bg-gray-700 px-1 rounded">ọkọ́</code> = spear</p>
+                <p><code className="bg-gray-600 px-1 rounded text-green-400">oko</code> = farm</p>
+                <p><code className="bg-gray-600 px-1 rounded text-green-400">ọkọ</code> = husband</p>
+                <p><code className="bg-gray-600 px-1 rounded text-green-400">ọkọ́</code> = spear</p>
               </div>
             </div>
 
-            <div className="bg-purple-900 bg-opacity-50 border border-purple-700 rounded-lg p-4">
-              <h3 className="font-medium mb-2 text-purple-200">⚙️ Settings Tip</h3>
-              <p className="text-sm text-purple-300">
+            <div className="bg-gray-700 border border-gray-600 rounded-lg p-4">
+              <h3 className="font-medium mb-2 text-white">⚙️ Settings Tip</h3>
+              <p className="text-sm text-gray-300">
                 Turn on &quot;Show tonal accents&quot; in Settings to see the accents before guessing!
               </p>
             </div>

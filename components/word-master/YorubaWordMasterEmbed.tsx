@@ -232,6 +232,20 @@ export default function YorubaWordMasterEmbed({
         </div>
       )}
 
+      {/* Project Description Card - Matching Commercial Work Style */}
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
+          <div className="mb-6">
+            <p className="text-gray-200 text-base mb-4">
+              I created Yorùbá Word Master to help myself improve my Yorùbá vocabulary and tonal mark accuracy. Yorùbá is a tonal language in which tonal accuracy is essential to preserve the true meaning of words.
+            </p>
+            <p className="text-gray-200 text-base">
+              I built this using React, Next.js, Tailwind CSS, Typescript.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Header Bar with Title and Controls */}
       <div className="w-full bg-gray-800 border-b border-gray-700 px-4 py-3 overflow-x-hidden">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
@@ -251,7 +265,7 @@ export default function YorubaWordMasterEmbed({
             <button
               onClick={handleStats}
                 data-tour="statistics"
-                className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
+              className="inline-flex items-center space-x-2 px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-semibold rounded-lg transition-all duration-300"
               aria-label="Statistics"
             >
               Stats
@@ -277,32 +291,7 @@ export default function YorubaWordMasterEmbed({
         </div>
       </div>
 
-      {/* Project Description Card - Matching Commercial Work Style */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
-          <div className="mb-6">
-            <p className="text-gray-200 text-base mb-4">
-              I created Yorùbá Word Master to help myself improve my Yorùbá vocabulary and tonal mark accuracy. Yorùbá is a tonal language in which tonal accuracy is essential to preserve the true meaning of words.
-            </p>
-            <p className="text-gray-200 text-base">
-              I built this using React, Next.js, Tailwind CSS, Typescript.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Modals */}
-      <GameEndModal 
-        isOpen={showGameEndModal} 
-        isGameWon={isGameWon}
-        solution={solution}
-        solutionVariants={solutionVariants}
-        guesses={guesses}
-        turn={turn}
-        onReset={resetGame}
-        onReturnToBoard={handleReturnToBoard}
-        onStatsRefresh={refreshStatistics}
-      />
       <HelpModal 
         isOpen={isHelpOpen} 
         onClose={() => setIsHelpOpen(false)} 
@@ -310,25 +299,6 @@ export default function YorubaWordMasterEmbed({
         revealWord={handleRevealWord}
         wordLength={currentWordLength}
         onRestartWalkthrough={handleRestartWalkthrough}
-      />
-      <LetterRevealModal
-        isOpen={showLetterRevealModal}
-        onReveal={revealRandomLetter}
-        onDecline={() => setShowLetterRevealModal(false)}
-      />
-      <AccentGuidanceModal
-        isOpen={showAccentModal}
-        onClose={() => setShowAccentModal(false)}
-        guessWord={previousGuess}
-        solutionWord={solution}
-        currentTurn={turn}
-      />
-      <CharacterHintModal
-        isOpen={showCharacterHintModal}
-        onClose={() => setShowCharacterHintModal(false)}
-        confusions={characterHint ? [characterHint] : []}
-        guessWord={currentGuess}
-        correctWord={solution}
       />
       {showSettings && (
         <SettingsPanel 
@@ -384,7 +354,8 @@ export default function YorubaWordMasterEmbed({
         
         {/* Main Game Area */}
         <main className="flex flex-col items-center px-1 w-full min-h-0">
-          <div className="flex flex-col items-center w-full game-board">
+          <div className="flex flex-col items-center w-full game-board relative py-8">
+            <div className="flex flex-col items-center w-full relative min-h-[500px]">
             <GameBoard 
               guesses={guesses} 
               currentGuess={currentGuess} 
@@ -401,7 +372,7 @@ export default function YorubaWordMasterEmbed({
             
             {/* Inline Hints Display */}
             {(showPartOfSpeech || showEnglishTranslation) && (
-              <div className="text-center text-base text-gray-200 px-2 mt-2">
+                <div className="text-center text-base text-gray-200 px-2 mt-2">
                 {showPartOfSpeech && solutionInfo.partOfSpeech && (
                   <p><strong>Part of Speech:</strong> {solutionInfo.partOfSpeech}</p>
                 )}
@@ -435,25 +406,58 @@ export default function YorubaWordMasterEmbed({
                 <div className="flex gap-2 justify-center items-center">
                   <button
                     onClick={resetGame}
-                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+                      className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-lg transition-all duration-300"
                   >
                     Play Again
                   </button>
                   <button
                     onClick={() => setShowGameEndModal(true)}
-                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+                      className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
                   >
                     View Results
                   </button>
                   <button
                     onClick={handleShare}
-                    className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
+                      className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
                   >
                     Share
                   </button>
                 </div>
               </div>
             )}
+              
+              {/* Game Modals - Positioned relative to game board */}
+              <GameEndModal 
+                isOpen={showGameEndModal} 
+                isGameWon={isGameWon}
+                solution={solution}
+                solutionVariants={solutionVariants}
+                guesses={guesses}
+                turn={turn}
+                onReset={resetGame}
+                onReturnToBoard={handleReturnToBoard}
+                onStatsRefresh={refreshStatistics}
+              />
+              <LetterRevealModal
+                isOpen={showLetterRevealModal}
+                onReveal={revealRandomLetter}
+                onDecline={() => setShowLetterRevealModal(false)}
+              />
+              <AccentGuidanceModal
+                isOpen={showAccentModal}
+                onClose={() => setShowAccentModal(false)}
+                guessWord={previousGuess}
+                solutionWord={solution}
+                currentTurn={turn}
+              />
+              <CharacterHintModal
+                isOpen={showCharacterHintModal}
+                onClose={() => setShowCharacterHintModal(false)}
+                confusions={characterHint ? [characterHint] : []}
+                guessWord={currentGuess}
+                correctWord={solution}
+              />
+            </div>
           </div>
         </main>
       </div>
