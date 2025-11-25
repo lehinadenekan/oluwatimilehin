@@ -2,23 +2,40 @@
 
 import { useState, useEffect, createContext, useContext } from 'react'
 import Link from 'next/link'
+import PasswordModal from './PasswordModal'
 
 // Context for sidebar collapsed state
 const SidebarContext = createContext<{ isCollapsed: boolean }>({ isCollapsed: false })
 export const useSidebar = () => useContext(SidebarContext)
 
-const navigationItems = [
+interface NavigationItem {
+  id: string
+  label: string
+  href: string
+  requiresAuth?: boolean
+}
+
+const navigationItems: NavigationItem[] = [
   { id: 'home', label: 'Home', href: '#home' },
   { id: 'music', label: 'Music', href: '#music' },
   { id: 'commercial', label: 'Commercial Work', href: '#commercial' },
   { id: 'creative', label: 'Creative Projects', href: '#creative' },
   { id: 'services', label: "Let's Work Together", href: '#services' },
+  { id: 'exclusive', label: 'Exclusive', href: '#exclusive', requiresAuth: true },
 ]
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false) // Mobile menu state
   const [isCollapsed, setIsCollapsed] = useState(false) // Desktop collapse state
   const [activeSection, setActiveSection] = useState('home')
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    // Check if user is already authenticated
+    const authStatus = localStorage.getItem('exclusive_access')
+    setIsAuthenticated(authStatus === 'true')
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,14 +58,33 @@ export default function Sidebar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, requiresAuth?: boolean) => {
     e.preventDefault()
+    
+    // If it's the exclusive section and requires auth
+    if (requiresAuth && !isAuthenticated) {
+      setIsPasswordModalOpen(true)
+      setIsOpen(false)
+      return
+    }
+
     const targetId = href.replace('#', '')
     const element = document.getElementById(targetId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
       setIsOpen(false)
     }
+  }
+
+  const handlePasswordSuccess = () => {
+    setIsAuthenticated(true)
+    // Scroll to exclusive section after successful authentication
+    setTimeout(() => {
+      const element = document.getElementById('exclusive')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
   }
 
   return (
@@ -126,7 +162,7 @@ export default function Sidebar() {
                 <li key={item.id}>
                   <Link
                     href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
+                    onClick={(e) => handleNavClick(e, item.href, item.requiresAuth)}
                     className={`block px-6 py-3 rounded-lg transition-all duration-300 font-semibold ${
                       activeSection === item.id
                         ? 'bg-purple-700 text-white'
@@ -141,6 +177,13 @@ export default function Sidebar() {
           </nav>
         </div>
       </aside>
+
+      {/* Password Modal */}
+      <PasswordModal
+        isOpen={isPasswordModalOpen}
+        onClose={() => setIsPasswordModalOpen(false)}
+        onSuccess={handlePasswordSuccess}
+      />
     </SidebarContext.Provider>
   )
 }
