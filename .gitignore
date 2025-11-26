@@ -35,3 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# large video files (using Google Drive instead)
+*.mp4
+*.mov
+*.MOV
+!public/videos/chanel-vogue-magazine-sound-design*.mp4
+
