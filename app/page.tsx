@@ -7,26 +7,147 @@ import Music from '@/components/Music'
 import CommercialWork from '@/components/CommercialWork'
 import CreativeProjects from '@/components/CreativeProjects'
 import Services from '@/components/Services'
-import Exclusive from '@/components/Exclusive'
+import PasswordGate from '@/components/PasswordGate'
+import DetailedPortfolio from '@/components/DetailedPortfolio'
+import { PortfolioSection } from '@/types/portfolio'
+
+// Portfolio data organized by sections
+const portfolioSections: PortfolioSection[] = [
+  {
+    title: 'Professional Certifications',
+    items: [
+      {
+        type: 'image',
+        title: 'Oracle AI Foundations',
+        role: 'Certification',
+        description: 'Oracle Certified AI Foundations certification demonstrating expertise in artificial intelligence fundamentals and Oracle AI technologies.',
+        impact: 'Validates foundational knowledge in AI concepts, machine learning principles, and Oracle\'s AI platform capabilities.',
+        tags: ['Oracle', 'AI', 'Machine Learning', 'Certification'],
+        mediaPath: '/images/certifications/oracle-ai-foundations.png'
+      },
+      {
+        type: 'image',
+        title: 'Oracle Cloud Infrastructure',
+        role: 'Certification',
+        description: 'Oracle Certified Cloud Infrastructure certification showcasing proficiency in Oracle Cloud services and infrastructure management.',
+        impact: 'Demonstrates expertise in cloud architecture, infrastructure deployment, and Oracle Cloud platform administration.',
+        tags: ['Oracle', 'Cloud Infrastructure', 'Certification'],
+        mediaPath: '/images/certifications/oracle-cloud-infrastructure.png'
+      },
+      {
+        type: 'image',
+        title: 'Oracle Generative AI Professional',
+        role: 'Certification',
+        description: 'Oracle Certified Generative AI Professional certification highlighting advanced skills in generative AI technologies and applications.',
+        impact: 'Validates professional-level expertise in generative AI, including model development, deployment, and integration with Oracle platforms.',
+        tags: ['Oracle', 'Generative AI', 'Professional Certification'],
+        mediaPath: '/images/certifications/oracle-generative-ai-professional.png'
+      },
+      {
+        type: 'image',
+        title: 'ServiceNow Certified System Administrator',
+        role: 'Certification',
+        description: 'ServiceNow Certified System Administrator (CSA) certification demonstrating expertise in ServiceNow platform administration and configuration.',
+        impact: 'Validates skills in ServiceNow platform administration, configuration, and best practices for enterprise service management.',
+        tags: ['ServiceNow', 'CSA', 'System Administration', 'Certification'],
+        mediaPath: '/images/certifications/servicenow-cis.pdf'
+      }
+    ]
+  },
+  {
+    title: 'Reform Radio',
+    items: [
+      {
+        type: 'video',
+        title: 'shortaFORM',
+        role: 'Programme Lead & Creative Producer',
+        description: 'Led end-to-end delivery of shortaFORM, a creative media training programme for unemployed young people across two cohorts. Managed workshop planning, session facilitation, and outcome tracking while designing inclusive learning pathways for neurodivergent and visually impaired participants.',
+        impact: 'Delivered accessible training programmes that prepared young people for careers in media and creative industries, with tailored placements, apprenticeships, and mentoring opportunities. Built partnerships with national creative employers and provided 1:1 coaching to support participants facing barriers to engagement.',
+        tags: ['Programme Management', 'Youth Training', 'Inclusive Design', 'Safeguarding', 'Stakeholder Engagement', 'Reform Radio'],
+        mediaPath: '/videos/portfolio/reform-radio-shortform.mp4'
+      },
+      {
+        type: 'image',
+        title: 'Letter of Support',
+        role: 'Professional Reference',
+        description: 'Letter of support from Reform Radio acknowledging professional contributions as project manager of shortaFORM and Chairman of the Reform Radio Advisory Board, a position held for 2 years.',
+        impact: 'Demonstrates strong professional relationships, leadership recognition, and sustained commitment to Reform Radio\'s mission and governance.',
+        tags: ['Reform Radio', 'Reference', 'Letter of Support', 'Advisory Board', 'Leadership'],
+        mediaPath: '/images/certifications/rachel-reform-letter-of-support.png'
+      }
+    ]
+  },
+  {
+    title: 'University of Warwick',
+    items: [
+      {
+        type: 'video',
+        title: 'How to make fake drugs',
+        role: 'Multimedia Producer & Video Editor',
+        description: 'Translated academic research into accessible multimedia content for a Wellcome Trust-funded project examining fake drugs and global health. Edited a long video conference recording to extract and highlight crucial research findings, creating a concise video that effectively communicates the project\'s critical examination of claims about Indian pharmaceuticals and African markets.',
+        impact: 'Enabled the research team to effectively communicate complex academic work to broader audiences, translating dense conference discussions into clear, engaging multimedia content that conveys the project\'s focus on understanding the social and political dimensions of fake drug concerns.',
+        tags: ['Video Editing', 'Academic Translation', 'Multimedia Production', 'Research Communication', 'Warwick University', 'Wellcome Trust'],
+        mediaPath: '/videos/portfolio/how-to-make-fake-drugs.mp4'
+      }
+    ]
+  },
+  {
+    title: 'Yorùbá Deck',
+    items: [
+      {
+        type: 'video',
+        title: 'Deep Dive with Tobi',
+        role: 'Creative Technologist & Developer',
+        description: 'I\'m a few months deep into the audacious mission of creating the most robust learning platform for the Yorùbá language. Part of this mission involves creating the Yorùbá dictionary, which has required careful documentation and database management for word metadata, parts of speech, example sentences, and audio. This video shows a snippet of conversation between myself and Tobi, from Ibadan, Nigeria, where we discuss specificities regarding the Yorùbá language.',
+        impact: 'Successfully demonstrated the platform\'s capabilities, showcasing innovative approach to language learning and cultural preservation through technology.',
+        tags: ['Creative Technology', 'Interactive Design', 'Language Learning', 'Yorùbá', 'Education'],
+        mediaPath: '/videos/portfolio/yoruba-deck-deep-dive.mp4'
+      },
+      {
+        type: 'image',
+        title: 'Yorùbá Deck TikTok',
+        role: 'Content Strategy & Automation',
+        description: 'Screenshot of the Yorùbá Deck TikTok page. I am in charge of content strategy and work with Damola on this. Content includes video recordings of Yorùbá Word Master gameplay, bespoke content from Damola including Yorùbá proverbs breakdowns, grammar explanations, film subtitle analysis, song analysis, and Yorùbá book readings. I created a script to fully automate the generation of Yorùbá Word of the Day content, which fetches metadata from the database.',
+        impact: 'Demonstrates strategic content planning and technical automation capabilities, combining creative content curation with automated content generation to support language learning outreach.',
+        tags: ['Yorùbá Deck', 'Content Strategy', 'Automation', 'Social Media', 'TikTok'],
+        mediaPath: '/images/certifications/wisdom-deck-screenshot.png'
+      }
+    ]
+  }
+]
 
 function MainContent() {
   const { isCollapsed } = useSidebar()
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isPortfolioAuthenticated, setIsPortfolioAuthenticated] = useState(false)
 
   useEffect(() => {
-    // Check authentication status on mount
-    const authStatus = localStorage.getItem('exclusive_access')
-    setIsAuthenticated(authStatus === 'true')
-
-    // Listen for storage changes (in case user authenticates in another tab)
-    const handleStorageChange = () => {
-      const authStatus = localStorage.getItem('exclusive_access')
-      setIsAuthenticated(authStatus === 'true')
-    }
-
-    window.addEventListener('storage', handleStorageChange)
-    return () => window.removeEventListener('storage', handleStorageChange)
+    // Check portfolio authentication status on mount
+    const portfolioAuthStatus = sessionStorage.getItem('portfolioAuthenticated')
+    setIsPortfolioAuthenticated(portfolioAuthStatus === 'true')
   }, [])
+
+  const handlePortfolioAuthenticated = () => {
+    setIsPortfolioAuthenticated(true)
+    // Smooth scroll to exclusive portfolio section
+    setTimeout(() => {
+      const element = document.getElementById('detailed-portfolio')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 100)
+  }
+
+  const handlePortfolioLogout = () => {
+    sessionStorage.removeItem('portfolioAuthenticated')
+    setIsPortfolioAuthenticated(false)
+    // Scroll back to password gate
+    setTimeout(() => {
+      const element = document.getElementById('password-gate')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 100)
+  }
   
   return (
     <div className={`transition-all duration-300 ${
@@ -37,7 +158,16 @@ function MainContent() {
       <CommercialWork />
       <CreativeProjects />
       <Services />
-      {isAuthenticated && <Exclusive />}
+      
+      {/* Password Gate - shown when not authenticated */}
+      {!isPortfolioAuthenticated && (
+        <PasswordGate onAuthenticated={handlePortfolioAuthenticated} />
+      )}
+      
+      {/* Exclusive Portfolio Access - shown when authenticated */}
+      {isPortfolioAuthenticated && (
+        <DetailedPortfolio sections={portfolioSections} onLogout={handlePortfolioLogout} />
+      )}
     </div>
   )
 }

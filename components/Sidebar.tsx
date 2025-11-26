@@ -21,7 +21,7 @@ const navigationItems: NavigationItem[] = [
   { id: 'commercial', label: 'Commercial Work', href: '#commercial' },
   { id: 'creative', label: 'Creative Projects', href: '#creative' },
   { id: 'services', label: "Let's Work Together", href: '#services' },
-  { id: 'exclusive', label: 'Exclusive', href: '#exclusive', requiresAuth: true },
+  { id: 'exclusive', label: 'Exclusive', href: '#detailed-portfolio', requiresAuth: true },
 ]
 
 export default function Sidebar() {
@@ -68,6 +68,7 @@ export default function Sidebar() {
       return
     }
 
+    // If authenticated and clicking exclusive, scroll to exclusive portfolio
     const targetId = href.replace('#', '')
     const element = document.getElementById(targetId)
     if (element) {
@@ -78,9 +79,10 @@ export default function Sidebar() {
 
   const handlePasswordSuccess = () => {
     setIsAuthenticated(true)
-    // Scroll to exclusive section after successful authentication
+    localStorage.setItem('exclusive_access', 'true')
+    // Scroll to exclusive portfolio section after successful authentication
     setTimeout(() => {
-      const element = document.getElementById('exclusive')
+      const element = document.getElementById('detailed-portfolio')
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' })
       }
