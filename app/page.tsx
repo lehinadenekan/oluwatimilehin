@@ -64,7 +64,7 @@ const portfolioSections: PortfolioSection[] = [
         description: 'Led end-to-end delivery of shortaFORM, a creative media training programme for unemployed young people across two cohorts. Managed workshop planning, session facilitation, and outcome tracking while designing inclusive learning pathways for neurodivergent and visually impaired participants.',
         impact: 'Delivered accessible training programmes that prepared young people for careers in media and creative industries, with tailored placements, apprenticeships, and mentoring opportunities. Built partnerships with national creative employers and provided 1:1 coaching to support participants facing barriers to engagement.',
         tags: ['Programme Management', 'Youth Training', 'Inclusive Design', 'Safeguarding', 'Stakeholder Engagement', 'Reform Radio'],
-        mediaPath: '/videos/portfolio/reform-radio-shortform.mp4'
+        mediaPath: 'https://drive.google.com/file/d/1Ejby24xMgkuReDa_PXvb2GQI_SPK2sxw/preview'
       },
       {
         type: 'image',
@@ -87,7 +87,7 @@ const portfolioSections: PortfolioSection[] = [
         description: 'Translated academic research into accessible multimedia content for a Wellcome Trust-funded project examining fake drugs and global health. Edited a long video conference recording to extract and highlight crucial research findings, creating a concise video that effectively communicates the project\'s critical examination of claims about Indian pharmaceuticals and African markets.',
         impact: 'Enabled the research team to effectively communicate complex academic work to broader audiences, translating dense conference discussions into clear, engaging multimedia content that conveys the project\'s focus on understanding the social and political dimensions of fake drug concerns.',
         tags: ['Video Editing', 'Academic Translation', 'Multimedia Production', 'Research Communication', 'Warwick University', 'Wellcome Trust'],
-        mediaPath: '/videos/portfolio/how-to-make-fake-drugs.mp4'
+        mediaPath: 'https://drive.google.com/file/d/1D-x6athq5-n-NgTVRARy3t5XLchfOOEF/preview'
       }
     ]
   },
@@ -99,9 +99,9 @@ const portfolioSections: PortfolioSection[] = [
         title: 'Deep Dive with Tobi',
         role: 'Creative Technologist & Developer',
         description: 'I\'m a few months deep into the audacious mission of creating the most robust learning platform for the Yorùbá language. Part of this mission involves creating the Yorùbá dictionary, which has required careful documentation and database management for word metadata, parts of speech, example sentences, and audio. This video shows a snippet of conversation between myself and Tobi, from Ibadan, Nigeria, where we discuss specificities regarding the Yorùbá language.',
-        impact: 'Successfully demonstrated the platform\'s capabilities, showcasing innovative approach to language learning and cultural preservation through technology.',
+        impact: 'Showcasing innovative approach to language learning and cultural preservation through technology.',
         tags: ['Creative Technology', 'Interactive Design', 'Language Learning', 'Yorùbá', 'Education'],
-        mediaPath: '/videos/portfolio/yoruba-deck-deep-dive.mp4'
+        mediaPath: 'https://drive.google.com/file/d/1cXVInYeUoP6R56l61zoowWW8Z_esBtR-/preview'
       },
       {
         type: 'image',
@@ -111,6 +111,20 @@ const portfolioSections: PortfolioSection[] = [
         impact: 'Demonstrates strategic content planning and technical automation capabilities, combining creative content curation with automated content generation to support language learning outreach.',
         tags: ['Yorùbá Deck', 'Content Strategy', 'Automation', 'Social Media', 'TikTok'],
         mediaPath: '/images/certifications/wisdom-deck-screenshot.png'
+      }
+    ]
+  },
+  {
+    title: 'Barking & Dagenham Community Music Service',
+    items: [
+      {
+        type: 'video',
+        title: 'Community Music Service',
+        role: 'Project Manager and Lead Facilitator',
+        description: 'Challenged the initial brief to establish a Youth Voice Forum after discovering young people\'s real need: affordable, accessible studio spaces for quality music production. Convinced senior leadership to pivot the project, resulting in studio access at UD Stratford and the establishment of a new music studio in Barking & Dagenham. Sourced equipment from multiple sources and transformed a disused community centre into a fully functioning music studio.',
+        impact: 'Delivered tangible outcomes that directly addressed young people\'s needs, creating sustainable infrastructure for music production in the borough and demonstrating the value of listening to community voices in project design.',
+        tags: ['Community Music', 'Barking & Dagenham'],
+        mediaPath: 'https://drive.google.com/file/d/1nvv9Er-oozaNWRV0IpZiwkIoQrELv9SE/preview'
       }
     ]
   }

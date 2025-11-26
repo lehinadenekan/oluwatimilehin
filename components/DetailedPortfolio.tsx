@@ -81,26 +81,49 @@ export default function DetailedPortfolio({ sections, onLogout }: DetailedPortfo
                     className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden"
                   >
                     {/* Media Container */}
-                    <div className="w-full h-[400px] relative bg-gray-800">
+                    <div className="w-full h-[400px] relative bg-gray-800 flex items-center justify-center overflow-hidden">
                       {item.type === 'video' ? (
-                        <>
-                          {loadingVideos.has(getVideoKey(sectionIndex, itemIndex)) && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-                              <div className="text-gray-400">Loading video...</div>
+                        // Check if it's a Google Drive link
+                        item.mediaPath.includes('drive.google.com') ? (
+                          <div className="relative w-full h-full flex items-center justify-center">
+                            {/* Aspect ratio wrapper - 16:9 */}
+                            <div 
+                              className="w-full"
+                              style={{ 
+                                aspectRatio: '16/9',
+                                maxHeight: '100%',
+                                maxWidth: '100%'
+                              }}
+                            >
+                              <iframe
+                                src={item.mediaPath}
+                                className="w-full h-full"
+                                allow="autoplay"
+                                allowFullScreen
+                                title={item.title}
+                              />
                             </div>
-                          )}
-                          <video
-                            src={item.mediaPath}
-                            controls
-                            className="w-full h-full object-cover"
-                            onLoadStart={() => handleVideoLoadStart(sectionIndex, itemIndex)}
-                            onLoadedData={() => handleVideoLoaded(sectionIndex, itemIndex)}
-                            onError={() => handleVideoError(sectionIndex, itemIndex)}
-                            preload="metadata"
-                          >
-                            Your browser does not support the video tag.
-                          </video>
-                        </>
+                          </div>
+                        ) : (
+                          <>
+                            {loadingVideos.has(getVideoKey(sectionIndex, itemIndex)) && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
+                                <div className="text-gray-400">Loading video...</div>
+                              </div>
+                            )}
+                            <video
+                              src={item.mediaPath}
+                              controls
+                              className="w-full h-full object-contain"
+                              onLoadStart={() => handleVideoLoadStart(sectionIndex, itemIndex)}
+                              onLoadedData={() => handleVideoLoaded(sectionIndex, itemIndex)}
+                              onError={() => handleVideoError(sectionIndex, itemIndex)}
+                              preload="metadata"
+                            >
+                              Your browser does not support the video tag.
+                            </video>
+                          </>
+                        )
                       ) : item.mediaPath.endsWith('.pdf') ? (
                         <div className="w-full h-full flex flex-col items-center justify-center p-4">
                           <iframe
