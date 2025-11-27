@@ -11,13 +11,17 @@ export default function GoogleAnalytics() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (!gaMeasurementId) return
+    if (!gaMeasurementId) {
+      console.warn('Google Analytics: NEXT_PUBLIC_GA_MEASUREMENT_ID is not set')
+      return
+    }
 
     const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
     pageview(url)
   }, [pathname, searchParams, gaMeasurementId])
 
   if (!gaMeasurementId) {
+    console.warn('Google Analytics: Measurement ID not found. Check environment variables.')
     return null
   }
 
