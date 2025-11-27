@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Script from 'next/script'
+import { trackEvent } from '@/lib/analytics'
 
 export default function Services() {
   const [formData, setFormData] = useState({
@@ -25,6 +26,9 @@ export default function Services() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus('idle')
+    
+    // Track form submission
+    trackEvent.contactFormSubmit()
 
     try {
       const response = await fetch('/api/contact', {
@@ -41,16 +45,22 @@ export default function Services() {
         setSubmitStatus('success')
         setErrorMessage('')
         setFormData({ name: '', email: '', subject: '', message: '' })
+        // Track successful submission
+        trackEvent.contactFormSuccess()
       } else {
         const errorMsg = data.error || data.details || 'Unknown error occurred'
         console.error('Contact form error:', errorMsg, data)
         setSubmitStatus('error')
         setErrorMessage(errorMsg)
+        // Track error
+        trackEvent.contactFormError(errorMsg)
       }
     } catch (error) {
       console.error('Contact form submission error:', error)
       setSubmitStatus('error')
       setErrorMessage('Network error. Please check your connection and try again.')
+      // Track error
+      trackEvent.contactFormError('Network error')
     } finally {
       setIsSubmitting(false)
     }

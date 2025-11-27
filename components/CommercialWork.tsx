@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import { trackEvent } from '@/lib/analytics'
 
 export default function CommercialWork() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -58,11 +59,16 @@ export default function CommercialWork() {
         console.log('Video metadata loaded')
       }
 
+      const handlePlay = () => {
+        trackEvent.videoPlay('Chanel x Vogue Magazine')
+      }
+
       video.addEventListener('error', handleError)
       video.addEventListener('loadstart', handleLoadStart)
       video.addEventListener('canplay', handleCanPlay)
       video.addEventListener('loadeddata', handleLoadedData)
       video.addEventListener('loadedmetadata', handleLoadedMetadata)
+      video.addEventListener('play', handlePlay)
 
       return () => {
         video.removeEventListener('error', handleError)
@@ -70,6 +76,7 @@ export default function CommercialWork() {
         video.removeEventListener('canplay', handleCanPlay)
         video.removeEventListener('loadeddata', handleLoadedData)
         video.removeEventListener('loadedmetadata', handleLoadedMetadata)
+        video.removeEventListener('play', handlePlay)
       }
     }
   }, [])
@@ -137,6 +144,7 @@ export default function CommercialWork() {
                 href="https://www.bbc.co.uk/sounds/play/p0cw9yfk"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent.externalLink('https://www.bbc.co.uk/sounds/play/p0cw9yfk', 'BBC Sounds')}
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300"
               >
                 <span>Listen on BBC Sounds</span>
