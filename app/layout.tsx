@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'custom web development',
     'technology solutions',
   ],
-  authors: [{ name: 'oluwatimilehin', email: 'lehinadenekan@gmail.com' }],
+  authors: [{ name: 'oluwatimilehin' }],
   creator: 'oluwatimilehin',
   publisher: 'oluwatimilehin',
   openGraph: {
