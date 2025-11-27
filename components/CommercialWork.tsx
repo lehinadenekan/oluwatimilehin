@@ -81,6 +81,9 @@ export default function CommercialWork() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Commercial Audio Production
           </h2>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+            Professional audio production services for commercial projects, podcasts, and multimedia content. Expert sound design and audio engineering.
+          </p>
         </div>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {/* Chanel Card */}
@@ -90,7 +93,7 @@ export default function CommercialWork() {
                 Chanel x Vogue Magazine
                 </h3>
               <p className="text-gray-300">
-                Soundtrack composition and sound design for the collaborative luxury fashion commercial.
+                Professional audio production including soundtrack composition and sound design for the collaborative luxury fashion commercial. Expert sound design and audio engineering services.
               </p>
               </div>
             <div style={{ height: '37.5rem' }}>
@@ -118,7 +121,7 @@ export default function CommercialWork() {
                 BBC Podcast Production
               </h3>
               <p className="text-gray-300">
-                Professional field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott.
+                Professional audio production services including field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott. Expert podcast production and audio post-production.
               </p>
             </div>
             <div style={{ height: '37.5rem', marginTop: '-3.125rem' }}>

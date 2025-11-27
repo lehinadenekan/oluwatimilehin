@@ -58,15 +58,15 @@ export default function Services() {
   const services = [
     {
       title: 'Audio Production',
-      description: 'Audio recording, editing, and post-production services for podcasts, and multimedia content.',
+      description: 'Professional audio production services including recording, editing, and post-production for podcasts, commercials, and multimedia content. Expert sound design and audio engineering.',
     },
     {
       title: 'Music Production',
-      description: 'End-to-end music production from composition to final mastering for artists and commercial projects.',
+      description: 'End-to-end music production from composition to final mastering for artists and commercial projects. Professional music production services.',
     },
     {
-      title: 'Web Applications and Technology Solutions',
-      description: 'Custom web applications, interactive experiences and creative technology solutions.',
+      title: 'Web Design & App Design',
+      description: 'Custom web design and app design services. Professional web applications, interactive experiences, and creative technology solutions. Responsive web design and mobile app development.',
     },
   ]
 
@@ -77,8 +77,11 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="text-gray-200 text-xl">
-            Get in touch to discuss your project or book a session
+          <p className="text-gray-200 text-xl mb-2">
+            Professional audio production, web design, and app design services
+          </p>
+          <p className="text-gray-300 text-base">
+            Serving clients in the UK and worldwide. Specializing in Yoruba language technology, podcast production, and creative digital solutions.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 justify-items-center">

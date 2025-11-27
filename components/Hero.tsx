@@ -58,6 +58,10 @@ export default function Hero() {
         >
           audio, music, culture, technology.
         </p>
+        {/* SEO-friendly hidden text for search engines */}
+        <div className="sr-only">
+          <p>oluwatimilehin - Professional audio production, web design, and app design services. Expert in Yoruba language technology, podcast production, and creative digital solutions.</p>
+        </div>
       </div>
     </section>
   )

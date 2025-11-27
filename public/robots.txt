@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.oluwatimilehin.com/sitemap.xml
+
+# Disallow password-protected areas if needed
+# Disallow: /api/
+
