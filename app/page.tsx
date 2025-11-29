@@ -135,6 +135,15 @@ function MainContent() {
   const [isPortfolioAuthenticated, setIsPortfolioAuthenticated] = useState(false)
 
   useEffect(() => {
+    // Scroll to top on page load and prevent scroll restoration
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0)
+      // Prevent browser from restoring scroll position
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual'
+      }
+    }
+    
     // Check portfolio authentication status on mount
     const portfolioAuthStatus = sessionStorage.getItem('portfolioAuthenticated')
     setIsPortfolioAuthenticated(portfolioAuthStatus === 'true')
