@@ -135,10 +135,8 @@ function MainContent() {
   const [isPortfolioAuthenticated, setIsPortfolioAuthenticated] = useState(false)
 
   useEffect(() => {
-    // Scroll to top on page load and prevent scroll restoration
+    // Prevent browser from restoring scroll position
     if (typeof window !== 'undefined') {
-      window.scrollTo(0, 0)
-      // Prevent browser from restoring scroll position
       if ('scrollRestoration' in window.history) {
         window.history.scrollRestoration = 'manual'
       }

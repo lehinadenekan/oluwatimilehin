@@ -32,9 +32,23 @@ export default function Sidebar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   useEffect(() => {
-    // Check if user is already authenticated
-    const authStatus = localStorage.getItem('exclusive_access')
-    setIsAuthenticated(authStatus === 'true')
+    // Check if user is already authenticated (using sessionStorage to match page.tsx)
+    const checkAuth = () => {
+      const authStatus = sessionStorage.getItem('portfolioAuthenticated')
+      setIsAuthenticated(authStatus === 'true')
+    }
+    
+    checkAuth()
+    
+    // Listen for storage changes to sync authentication state
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'portfolioAuthenticated') {
+        checkAuth()
+      }
+    }
+    
+    window.addEventListener('storage', handleStorageChange)
+    return () => window.removeEventListener('storage', handleStorageChange)
   }, [])
 
   useEffect(() => {
@@ -62,24 +76,39 @@ export default function Sidebar() {
     e.preventDefault()
     
     // If it's the exclusive section and requires auth
-    if (requiresAuth && !isAuthenticated) {
-      setIsPasswordModalOpen(true)
+    if (requiresAuth) {
+      // Re-check auth status in case it changed
+      const currentAuth = sessionStorage.getItem('portfolioAuthenticated') === 'true'
+      
+      if (!currentAuth) {
+        setIsPasswordModalOpen(true)
+        setIsOpen(false)
+        return
+      }
+      
+      // User is authenticated, scroll to detailed portfolio
+      setTimeout(() => {
+        const element = document.getElementById('detailed-portfolio')
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 50)
       setIsOpen(false)
       return
     }
 
-    // If authenticated and clicking exclusive, scroll to exclusive portfolio
+    // Scroll to target section for non-exclusive links
     const targetId = href.replace('#', '')
     const element = document.getElementById(targetId)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
       setIsOpen(false)
     }
   }
 
   const handlePasswordSuccess = () => {
     setIsAuthenticated(true)
-    localStorage.setItem('exclusive_access', 'true')
+    sessionStorage.setItem('portfolioAuthenticated', 'true')
     // Scroll to exclusive portfolio section after successful authentication
     setTimeout(() => {
       const element = document.getElementById('detailed-portfolio')

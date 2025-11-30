@@ -77,7 +77,6 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
                 }}
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:border-transparent"
                 placeholder="Enter password"
-                autoFocus
                 disabled={isSubmitting}
                 aria-invalid={error ? 'true' : 'false'}
                 aria-describedby={error ? 'password-error' : undefined}
