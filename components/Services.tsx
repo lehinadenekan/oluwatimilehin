@@ -108,9 +108,9 @@ export default function Services() {
           ))}
         </div>
         
-        <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
+        <div className="bg-gray-900 rounded-lg p-4 sm:p-8 border border-gray-800">
           {/* Calendly Integration */}
-          <div className="mb-8 text-center">
+          <div className="mb-4 sm:mb-6 text-center">
             <h3 className="text-xl font-semibold text-white mb-4">
               Schedule a Call
             </h3>
@@ -137,7 +137,7 @@ export default function Services() {
           </div>
 
           {/* Email Contact Form */}
-          <div className="pt-8 border-t border-gray-800 text-center">
+          <div className="pt-4 sm:pt-6 border-t border-gray-800 text-center">
             <h3 className="text-xl font-semibold text-white mb-4">
               Email Contact
             </h3>

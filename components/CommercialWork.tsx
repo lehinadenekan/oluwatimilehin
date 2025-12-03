@@ -82,7 +82,7 @@ export default function CommercialWork() {
   }, [])
 
   return (
-    <section id="commercial" className="py-20 px-4 bg-black">
+    <section id="commercial" className="py-12 sm:py-20 px-4 bg-black">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -94,8 +94,8 @@ export default function CommercialWork() {
         </div>
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {/* Chanel Card */}
-          <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
-            <div className="mb-6" style={{ minHeight: '10rem' }}>
+          <div className="bg-gray-900 rounded-lg p-4 sm:p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
+            <div className="mb-4 sm:mb-6">
               <h3 className="text-3xl font-bold text-white mb-4">
                 Chanel x Vogue Magazine
                 </h3>
@@ -103,13 +103,13 @@ export default function CommercialWork() {
                 Professional audio production including soundtrack composition and sound design for the collaborative luxury fashion commercial. Expert sound design and audio engineering services.
               </p>
               </div>
-            <div style={{ height: '37.5rem' }}>
+            <div className="w-full" style={{ aspectRatio: '16/9', maxHeight: '37.5rem' }}>
               <video
                 ref={videoRef}
                 controls
                 poster="/videos/chanel-vogue-magazine-poster.jpg"
-                className="w-full rounded-lg bg-black"
-                style={{ height: '37.5rem', objectFit: 'contain' }}
+                className="w-full h-full rounded-lg bg-black"
+                style={{ objectFit: 'contain' }}
                 preload="metadata"
                 playsInline
               >
@@ -122,8 +122,8 @@ export default function CommercialWork() {
               </div>
 
           {/* BBC Card */}
-          <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
-            <div className="mb-6" style={{ height: '10rem' }}>
+          <div className="bg-gray-900 rounded-lg p-4 sm:p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
+            <div className="mb-4 sm:mb-6">
               <h3 className="text-3xl font-bold text-white mb-4">
                 BBC Podcast Production
               </h3>
@@ -131,12 +131,11 @@ export default function CommercialWork() {
                 Professional audio production services including field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott. Expert podcast production and audio post-production.
               </p>
             </div>
-            <div style={{ height: '37.5rem' }}>
+            <div className="w-full" style={{ aspectRatio: '16/9', maxHeight: '37.5rem' }}>
               <img
                 src="/images/bbc-podcast-the-reset.webp"
                 alt="BBC Podcast The Reset"
-                className="w-full rounded-lg"
-                style={{ height: '37.5rem', objectFit: 'contain' }}
+                className="w-full h-full rounded-lg object-contain"
               />
             </div>
             <div className="mt-4 sm:mt-6 flex justify-center">
