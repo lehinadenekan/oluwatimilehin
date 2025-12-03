@@ -87,10 +87,10 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Let&apos;s Work Together
           </h2>
-          <p className="text-gray-200 text-xl mb-2">
+          <p className="text-gray-200 text-xl mb-6 leading-relaxed tracking-wide max-w-3xl mx-auto">
             Professional audio production, web design, and app design services
           </p>
-          <p className="text-gray-300 text-base text-justify">
+          <p className="text-gray-300 text-base mb-6 max-w-3xl mx-auto leading-relaxed tracking-wide">
             Serving clients in the UK and worldwide. Specialising in Yoruba language technology, podcast production, and creative digital solutions.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function Services() {
               <h3 className="text-xl font-semibold text-white mb-3 text-center">
                 {service.title}
               </h3>
-              <p className="text-gray-200 text-base text-justify">{service.description}</p>
+              <p className="text-gray-200 text-base mb-6 leading-relaxed tracking-wide">{service.description}</p>
             </div>
           ))}
         </div>

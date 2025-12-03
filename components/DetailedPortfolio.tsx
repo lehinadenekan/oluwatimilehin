@@ -192,10 +192,10 @@ export default function DetailedPortfolio({ sections, onLogout }: DetailedPortfo
                       <p className="text-purple-400 text-lg mb-4 text-center">
                         {item.role}
                       </p>
-                      <p className="text-gray-200 text-base mb-4 leading-relaxed text-justify">
+                      <p className="text-gray-200 text-base mb-6 leading-relaxed tracking-wide max-w-3xl mx-auto">
                         {item.description}
                       </p>
-                      <p className="text-gray-200 text-base leading-relaxed text-justify">
+                      <p className="text-gray-200 text-base mb-6 leading-relaxed tracking-wide max-w-3xl mx-auto">
                         <strong className="text-white">Impact:</strong> {item.impact}
                       </p>
                     </div>

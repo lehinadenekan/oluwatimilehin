@@ -93,7 +93,7 @@ export default function PasswordModal({ isOpen, onClose, onSuccess }: PasswordMo
 
         {/* Content */}
         <div className="flex-1 p-6">
-          <p className="text-gray-200 text-sm mb-4 text-justify">
+          <p className="text-gray-200 text-sm mb-6 leading-relaxed tracking-wide">
             This section is password protected. Please enter the password to continue.
           </p>
           

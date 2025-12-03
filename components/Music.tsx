@@ -42,7 +42,7 @@ export default function Music() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Music Releases
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg mb-6 leading-relaxed tracking-wide max-w-3xl mx-auto">
             Over 1 million combined streams on Spotify
           </p>
         </div>

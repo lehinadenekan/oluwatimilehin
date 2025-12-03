@@ -64,7 +64,7 @@ const HelpModal: React.FC<HelpModalProps> = ({
 
   // Tab Content Components
   const HowToPlayTab = () => (
-    <div className="space-y-5 text-justify">
+    <div className="space-y-5">
       <p className="text-center text-sm text-gray-400">Guess the secret {wordLength}-letter <strong className="text-purple-400">Yorùbá</strong> word in six tries.</p>
       <hr className="border-gray-700"/>
       <div>

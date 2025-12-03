@@ -10,10 +10,10 @@ export default function CreativeProjects() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Creative Projects
           </h2>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-2 text-justify">
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-6 leading-relaxed tracking-wide">
             Innovative web design and app design projects featuring Yoruba language technology
           </p>
-          <p className="text-gray-400 text-base max-w-3xl mx-auto text-justify">
+          <p className="text-gray-400 text-base max-w-3xl mx-auto mb-6 leading-relaxed tracking-wide">
             Explore interactive experiences and creative technology solutions, including the Yoruba Word Master game - an innovative approach to Yoruba language learning through web applications.
           </p>
         </div>

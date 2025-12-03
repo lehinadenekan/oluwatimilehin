@@ -88,7 +88,7 @@ export default function CommercialWork() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Commercial Audio Production
           </h2>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto text-justify">
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-6 leading-relaxed tracking-wide">
             Professional audio production services for commercial projects, podcasts, and multimedia content. Expert sound design and audio engineering.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function CommercialWork() {
               <h3 className="text-3xl font-bold text-white mb-4 text-center">
                 Chanel x Vogue Magazine
                 </h3>
-              <p className="text-gray-300 text-justify">
+              <p className="text-gray-300 mb-6 leading-relaxed tracking-wide">
                 Professional audio production including soundtrack composition and sound design for the collaborative luxury fashion commercial. Expert sound design and audio engineering services.
               </p>
               </div>
@@ -127,7 +127,7 @@ export default function CommercialWork() {
               <h3 className="text-3xl font-bold text-white mb-4 text-center">
                 BBC Podcast Production
               </h3>
-              <p className="text-gray-300 text-justify">
+              <p className="text-gray-300 mb-6 leading-relaxed tracking-wide">
                 Professional audio production services including field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott. Expert podcast production and audio post-production.
               </p>
             </div>

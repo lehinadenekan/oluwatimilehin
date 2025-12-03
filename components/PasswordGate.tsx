@@ -62,7 +62,7 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
           <h2 className="text-2xl font-bold text-white mb-4 text-center">
             Access Exclusive Portfolio
           </h2>
-          <p className="text-gray-200 text-base mb-6 text-center">
+          <p className="text-gray-200 text-base mb-6 text-center leading-relaxed tracking-wide">
             Enter the password to view exclusive portfolio information.
           </p>
 

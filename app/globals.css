@@ -98,9 +98,16 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-/* Justify paragraph text for polished appearance */
+/* Paragraph styling for tidy, evenly spaced text */
 p {
-  text-align: justify;
+  line-height: 1.625; /* leading-relaxed equivalent */
+  letter-spacing: 0.025em; /* tracking-wide equivalent */
+  word-spacing: 0.1em;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphenate-limit-chars: 6 3 2;
+  text-wrap: balance;
 }
 
 /* Custom scrollbar */

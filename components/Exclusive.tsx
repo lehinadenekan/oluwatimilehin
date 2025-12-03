@@ -9,10 +9,10 @@ export default function Exclusive() {
         </h2>
         
         <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
-          <p className="text-gray-200 text-base text-center">
+          <p className="text-gray-200 text-base text-center mb-6 leading-relaxed tracking-wide max-w-3xl mx-auto">
             Welcome to the exclusive section. This area is reserved for employers and partners.
           </p>
-          <p className="text-gray-300 text-sm text-center mt-4">
+          <p className="text-gray-300 text-sm text-center mb-6 leading-relaxed tracking-wide max-w-3xl mx-auto">
             Content will be added here soon.
           </p>
         </div>
