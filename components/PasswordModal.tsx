@@ -80,7 +80,7 @@ export default function PasswordModal({ isOpen, onClose, onSuccess }: PasswordMo
         {/* Header */}
         <div className="flex-shrink-0 p-6 pb-4 border-b border-gray-700">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold text-white">Exclusive Access</h2>
+            <h2 className="text-xl font-bold text-white text-center">Exclusive Access</h2>
             <button
               onClick={handleClose}
               className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-gray-700"
@@ -93,7 +93,7 @@ export default function PasswordModal({ isOpen, onClose, onSuccess }: PasswordMo
 
         {/* Content */}
         <div className="flex-1 p-6">
-          <p className="text-gray-200 text-sm mb-4">
+          <p className="text-gray-200 text-sm mb-4 text-justify">
             This section is password protected. Please enter the password to continue.
           </p>
           

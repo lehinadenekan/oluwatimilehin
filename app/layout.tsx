@@ -6,7 +6,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'oluwatimilehin - Audio Production, Web Design & App Design | Yoruba Language Expert',
-  description: 'Professional audio production, music production, web design, and app design services by oluwatimilehin. Specializing in Yoruba language technology, podcast production, and creative technology solutions. Based in the UK, serving clients worldwide.',
+  description: 'Professional audio production, music production, web design, and app design services by oluwatimilehin. Specialising in Yoruba language technology, podcast production, and creative technology solutions. Based in the UK, serving clients worldwide.',
   keywords: [
     'oluwatimilehin',
     'yoruba',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   publisher: 'oluwatimilehin',
   openGraph: {
     title: 'oluwatimilehin - Audio Production, Web Design & App Design | Yoruba Language Expert',
-    description: 'Professional audio production, music production, web design, and app design services. Specializing in Yoruba language technology and creative solutions.',
+    description: 'Professional audio production, music production, web design, and app design services. Specialising in Yoruba language technology and creative solutions.',
     url: 'https://www.oluwatimilehin.com',
     siteName: 'oluwatimilehin',
     type: 'website',
@@ -80,7 +80,7 @@ export default function RootLayout({
     name: 'oluwatimilehin',
     alternateName: 'olúwatìmílẹ́hìn',
     jobTitle: 'Audio Producer, Music Producer, Web Designer, App Designer, Creative Technologist',
-    description: 'Professional audio production, music production, web design, and app design services. Specializing in Yoruba language technology and creative solutions.',
+    description: 'Professional audio production, music production, web design, and app design services. Specialising in Yoruba language technology and creative solutions.',
     email: 'lehinadenekan@gmail.com',
     url: 'https://www.oluwatimilehin.com',
     sameAs: [

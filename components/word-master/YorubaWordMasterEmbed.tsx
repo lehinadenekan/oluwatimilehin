@@ -239,10 +239,10 @@ export default function YorubaWordMasterEmbed({
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
           <div className="mb-6">
-            <p className="text-gray-200 text-base mb-4">
+            <p className="text-gray-200 text-base mb-4 text-justify">
               I created Yorùbá Word Master to help myself improve my Yorùbá vocabulary and tonal mark accuracy. Yorùbá is a tonal language in which tonal accuracy is essential to preserve the true meaning of words.
             </p>
-            <p className="text-gray-200 text-base">
+            <p className="text-gray-200 text-base text-justify">
               I built this using React, Next.js, Tailwind CSS, Typescript.
             </p>
           </div>
@@ -252,7 +252,7 @@ export default function YorubaWordMasterEmbed({
       {/* Header Bar with Title and Controls */}
       <div className="w-full bg-gray-800 border-b border-gray-700 px-4 py-3 overflow-x-hidden">
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 items-center sm:items-center">
-          <h1 className="text-lg sm:text-2xl font-bold tracking-wide uppercase flex-shrink-0 text-center sm:text-left">Yorùbá Word Master</h1>
+          <h1 className="text-lg sm:text-2xl font-bold tracking-wide uppercase flex-shrink-0 text-center">Yorùbá Word Master</h1>
           <div className="flex gap-2 flex-wrap justify-center sm:justify-end">
           {showSettings && (
             <button

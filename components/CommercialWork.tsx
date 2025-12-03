@@ -88,7 +88,7 @@ export default function CommercialWork() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Commercial Audio Production
           </h2>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto text-justify">
             Professional audio production services for commercial projects, podcasts, and multimedia content. Expert sound design and audio engineering.
           </p>
         </div>
@@ -96,10 +96,10 @@ export default function CommercialWork() {
           {/* Chanel Card */}
           <div className="bg-gray-900 rounded-lg p-4 sm:p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
             <div className="mb-4 sm:mb-6">
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-white mb-4 text-center">
                 Chanel x Vogue Magazine
                 </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-300 text-justify">
                 Professional audio production including soundtrack composition and sound design for the collaborative luxury fashion commercial. Expert sound design and audio engineering services.
               </p>
               </div>
@@ -124,10 +124,10 @@ export default function CommercialWork() {
           {/* BBC Card */}
           <div className="bg-gray-900 rounded-lg p-4 sm:p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
             <div className="mb-4 sm:mb-6">
-              <h3 className="text-3xl font-bold text-white mb-4">
+              <h3 className="text-3xl font-bold text-white mb-4 text-center">
                 BBC Podcast Production
               </h3>
-              <p className="text-gray-300">
+              <p className="text-gray-300 text-justify">
                 Professional audio production services including field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott. Expert podcast production and audio post-production.
               </p>
             </div>

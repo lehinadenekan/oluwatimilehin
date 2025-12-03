@@ -52,7 +52,7 @@ export default function DetailedPortfolio({ sections, onLogout }: DetailedPortfo
       <div className="max-w-6xl mx-auto">
         {/* Header with Logout */}
         <div className="flex justify-between items-center mb-12">
-              <h2 className="text-4xl font-bold text-white">
+              <h2 className="text-4xl font-bold text-white text-center">
                 Exclusive Portfolio Access
               </h2>
               <button
@@ -69,7 +69,7 @@ export default function DetailedPortfolio({ sections, onLogout }: DetailedPortfo
           {sections.map((section, sectionIndex) => (
             <div key={sectionIndex} className="space-y-8">
               {/* Section Header */}
-              <h3 className="text-3xl font-bold text-white border-b border-gray-800 pb-4">
+              <h3 className="text-3xl font-bold text-white border-b border-gray-800 pb-4 text-center">
                 {section.title}
               </h3>
 
@@ -186,16 +186,16 @@ export default function DetailedPortfolio({ sections, onLogout }: DetailedPortfo
 
                     {/* Content */}
                     <div className="p-6">
-                      <h4 className="text-2xl font-bold text-white mb-2">
+                      <h4 className="text-2xl font-bold text-white mb-2 text-center">
                         {item.title}
                       </h4>
-                      <p className="text-purple-400 text-lg mb-4">
+                      <p className="text-purple-400 text-lg mb-4 text-center">
                         {item.role}
                       </p>
-                      <p className="text-gray-200 text-base mb-4 leading-relaxed">
+                      <p className="text-gray-200 text-base mb-4 leading-relaxed text-justify">
                         {item.description}
                       </p>
-                      <p className="text-gray-200 text-base leading-relaxed">
+                      <p className="text-gray-200 text-base leading-relaxed text-justify">
                         <strong className="text-white">Impact:</strong> {item.impact}
                       </p>
                     </div>

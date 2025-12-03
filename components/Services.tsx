@@ -90,8 +90,8 @@ export default function Services() {
           <p className="text-gray-200 text-xl mb-2">
             Professional audio production, web design, and app design services
           </p>
-          <p className="text-gray-300 text-base">
-            Serving clients in the UK and worldwide. Specializing in Yoruba language technology, podcast production, and creative digital solutions.
+          <p className="text-gray-300 text-base text-justify">
+            Serving clients in the UK and worldwide. Specialising in Yoruba language technology, podcast production, and creative digital solutions.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 justify-items-center">
@@ -100,10 +100,10 @@ export default function Services() {
               key={index}
               className="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-purple-700 transition-all duration-300 hover:transform hover:scale-105 w-full max-w-sm"
             >
-              <h3 className="text-xl font-semibold text-white mb-3">
+              <h3 className="text-xl font-semibold text-white mb-3 text-center">
                 {service.title}
               </h3>
-              <p className="text-gray-200 text-base">{service.description}</p>
+              <p className="text-gray-200 text-base text-justify">{service.description}</p>
             </div>
           ))}
         </div>
