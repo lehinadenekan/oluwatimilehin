@@ -38,6 +38,10 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
         sessionStorage.setItem('portfolioAuthenticated', 'true')
         setPassword('')
         setIsSubmitting(false)
+        
+        // Dispatch custom event so MainContent can react (storage events don't fire in same tab)
+        window.dispatchEvent(new CustomEvent('portfolioAuthenticated'))
+        
         onAuthenticated()
       } else {
         setError(data.error || 'Incorrect password')

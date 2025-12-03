@@ -145,17 +145,53 @@ function MainContent() {
     // Check portfolio authentication status on mount
     const portfolioAuthStatus = sessionStorage.getItem('portfolioAuthenticated')
     setIsPortfolioAuthenticated(portfolioAuthStatus === 'true')
+    
+    // Listen for authentication changes (from PasswordModal or other sources)
+    const handleAuthChange = () => {
+      const authStatus = sessionStorage.getItem('portfolioAuthenticated')
+      setIsPortfolioAuthenticated((prevAuth) => {
+        const newAuth = authStatus === 'true'
+        
+        // If just authenticated (was false, now true), scroll to portfolio
+        if (!prevAuth && newAuth) {
+          // Wait for DetailedPortfolio to render before scrolling
+          setTimeout(() => {
+            const element = document.getElementById('detailed-portfolio')
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+          }, 200)
+        }
+        
+        return newAuth
+      })
+    }
+    
+    // Listen for custom authentication event
+    window.addEventListener('portfolioAuthenticated', handleAuthChange)
+    
+    // Listen for storage events (for cross-tab scenarios)
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'portfolioAuthenticated') {
+        handleAuthChange()
+      }
+    })
+    
+    return () => {
+      window.removeEventListener('portfolioAuthenticated', handleAuthChange)
+      window.removeEventListener('storage', handleAuthChange)
+    }
   }, [])
 
   const handlePortfolioAuthenticated = () => {
     setIsPortfolioAuthenticated(true)
-    // Smooth scroll to exclusive portfolio section
+    // Wait for DetailedPortfolio to render before scrolling
     setTimeout(() => {
       const element = document.getElementById('detailed-portfolio')
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }
-    }, 100)
+    }, 200)
   }
 
   const handlePortfolioLogout = () => {
@@ -172,7 +208,7 @@ function MainContent() {
   
   return (
     <div className={`transition-all duration-300 ${
-      isCollapsed ? 'lg:ml-16' : 'lg:ml-64'
+      isCollapsed ? 'ml-16' : 'ml-64'
     }`}>
       <Hero />
       <Music />

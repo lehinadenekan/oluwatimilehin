@@ -25,8 +25,7 @@ const navigationItems: NavigationItem[] = [
 ]
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false) // Mobile menu state
-  const [isCollapsed, setIsCollapsed] = useState(false) // Desktop collapse state
+  const [isCollapsed, setIsCollapsed] = useState(false) // Collapse state (all screen sizes)
   const [activeSection, setActiveSection] = useState('home')
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -82,7 +81,6 @@ export default function Sidebar() {
       
       if (!currentAuth) {
         setIsPasswordModalOpen(true)
-        setIsOpen(false)
         return
       }
       
@@ -93,7 +91,6 @@ export default function Sidebar() {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
       }, 50)
-      setIsOpen(false)
       return
     }
 
@@ -102,71 +99,29 @@ export default function Sidebar() {
     const element = document.getElementById(targetId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      setIsOpen(false)
     }
   }
 
   const handlePasswordSuccess = () => {
     setIsAuthenticated(true)
-    sessionStorage.setItem('portfolioAuthenticated', 'true')
-    // Scroll to exclusive portfolio section after successful authentication
-    setTimeout(() => {
-      const element = document.getElementById('detailed-portfolio')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }, 100)
+    // Note: sessionStorage is already set by PasswordModal
+    // MainContent will detect the change and handle scrolling
+    // This just updates the Sidebar's local state for UI purposes
   }
 
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
-      {/* Floating Hamburger Button */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed top-4 left-4 z-50 p-3 bg-gray-900 hover:bg-gray-800 rounded-lg transition-all duration-300 shadow-lg border border-gray-700"
-          aria-label="Open menu"
-        >
-          <div className="space-y-1.5 w-6">
-            <div className="h-0.5 bg-white rounded"></div>
-            <div className="h-0.5 bg-white rounded"></div>
-            <div className="h-0.5 bg-white rounded"></div>
-          </div>
-        </button>
-      )}
-
-      {/* Sidebar Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
+      {/* Sidebar - Always visible, collapsible on all screen sizes */}
       <aside
         className={`fixed top-0 left-0 h-full bg-gray-900 border-r border-gray-800 z-50 transition-all duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 ${
-          isCollapsed ? 'lg:w-16' : 'lg:w-64'
-        } w-64`}
+          isCollapsed ? 'w-16' : 'w-64'
+        }`}
       >
-        <div className="flex flex-col h-full p-6 relative">
-          {/* Close Button (Mobile) */}
-          <button
-            onClick={() => setIsOpen(false)}
-            className="lg:hidden self-end mb-6 p-2 hover:bg-gray-800 rounded transition-colors"
-            aria-label="Close menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-
-          {/* Collapse Toggle Button (Desktop) - Positioned in the middle */}
+        <div className="flex flex-col h-full p-3 sm:p-6 relative">
+          {/* Collapse Toggle Button - Works on all screen sizes */}
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden lg:flex absolute top-1/2 -translate-y-1/2 right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
+            className="absolute top-1/2 -translate-y-1/2 right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (
@@ -181,20 +136,20 @@ export default function Sidebar() {
           </button>
 
           {/* Name and Title */}
-          <div className={`mb-8 transition-opacity duration-300 ${isCollapsed ? 'lg:opacity-0 lg:pointer-events-none' : ''}`}>
-            <h1 className="text-2xl font-bold text-white mb-1 whitespace-nowrap">olúwatìmílẹ́hìn</h1>
-            <p className="text-sm text-gray-400 whitespace-nowrap">audio, music, culture, technology.</p>
+          <div className={`mb-3 sm:mb-8 transition-opacity duration-300 ${isCollapsed ? 'opacity-0 pointer-events-none' : ''}`}>
+            <h1 className="text-lg sm:text-2xl font-bold text-white mb-0.5 sm:mb-1 whitespace-nowrap">olúwatìmílẹ́hìn</h1>
+            <p className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">audio, music, culture, technology.</p>
           </div>
 
-          {/* Navigation */}
-          <nav className={`flex-1 ${isCollapsed ? 'lg:hidden' : ''}`}>
-            <ul className="space-y-2">
+          {/* Navigation - No overflow, all items should fit */}
+          <nav className={`flex-1 flex flex-col justify-start ${isCollapsed ? 'hidden' : ''}`}>
+            <ul className="space-y-1">
               {navigationItems.map((item) => (
                 <li key={item.id}>
                   <Link
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href, item.requiresAuth)}
-                    className={`block px-6 py-3 rounded-lg transition-all duration-300 font-semibold ${
+                    className={`block px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition-all duration-300 font-semibold text-sm sm:text-base ${
                       activeSection === item.id
                         ? 'bg-purple-700 text-white'
                         : 'text-white hover:bg-gray-800'

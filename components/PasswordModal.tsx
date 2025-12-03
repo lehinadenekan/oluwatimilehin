@@ -9,8 +9,6 @@ interface PasswordModalProps {
   onSuccess: () => void
 }
 
-const CORRECT_PASSWORD = 'timilehinsworld'
-
 export default function PasswordModal({ isOpen, onClose, onSuccess }: PasswordModalProps) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -21,20 +19,44 @@ export default function PasswordModal({ isOpen, onClose, onSuccess }: PasswordMo
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
+    
+    if (!password.trim()) {
+      setError('Password required')
+      return
+    }
+
     setIsSubmitting(true)
 
-    // Simulate a small delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 300))
+    try {
+      const response = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      })
 
-    if (password === CORRECT_PASSWORD) {
-      // Store authentication in localStorage
-      localStorage.setItem('exclusive_access', 'true')
-      setPassword('')
-      setIsSubmitting(false)
-      onSuccess()
-      onClose()
-    } else {
-      setError('Incorrect password. Please try again.')
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        // Store authentication in sessionStorage (matching PasswordGate)
+        sessionStorage.setItem('portfolioAuthenticated', 'true')
+        setPassword('')
+        setIsSubmitting(false)
+        
+        // Dispatch custom event so MainContent can react (storage events don't fire in same tab)
+        window.dispatchEvent(new CustomEvent('portfolioAuthenticated'))
+        
+        onSuccess()
+        onClose()
+      } else {
+        setError(data.error || 'Incorrect password. Please try again.')
+        setPassword('')
+        setIsSubmitting(false)
+      }
+    } catch (error) {
+      console.error('Password verification error:', error)
+      setError('An error occurred. Please try again.')
       setPassword('')
       setIsSubmitting(false)
     }
