@@ -208,7 +208,9 @@ function MainContent() {
   
   return (
     <div className={`transition-all duration-300 ${
-      isCollapsed ? 'lg:ml-16' : 'lg:ml-64'
+      isCollapsed 
+        ? 'lg:ml-16' // No margin on mobile when collapsed, margin on desktop
+        : 'ml-56 sm:ml-64 lg:ml-64' // Responsive margin when expanded (matches sidebar width)
     }`}>
       <Hero />
       <Music />

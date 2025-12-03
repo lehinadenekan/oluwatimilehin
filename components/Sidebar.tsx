@@ -110,12 +110,31 @@ export default function Sidebar() {
     // This just updates the Sidebar's local state for UI purposes
   }
 
+  const handleBackdropClick = () => {
+    // On mobile, clicking backdrop closes sidebar
+    if (window.innerWidth < 1024) {
+      setShowNavContent(false)
+      setIsCollapsed(true)
+    }
+  }
+
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
+      {/* Backdrop Overlay - Only on mobile when expanded */}
+      {!isCollapsed && (
+        <div
+          onClick={handleBackdropClick}
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Sidebar - Always visible, collapsible on all screen sizes */}
       <aside
         className={`fixed top-0 left-0 h-full bg-gray-900 border-r border-gray-800 z-50 transition-all duration-300 ease-in-out ${
-          isCollapsed ? 'w-16' : 'w-64'
+          isCollapsed 
+            ? 'w-12 sm:w-16' // Narrower on mobile when collapsed
+            : 'w-56 sm:w-64' // Narrower on mobile when expanded (56px = 224px, better for mobile)
         }`}
       >
         <div className="flex flex-col h-full p-3 sm:p-6 relative">
@@ -135,7 +154,7 @@ export default function Sidebar() {
                 setIsCollapsed(true)
               }
             }}
-            className="absolute top-1/2 -translate-y-1/2 right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
+            className="absolute top-1/2 -translate-y-1/2 right-1 sm:right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (
