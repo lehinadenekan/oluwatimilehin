@@ -208,7 +208,7 @@ function MainContent() {
   
   return (
     <div className={`transition-all duration-300 ${
-      isCollapsed ? 'ml-16' : 'ml-64'
+      isCollapsed ? 'lg:ml-16' : 'lg:ml-64'
     }`}>
       <Hero />
       <Music />
@@ -231,7 +231,7 @@ function MainContent() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen overflow-x-hidden w-full">
       <Sidebar />
       <MainContent />
     </main>

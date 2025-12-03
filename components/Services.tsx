@@ -114,13 +114,21 @@ export default function Services() {
             <h3 className="text-xl font-semibold text-white mb-4">
               Schedule a Call
             </h3>
-            <div className="bg-gray-800 rounded-lg p-4 sm:p-8">
+            <div className="bg-gray-800 rounded-lg p-4 sm:p-8 overflow-hidden">
               {/* Calendly Inline Widget */}
-              <div 
-                className="calendly-inline-widget" 
-                data-url="https://calendly.com/oluwatimilehinonline"
-                style={{ minWidth: '20rem', height: '43.75rem' }}
-              />
+              <div className="w-full max-w-full overflow-x-hidden">
+                <div 
+                  className="calendly-inline-widget mx-auto" 
+                  data-url="https://calendly.com/oluwatimilehinonline"
+                  style={{ 
+                    minWidth: '100%', 
+                    width: '100%',
+                    maxWidth: '100%',
+                    height: '43.75rem',
+                    overflow: 'hidden'
+                  }}
+                />
+              </div>
               <Script
                 src="https://assets.calendly.com/assets/external/widget.js"
                 strategy="lazyOnload"

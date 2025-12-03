@@ -95,7 +95,7 @@ export default function CommercialWork() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {/* Chanel Card */}
           <div className="bg-gray-900 rounded-lg p-8 border border-gray-800 hover:border-purple-700 transition-all duration-300">
-            <div className="mb-12 md:mb-6" style={{ height: '10rem' }}>
+            <div className="mb-6" style={{ minHeight: '10rem' }}>
               <h3 className="text-3xl font-bold text-white mb-4">
                 Chanel x Vogue Magazine
                 </h3>
@@ -131,7 +131,7 @@ export default function CommercialWork() {
                 Professional audio production services including field recording and audio editing for BBC podcast series &quot;The Reset&quot; by Jade Scott. Expert podcast production and audio post-production.
               </p>
             </div>
-            <div style={{ height: '37.5rem', marginTop: '-3.125rem' }}>
+            <div style={{ height: '37.5rem' }}>
               <img
                 src="/images/bbc-podcast-the-reset.webp"
                 alt="BBC Podcast The Reset"
@@ -139,7 +139,7 @@ export default function CommercialWork() {
                 style={{ height: '37.5rem', objectFit: 'contain' }}
               />
             </div>
-            <div className="mt-6 flex justify-center">
+            <div className="mt-4 sm:mt-6 flex justify-center">
               <a
                 href="https://www.bbc.co.uk/sounds/play/p0cw9yfk"
                 target="_blank"

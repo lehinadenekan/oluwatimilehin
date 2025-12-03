@@ -26,6 +26,7 @@ const navigationItems: NavigationItem[] = [
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false) // Collapse state (all screen sizes)
+  const [showNavContent, setShowNavContent] = useState(true) // Control when nav content is visible (starts true since sidebar starts expanded)
   const [activeSection, setActiveSection] = useState('home')
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -120,7 +121,20 @@ export default function Sidebar() {
         <div className="flex flex-col h-full p-3 sm:p-6 relative">
           {/* Collapse Toggle Button - Works on all screen sizes */}
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => {
+              if (isCollapsed) {
+                // Expanding: hide content first, then show after width transition
+                setShowNavContent(false)
+                setIsCollapsed(false)
+                setTimeout(() => {
+                  setShowNavContent(true)
+                }, 300) // Match transition duration
+              } else {
+                // Collapsing: hide content immediately
+                setShowNavContent(false)
+                setIsCollapsed(true)
+              }
+            }}
             className="absolute top-1/2 -translate-y-1/2 right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
@@ -136,13 +150,13 @@ export default function Sidebar() {
           </button>
 
           {/* Name and Title */}
-          <div className={`mb-3 sm:mb-8 transition-opacity duration-300 ${isCollapsed ? 'opacity-0 pointer-events-none' : ''}`}>
+          <div className={`mb-3 sm:mb-8 transition-opacity duration-300 ${isCollapsed || !showNavContent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
             <h1 className="text-lg sm:text-2xl font-bold text-white mb-0.5 sm:mb-1 whitespace-nowrap">olúwatìmílẹ́hìn</h1>
             <p className="text-xs sm:text-sm text-gray-400 whitespace-nowrap">audio, music, culture, technology.</p>
           </div>
 
           {/* Navigation - No overflow, all items should fit */}
-          <nav className={`flex-1 flex flex-col justify-start ${isCollapsed ? 'hidden' : ''}`}>
+          <nav className={`flex-1 flex flex-col justify-start overflow-hidden ${isCollapsed || !showNavContent ? 'opacity-0 pointer-events-none' : 'opacity-100'} transition-opacity duration-300`}>
             <ul className="space-y-1">
               {navigationItems.map((item) => (
                 <li key={item.id}>

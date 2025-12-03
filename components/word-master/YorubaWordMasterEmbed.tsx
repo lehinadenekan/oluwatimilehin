@@ -251,9 +251,9 @@ export default function YorubaWordMasterEmbed({
 
       {/* Header Bar with Title and Controls */}
       <div className="w-full bg-gray-800 border-b border-gray-700 px-4 py-3 overflow-x-hidden">
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-          <h1 className="text-lg sm:text-2xl font-bold tracking-wide uppercase flex-shrink-0">Yorùbá Word Master</h1>
-          <div className="flex gap-2 flex-wrap">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 items-center sm:items-center">
+          <h1 className="text-lg sm:text-2xl font-bold tracking-wide uppercase flex-shrink-0 text-center sm:text-left">Yorùbá Word Master</h1>
+          <div className="flex gap-2 flex-wrap justify-center sm:justify-end">
           {showSettings && (
             <button
               onClick={handleSettings}
