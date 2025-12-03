@@ -118,6 +118,15 @@ export default function Sidebar() {
     }
   }
 
+  const handleExpand = () => {
+    // Expanding: hide content first, then show after width transition
+    setShowNavContent(false)
+    setIsCollapsed(false)
+    setTimeout(() => {
+      setShowNavContent(true)
+    }, 300) // Match transition duration
+  }
+
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
       {/* Backdrop Overlay - Only on mobile when expanded */}
@@ -129,32 +138,42 @@ export default function Sidebar() {
         />
       )}
 
-      {/* Sidebar - Always visible, collapsible on all screen sizes */}
+      {/* Floating Toggle Button - Only on mobile when collapsed */}
+      {isCollapsed && (
+        <button
+          onClick={handleExpand}
+          className="fixed left-4 top-6 z-50 lg:hidden w-12 h-12 rounded-full bg-gray-900/90 border border-gray-700 shadow-lg hover:bg-gray-800 hover:scale-105 transition-all duration-200 flex items-center justify-center"
+          aria-label="Expand sidebar"
+        >
+          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
+
+      {/* Sidebar - Hidden on mobile when collapsed, visible on desktop always */}
       <aside
         className={`fixed top-0 left-0 h-full bg-gray-900 border-r border-gray-800 z-50 transition-all duration-300 ease-in-out ${
           isCollapsed 
-            ? 'w-12 sm:w-16' // Narrower on mobile when collapsed
+            ? 'hidden lg:flex w-16' // Hidden on mobile when collapsed, visible on desktop with w-16
             : 'w-56 sm:w-64' // Narrower on mobile when expanded (56px = 224px, better for mobile)
         }`}
       >
         <div className="flex flex-col h-full p-3 sm:p-6 relative">
-          {/* Collapse Toggle Button - Works on all screen sizes */}
+          {/* Collapse Toggle Button - Hidden on mobile when collapsed (floating button handles it), visible otherwise */}
           <button
             onClick={() => {
               if (isCollapsed) {
-                // Expanding: hide content first, then show after width transition
-                setShowNavContent(false)
-                setIsCollapsed(false)
-                setTimeout(() => {
-                  setShowNavContent(true)
-                }, 300) // Match transition duration
+                handleExpand()
               } else {
                 // Collapsing: hide content immediately
                 setShowNavContent(false)
                 setIsCollapsed(true)
               }
             }}
-            className="absolute top-1/2 -translate-y-1/2 right-1 sm:right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10"
+            className={`absolute top-1/2 -translate-y-1/2 right-1 sm:right-2 p-2 hover:bg-gray-800 rounded transition-colors z-10 ${
+              isCollapsed ? 'hidden lg:flex' : '' // Hidden on mobile when collapsed, visible on desktop and when expanded
+            }`}
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             {isCollapsed ? (
