@@ -118,15 +118,8 @@ export default function Services() {
               {/* Calendly Inline Widget */}
               <div className="w-full max-w-full overflow-x-hidden">
                 <div 
-                  className="calendly-inline-widget mx-auto" 
+                  className="calendly-inline-widget mx-auto w-full h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden" 
                   data-url="https://calendly.com/oluwatimilehinonline"
-                  style={{ 
-                    minWidth: '100%', 
-                    width: '100%',
-                    maxWidth: '100%',
-                    height: '43.75rem',
-                    overflow: 'hidden'
-                  }}
                 />
               </div>
               <Script
