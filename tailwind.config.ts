@@ -9,7 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Design System Colors using CSS Variables
+        ink: 'var(--ink)',
+        cream: 'var(--cream)',
+        'warm-mid': 'var(--warm-mid)',
+        accent: 'var(--accent)',
+        'accent-pale': 'var(--accent-pale)',
+        muted: 'var(--muted)',
         'bg-primary': 'var(--bg-primary)',
         'bg-secondary': 'var(--bg-secondary)',
         'bg-tertiary': 'var(--bg-tertiary)',
@@ -18,30 +23,17 @@ const config: Config = {
         'text-muted': 'var(--text-muted)',
         'accent-primary': 'var(--accent-primary)',
         'accent-hover': 'var(--accent-hover)',
-        'accent-text-light': 'var(--accent-text-light)',
-        'accent-text-lighter': 'var(--accent-text-lighter)',
-        'accent-dark': 'var(--accent-dark)',
         'border-primary': 'var(--border-primary)',
-        'border-secondary': 'var(--border-secondary)',
-        // Keep existing custom colors for backward compatibility
-        purple: {
-          accent: '#a855f7',
-          dark: '#7c3aed',
-        },
-        pink: {
-          accent: '#ec4899',
-          dark: '#db2777',
-        },
+      },
+      fontFamily: {
+        serif: ['var(--font-cormorant)', 'Cormorant Garamond', 'Georgia', 'serif'],
+        mono: ['var(--font-dm-mono)', 'DM Mono', 'monospace'],
+        sans: ['var(--font-syne)', 'Syne', 'sans-serif'],
       },
       animation: {
-        'typewriter': 'typewriter 2s steps(20) forwards',
-        'blink': 'blink 1s infinite',
+        blink: 'blink 1s infinite',
       },
       keyframes: {
-        typewriter: {
-          '0%': { width: '0' },
-          '100%': { width: '100%' },
-        },
         blink: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
@@ -52,4 +44,3 @@ const config: Config = {
   plugins: [],
 }
 export default config
-

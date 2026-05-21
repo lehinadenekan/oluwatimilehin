@@ -46,13 +46,9 @@ After adding the environment variable:
 
 ## Done! 🎉
 
-Once deployed, Google Analytics will start tracking:
-- Page views
-- User behavior
-- Button clicks
-- Form submissions
-- Video plays
-- And more!
+Once deployed, Google Analytics will start tracking page views and custom events (clicks, forms, video plays, portfolio arms, case study CTAs, and more).
+
+**Supabase storage:** To also persist every event in your own database, follow [ANALYTICS_SUPABASE_SETUP.md](./ANALYTICS_SUPABASE_SETUP.md).
 
 ## Verify It's Working
 

@@ -3,37 +3,38 @@
 @tailwind utilities;
 
 :root {
-  /* Legacy RGB variables for body */
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-  
-  /* Design System Color Variables */
-  /* Backgrounds */
-  --bg-primary: #000000;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1f2937;
-  
-  /* Text Colors */
-  --text-primary: #ffffff;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  
-  /* Purple Accents */
-  --accent-primary: #7e22ce;
-  --accent-hover: #6b21a8;
-  --accent-text-light: #a78bfa;
-  --accent-text-lighter: #c4b5fd;
-  --accent-dark: #581c87;
-  
-  /* Border Colors */
-  --border-primary: #374151;
-  --border-secondary: #4b5563;
-  
-  /* Scrollbar */
-  --scrollbar-track: #000000;
-  --scrollbar-thumb: #4a4a4a;
-  --scrollbar-thumb-hover: #6a6a6a;
+  /* Editorial palette (Yorùbá Deck case study) */
+  --ink: #1a1208;
+  --cream: #f5f0e8;
+  --warm-mid: #e8dfc8;
+  --accent: #c4621a;
+  --accent-pale: #f0d9c4;
+  --muted: #7a6e5f;
+
+  --font-serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  --font-mono: var(--font-dm-mono), 'DM Mono', monospace;
+  --font-sans: var(--font-syne), 'Syne', sans-serif;
+
+  /* Legacy aliases for Tailwind / existing utilities */
+  --foreground-rgb: 26, 18, 8;
+  --background-start-rgb: 245, 240, 232;
+  --background-end-rgb: 245, 240, 232;
+  --bg-primary: var(--cream);
+  --bg-secondary: var(--warm-mid);
+  --bg-tertiary: var(--accent-pale);
+  --text-primary: var(--ink);
+  --text-secondary: var(--muted);
+  --text-muted: var(--muted);
+  --accent-primary: var(--accent);
+  --accent-hover: #a8521a;
+  --accent-text-light: var(--accent);
+  --accent-text-lighter: var(--accent-pale);
+  --accent-dark: #8a4516;
+  --border-primary: var(--warm-mid);
+  --border-secondary: var(--warm-mid);
+  --scrollbar-track: var(--cream);
+  --scrollbar-thumb: var(--warm-mid);
+  --scrollbar-thumb-hover: var(--muted);
 }
 
 * {
@@ -44,73 +45,43 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 18px; /* Increased from default 16px by 2px */
+  font-size: 18px;
   overflow-x: hidden;
   width: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
-  font-family: 'Calibri', 'Calibri Light', 'Candara', 'Segoe UI', 'Segoe UI Light', 'Segoe UI Semibold', 'Segoe UI Bold', 'Trebuchet MS', 'Arial', sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: var(--font-serif);
   font-weight: 300;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "kern" 1, "liga" 1;
-  font-variant-ligatures: common-ligatures;
-  font-kerning: normal;
   overflow-x: hidden;
   width: 100%;
 }
 
-/* Headers with letter-spacing and font weights */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-  font-kerning: normal;
-  text-rendering: optimizeLegibility;
-  -webkit-font-feature-settings: "kern" 1;
-  font-feature-settings: "kern" 1;
-}
-
-/* Specific letter-spacing for different header sizes */
-h1 {
-  letter-spacing: 0.05em;
-}
-
-h2 {
-  letter-spacing: 0.04em;
-}
-
-h3 {
-  letter-spacing: 0.03em;
-}
-
-h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
   letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: var(--ink);
 }
 
-/* Center all headings by default */
-h1, h2, h3, h4, h5, h6 {
-  text-align: center;
-}
-
-/* Paragraph styling for tidy, evenly spaced text */
 p {
-  line-height: 1.625; /* leading-relaxed equivalent */
-  letter-spacing: 0.025em; /* tracking-wide equivalent */
-  word-spacing: 0.1em;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphenate-limit-chars: 6 3 2;
-  text-wrap: balance;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: var(--muted);
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -128,7 +99,6 @@ p {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* Calendly widget containment for mobile */
 .calendly-inline-widget {
   max-width: 100% !important;
   width: 100% !important;
@@ -139,4 +109,3 @@ p {
   max-width: 100% !important;
   width: 100% !important;
 }
-

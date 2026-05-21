@@ -1,16 +1,24 @@
-// Google Analytics 4 Event Tracking
+// Google Analytics 4 + Supabase first-party event tracking
 
 declare global {
   interface Window {
     gtag: (
       command: 'config' | 'event' | 'js' | 'set',
       targetId: string | Date,
-      config?: Record<string, any>
+      config?: Record<string, unknown>
     ) => void
   }
 }
 
-// Track page views
+export type InteractionEvent = {
+  action: string
+  category: string
+  label?: string
+  value?: number
+  metadata?: Record<string, unknown>
+}
+
+// Track page views (GA only)
 export const pageview = (url: string) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '', {
@@ -19,120 +27,220 @@ export const pageview = (url: string) => {
   }
 }
 
-// Track custom events
-export const event = ({
+function sendToGoogleAnalytics({
   action,
   category,
   label,
   value,
-}: {
-  action: string
-  category: string
-  label?: string
-  value?: number
-}) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    })
+  metadata,
+}: InteractionEvent) {
+  if (typeof window === 'undefined' || !window.gtag) return
+
+  window.gtag('event', action, {
+    event_category: category,
+    event_label: label,
+    value,
+    ...metadata,
+  })
+}
+
+function persistToSupabase({
+  action,
+  category,
+  label,
+  value,
+  metadata,
+}: InteractionEvent) {
+  if (typeof window === 'undefined') return
+
+  const payload = {
+    event_name: action,
+    event_category: category,
+    label,
+    page_path: window.location.pathname + window.location.search,
+    referrer: document.referrer || undefined,
+    metadata: {
+      ...metadata,
+      ...(value !== undefined ? { value } : {}),
+    },
   }
+
+  const body = JSON.stringify(payload)
+
+  fetch('/api/analytics/track', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body,
+    keepalive: true,
+  }).catch(() => {
+    // Fire-and-forget; analytics must not break UX
+  })
+}
+
+/** Sends the same event to GA4 and Supabase (when configured). */
+export function trackInteraction(event: InteractionEvent) {
+  sendToGoogleAnalytics(event)
+  persistToSupabase(event)
+}
+
+/** @deprecated Prefer trackInteraction — kept for backwards compatibility */
+export const event = (params: InteractionEvent) => {
+  trackInteraction(params)
 }
 
 // Predefined event helpers
 export const trackEvent = {
-  // Contact form
   contactFormSubmit: () => {
-    event({
+    trackInteraction({
       action: 'submit',
       category: 'Contact Form',
       label: 'Contact Form Submission',
     })
   },
   contactFormSuccess: () => {
-    event({
+    trackInteraction({
       action: 'success',
       category: 'Contact Form',
       label: 'Contact Form Success',
     })
   },
   contactFormError: (error: string) => {
-    event({
+    trackInteraction({
       action: 'error',
       category: 'Contact Form',
       label: error,
     })
   },
 
-  // Calendly
   calendlyClick: () => {
-    event({
+    trackInteraction({
       action: 'click',
       category: 'Calendly',
-      label: 'Schedule Call Button',
+      label: 'Schedule Call Widget',
+    })
+  },
+  calendlyEventScheduled: () => {
+    trackInteraction({
+      action: 'scheduled',
+      category: 'Calendly',
+      label: 'Event Scheduled',
     })
   },
 
-  // External links
-  externalLink: (url: string, label: string) => {
-    event({
+  externalLink: (url: string, linkLabel: string) => {
+    trackInteraction({
       action: 'click',
       category: 'External Link',
-      label: `${label} - ${url}`,
+      label: `${linkLabel} - ${url}`,
+      metadata: { url, link_label: linkLabel },
     })
   },
 
-  // Video plays
   videoPlay: (videoName: string) => {
-    event({
+    trackInteraction({
       action: 'play',
       category: 'Video',
       label: videoName,
     })
   },
 
-  // Section views (scroll tracking)
   sectionView: (sectionName: string) => {
-    event({
+    trackInteraction({
       action: 'view',
       category: 'Section',
       label: sectionName,
     })
   },
 
-  // Button clicks
   buttonClick: (buttonName: string, location: string) => {
-    event({
+    trackInteraction({
       action: 'click',
       category: 'Button',
       label: `${buttonName} - ${location}`,
+      metadata: { button: buttonName, location },
     })
   },
 
-  // Game interactions
   gameStart: (gameName: string) => {
-    event({
+    trackInteraction({
       action: 'start',
       category: 'Game',
       label: gameName,
     })
   },
   gameComplete: (gameName: string) => {
-    event({
+    trackInteraction({
       action: 'complete',
       category: 'Game',
       label: gameName,
     })
   },
 
-  // Music plays
   musicPlay: (trackName: string) => {
-    event({
+    trackInteraction({
       action: 'play',
       category: 'Music',
       label: trackName,
     })
   },
-}
 
+  portfolioArm: (arm: 'music' | 'audio' | 'tech') => {
+    trackInteraction({
+      action: 'click',
+      category: 'Portfolio',
+      label: arm,
+      metadata: { arm },
+    })
+  },
+
+  scrollCue: () => {
+    trackInteraction({
+      action: 'click',
+      category: 'Portfolio',
+      label: 'scroll_cue',
+    })
+  },
+
+  caseStudyNav: (section: string) => {
+    trackInteraction({
+      action: 'click',
+      category: 'Case Study Nav',
+      label: section,
+      metadata: { section },
+    })
+  },
+
+  caseStudyCta: (cta: string) => {
+    trackInteraction({
+      action: 'click',
+      category: 'Case Study CTA',
+      label: cta,
+      metadata: { cta },
+    })
+  },
+
+  carousel: (action: 'prev' | 'next' | 'dot' | 'enlarge' | 'close', index?: number) => {
+    trackInteraction({
+      action,
+      category: 'Case Study Carousel',
+      label: index !== undefined ? `slide_${index + 1}` : action,
+      metadata: { index },
+    })
+  },
+
+  musicPanelView: () => {
+    trackInteraction({
+      action: 'view',
+      category: 'Portfolio Panel',
+      label: 'music',
+    })
+  },
+
+  portfolioAuth: (action: 'success' | 'logout') => {
+    trackInteraction({
+      action,
+      category: 'Portfolio Auth',
+      label: action,
+    })
+  },
+}

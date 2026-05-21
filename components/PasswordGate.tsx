@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { trackEvent } from '@/lib/analytics'
 
 interface PasswordGateProps {
   onAuthenticated: () => void
@@ -14,7 +15,7 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    
+
     if (!password.trim()) {
       setError('Password required')
       return
@@ -25,50 +26,48 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
     try {
       const response = await fetch('/api/verify-password', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       })
 
       const data = await response.json()
 
       if (response.ok && data.success) {
-        // Store authentication in sessionStorage
+        trackEvent.portfolioAuth('success')
         sessionStorage.setItem('portfolioAuthenticated', 'true')
         setPassword('')
         setIsSubmitting(false)
-        
-        // Dispatch custom event so MainContent can react (storage events don't fire in same tab)
         window.dispatchEvent(new CustomEvent('portfolioAuthenticated'))
-        
         onAuthenticated()
       } else {
         setError(data.error || 'Incorrect password')
         setPassword('')
         setIsSubmitting(false)
       }
-    } catch (error) {
-      console.error('Password verification error:', error)
+    } catch (err) {
+      console.error('Password verification error:', err)
       setError('An error occurred. Please try again.')
       setIsSubmitting(false)
     }
   }
 
   return (
-    <section id="password-gate" className="bg-black py-20 px-4">
+    <section id="password-gate" className="py-20 px-4 border-t border-warm-mid bg-ink">
       <div className="max-w-2xl mx-auto">
-        <div className="bg-gray-900 rounded-lg p-8 border border-gray-800">
-          <h2 className="text-2xl font-bold text-white mb-4 text-center">
-            Access Exclusive Portfolio
+        <div className="border border-white/10 p-8 sm:p-10">
+          <span className="font-mono text-[10px] tracking-[0.2em] uppercase text-accent block mb-3 text-center">
+            Exclusive
+          </span>
+          <h2 className="font-serif text-3xl font-light text-cream mb-4 text-center">
+            Portfolio access
           </h2>
-          <p className="text-gray-200 text-base mb-6 text-center leading-relaxed tracking-wide">
-            Enter the password to view exclusive portfolio information.
+          <p className="text-cream/60 text-base mb-6 text-center leading-relaxed">
+            Enter the password to view additional portfolio work.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="portfolio-password" className="block text-sm font-medium text-gray-200 mb-2">
+              <label htmlFor="portfolio-password" className="block font-mono text-[10px] tracking-[0.15em] uppercase text-cream/50 mb-2">
                 Password
               </label>
               <input
@@ -79,14 +78,14 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
                   setPassword(e.target.value)
                   setError('')
                 }}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:border-transparent"
+                className="w-full px-4 py-3 bg-ink border border-white/20 text-cream font-mono text-sm placeholder-white/30 focus:outline-none focus:border-accent"
                 placeholder="Enter password"
                 disabled={isSubmitting}
                 aria-invalid={error ? 'true' : 'false'}
                 aria-describedby={error ? 'password-error' : undefined}
               />
               {error && (
-                <p id="password-error" className="mt-2 text-sm text-red-400">
+                <p id="password-error" className="mt-2 text-sm text-accent-pale font-mono">
                   {error}
                 </p>
               )}
@@ -94,10 +93,10 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center space-x-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full font-mono text-[11px] tracking-[0.15em] uppercase py-3 px-6 bg-accent text-cream hover:bg-accent-hover transition-colors disabled:opacity-50"
               disabled={isSubmitting || !password.trim()}
             >
-              {isSubmitting ? 'Verifying...' : 'Access Portfolio'}
+              {isSubmitting ? 'Verifying…' : 'Access portfolio'}
             </button>
           </form>
         </div>
@@ -105,4 +104,3 @@ export default function PasswordGate({ onAuthenticated }: PasswordGateProps) {
     </section>
   )
 }
-

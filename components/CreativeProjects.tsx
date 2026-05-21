@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import YorubaWordMasterEmbed from './word-master/YorubaWordMasterEmbed'
 
 export default function CreativeProjects() {
@@ -15,6 +16,14 @@ export default function CreativeProjects() {
           </p>
           <p className="text-gray-400 text-base max-w-3xl mx-auto mb-6 leading-relaxed tracking-wide">
             Explore interactive experiences and creative technology solutions, including the Yoruba Word Master game - an innovative approach to Yoruba language learning through web applications.
+          </p>
+          <p className="text-center">
+            <Link
+              href="/yoruba-deck"
+              className="text-purple-400 hover:text-purple-300 font-semibold transition-colors"
+            >
+              Read the case study →
+            </Link>
           </p>
         </div>
         {/* Embedded Game */}

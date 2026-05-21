@@ -1,17 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Sidebar, { useSidebar } from '@/components/Sidebar'
-import Hero from '@/components/Hero'
-import Music from '@/components/Music'
-import CommercialWork from '@/components/CommercialWork'
-import CreativeProjects from '@/components/CreativeProjects'
+import HomeExperience from '@/components/home/HomeExperience'
 import Services from '@/components/Services'
 import PasswordGate from '@/components/PasswordGate'
 import DetailedPortfolio from '@/components/DetailedPortfolio'
 import { PortfolioSection } from '@/types/portfolio'
 
-// Portfolio data organized by sections
 const portfolioSections: PortfolioSection[] = [
   {
     title: 'Professional Certifications',
@@ -130,53 +125,35 @@ const portfolioSections: PortfolioSection[] = [
   }
 ]
 
-function MainContent() {
-  const { isCollapsed } = useSidebar()
+export default function Home() {
   const [isPortfolioAuthenticated, setIsPortfolioAuthenticated] = useState(false)
 
   useEffect(() => {
-    // Prevent browser from restoring scroll position
-    if (typeof window !== 'undefined') {
-      if ('scrollRestoration' in window.history) {
-        window.history.scrollRestoration = 'manual'
-      }
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
     }
-    
-    // Check portfolio authentication status on mount
+
     const portfolioAuthStatus = sessionStorage.getItem('portfolioAuthenticated')
     setIsPortfolioAuthenticated(portfolioAuthStatus === 'true')
-    
-    // Listen for authentication changes (from PasswordModal or other sources)
+
     const handleAuthChange = () => {
       const authStatus = sessionStorage.getItem('portfolioAuthenticated')
       setIsPortfolioAuthenticated((prevAuth) => {
         const newAuth = authStatus === 'true'
-        
-        // If just authenticated (was false, now true), scroll to portfolio
         if (!prevAuth && newAuth) {
-          // Wait for DetailedPortfolio to render before scrolling
           setTimeout(() => {
-            const element = document.getElementById('detailed-portfolio')
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-            }
+            document.getElementById('detailed-portfolio')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
           }, 200)
         }
-        
         return newAuth
       })
     }
-    
-    // Listen for custom authentication event
+
     window.addEventListener('portfolioAuthenticated', handleAuthChange)
-    
-    // Listen for storage events (for cross-tab scenarios)
     window.addEventListener('storage', (e) => {
-      if (e.key === 'portfolioAuthenticated') {
-        handleAuthChange()
-      }
+      if (e.key === 'portfolioAuthenticated') handleAuthChange()
     })
-    
+
     return () => {
       window.removeEventListener('portfolioAuthenticated', handleAuthChange)
       window.removeEventListener('storage', handleAuthChange)
@@ -185,58 +162,29 @@ function MainContent() {
 
   const handlePortfolioAuthenticated = () => {
     setIsPortfolioAuthenticated(true)
-    // Wait for DetailedPortfolio to render before scrolling
     setTimeout(() => {
-      const element = document.getElementById('detailed-portfolio')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      document.getElementById('detailed-portfolio')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 200)
   }
 
   const handlePortfolioLogout = () => {
     sessionStorage.removeItem('portfolioAuthenticated')
     setIsPortfolioAuthenticated(false)
-    // Scroll back to password gate
     setTimeout(() => {
-      const element = document.getElementById('password-gate')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      document.getElementById('password-gate')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 100)
   }
-  
+
   return (
-    <div className={`transition-all duration-300 ${
-      isCollapsed 
-        ? 'lg:ml-16' // No margin on mobile when collapsed, margin on desktop
-        : 'lg:ml-64' // Only margin on desktop when expanded, no margin on mobile (sidebar overlays)
-    }`}>
-      <Hero />
-      <Music />
-      <CommercialWork />
-      <CreativeProjects />
+    <main className="min-h-screen overflow-x-hidden w-full bg-cream">
+      <HomeExperience />
       <Services />
-      
-      {/* Password Gate - shown when not authenticated */}
       {!isPortfolioAuthenticated && (
         <PasswordGate onAuthenticated={handlePortfolioAuthenticated} />
       )}
-      
-      {/* Exclusive Portfolio Access - shown when authenticated */}
       {isPortfolioAuthenticated && (
         <DetailedPortfolio sections={portfolioSections} onLogout={handlePortfolioLogout} />
       )}
-    </div>
-  )
-}
-
-export default function Home() {
-  return (
-    <main className="min-h-screen overflow-x-hidden w-full">
-      <Sidebar />
-      <MainContent />
     </main>
   )
 }
-

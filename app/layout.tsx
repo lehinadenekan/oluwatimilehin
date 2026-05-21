@@ -1,11 +1,34 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
+import { Cormorant_Garamond, DM_Mono, Syne } from 'next/font/google'
 import { Suspense } from 'react'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import './globals.css'
 
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const dmMono = DM_Mono({
+  subsets: ['latin'],
+  weight: ['300', '400'],
+  variable: '--font-dm-mono',
+  display: 'swap',
+})
+
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['400', '700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'oluwatimilehin - Audio Production, Web Design & App Design | Yoruba Language Expert',
+  title: 'oluwatimilehin - music | audio | tech',
   description: 'Professional audio production, music production, web design, and app design services by oluwatimilehin. Specialising in Yoruba language technology, podcast production, and creative technology solutions. Based in the UK, serving clients worldwide.',
   keywords: [
     'oluwatimilehin',
@@ -31,7 +54,7 @@ export const metadata: Metadata = {
   creator: 'oluwatimilehin',
   publisher: 'oluwatimilehin',
   openGraph: {
-    title: 'oluwatimilehin - Audio Production, Web Design & App Design | Yoruba Language Expert',
+    title: 'oluwatimilehin - music | audio | tech',
     description: 'Professional audio production, music production, web design, and app design services. Specialising in Yoruba language technology and creative solutions.',
     url: 'https://www.oluwatimilehin.com',
     siteName: 'oluwatimilehin',
@@ -48,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'oluwatimilehin - Audio Production, Web Design & App Design',
+    title: 'oluwatimilehin - music | audio | tech',
     description: 'Professional audio production, music production, web design, and app design services. Yoruba language technology expert.',
     images: ['https://www.oluwatimilehin.com/images/bbc-podcast-the-reset.webp'],
   },
@@ -156,7 +179,7 @@ export default function RootLayout({
 
   return (
     <html lang="en-GB">
-      <body>
+      <body className={`${cormorant.variable} ${dmMono.variable} ${syne.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

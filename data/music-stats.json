@@ -1,0 +1,14 @@
+{
+  "updatedAt": "2026-05-21T00:00:00.000Z",
+  "source": "spotify-pathfinder",
+  "tracks": {
+    "nothin-like": {
+      "plays": 923456,
+      "playsFormatted": "923,456"
+    },
+    "road-to-damascus": {
+      "plays": 156904,
+      "playsFormatted": "156,904"
+    }
+  }
+}
