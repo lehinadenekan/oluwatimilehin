@@ -8,6 +8,7 @@ create table if not exists public.analytics_events (
   page_path text,
   referrer text,
   user_agent text,
+  visitor_id text,
   metadata jsonb not null default '{}'::jsonb
 );
 
@@ -19,6 +20,9 @@ create index if not exists analytics_events_event_name_idx
 
 create index if not exists analytics_events_event_category_idx
   on public.analytics_events (event_category);
+
+create index if not exists analytics_events_visitor_id_idx
+  on public.analytics_events (visitor_id);
 
 alter table public.analytics_events enable row level security;
 

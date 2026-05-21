@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/yoruba-deck`,
+      url: `${baseUrl}/yorubadeck`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,

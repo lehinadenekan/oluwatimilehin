@@ -6,7 +6,9 @@ Click and interaction events are sent to **both** Google Analytics 4 (when confi
 
 In the [Supabase Dashboard](https://supabase.com/dashboard) → **SQL Editor**, run:
 
-`supabase/migrations/20260521000000_analytics_events.sql`
+1. `supabase/migrations/20260521000000_analytics_events.sql` (create table)
+2. `supabase/migrations/20260522000000_analytics_events_visitor.sql` (add `visitor_id`)
+3. `supabase/migrations/20260523000000_drop_ip_address.sql` (drop `ip_address` if you added it earlier)
 
 Or link the CLI and run `supabase db push` if you use local Supabase for this project.
 
@@ -38,11 +40,39 @@ Add all three in Vercel → **Settings** → **Environment Variables**, then red
 
 ## 4. Query events in Supabase
 
+### Recent events
+
 ```sql
-select created_at, event_name, event_category, label, page_path, metadata
+select created_at, event_name, event_category, label, page_path,
+       visitor_id, metadata
 from analytics_events
 order by created_at desc
 limit 100;
+```
+
+### Unique visitors vs repeat activity
+
+**`visitor_id`** — anonymous UUID stored in the visitor’s browser (`localStorage`). Same ID across clicks = same person on that device until they clear site data.
+
+```sql
+-- How many distinct visitors today?
+select count(distinct visitor_id) as unique_visitors,
+       count(*) as total_events
+from analytics_events
+where created_at >= current_date;
+```
+
+```sql
+-- Events grouped by visitor (who clicked what)
+select visitor_id,
+       count(*) as events,
+       min(created_at) as first_seen,
+       max(created_at) as last_seen,
+       array_agg(distinct event_category) as categories
+from analytics_events
+where visitor_id is not null
+group by visitor_id
+order by last_seen desc;
 ```
 
 Filter by category:

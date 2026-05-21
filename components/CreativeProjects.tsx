@@ -19,7 +19,7 @@ export default function CreativeProjects() {
           </p>
           <p className="text-center">
             <Link
-              href="/yoruba-deck"
+              href="/yorubadeck"
               className="text-purple-400 hover:text-purple-300 font-semibold transition-colors"
             >
               Read the case study →

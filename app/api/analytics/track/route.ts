@@ -11,7 +11,17 @@ type TrackBody = {
   label?: string
   page_path?: string
   referrer?: string
+  visitor_id?: string
   metadata?: Record<string, unknown>
+}
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
+function parseVisitorId(value: unknown): string | null {
+  const id = trimString(value, 36)
+  if (!id || !UUID_RE.test(id)) return null
+  return id
 }
 
 function trimString(value: unknown, max: number): string | null {
@@ -80,6 +90,7 @@ export async function POST(request: NextRequest) {
     page_path: trimString(body.page_path, MAX_PATH_LENGTH),
     referrer,
     user_agent: userAgent ? userAgent.slice(0, 512) : null,
+    visitor_id: parseVisitorId(body.visitor_id),
     metadata: sanitizeMetadata(body.metadata),
   })
 

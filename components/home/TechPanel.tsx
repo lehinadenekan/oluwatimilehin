@@ -26,7 +26,7 @@ export default function TechPanel() {
       </p>
       <div className={styles.ctaRow}>
         <Link
-          href="/yoruba-deck"
+          href="/yorubadeck"
           className={styles.btnPrimaryLight}
           onClick={() => trackEvent.buttonClick('Read the case study', 'tech_panel')}
         >

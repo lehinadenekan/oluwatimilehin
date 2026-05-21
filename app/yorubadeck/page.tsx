@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Yorùbá Deck: Case Study',
     description:
       'Solo founder. Full-stack. AI-powered content pipeline. Remote Nigeria team. This is how Yorùbá Deck was built.',
-    url: 'https://www.oluwatimilehin.com/yoruba-deck',
+    url: 'https://www.oluwatimilehin.com/yorubadeck',
     siteName: 'olúwatìmílẹ́hìn',
     locale: 'en_GB',
     type: 'website',

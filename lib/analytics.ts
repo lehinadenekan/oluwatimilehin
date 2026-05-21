@@ -1,5 +1,7 @@
 // Google Analytics 4 + Supabase first-party event tracking
 
+import { getVisitorId } from '@/lib/analytics-visitor'
+
 declare global {
   interface Window {
     gtag: (
@@ -53,12 +55,15 @@ function persistToSupabase({
 }: InteractionEvent) {
   if (typeof window === 'undefined') return
 
+  const visitorId = getVisitorId()
+
   const payload = {
     event_name: action,
     event_category: category,
     label,
     page_path: window.location.pathname + window.location.search,
     referrer: document.referrer || undefined,
+    visitor_id: visitorId ?? undefined,
     metadata: {
       ...metadata,
       ...(value !== undefined ? { value } : {}),
