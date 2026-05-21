@@ -91,7 +91,7 @@ export default function HomeExperience() {
 
         <div id="work-panel" className={styles.panel}>
           {activeArm === null && (
-            <p className={styles.panelHint}>Select music, audio, or tech</p>
+            <p className={styles.panelHint}>Click music, audio, or tech to learn more</p>
           )}
           {activeArm === 'music' && <MusicPanel />}
           {activeArm === 'audio' && <AudioPanel />}
