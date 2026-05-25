@@ -746,18 +746,39 @@
 }
 
 .carouselCaption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
   font-family: var(--mono);
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.1rem;
+  text-align: center;
+  line-height: 1.5;
+  background: var(--cream);
+  border: 1px solid var(--warm-mid);
+  box-shadow: 0 4px 12px rgba(26, 18, 8, 0.06);
+}
+
+.carouselCaptionCount {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.carouselCaptionHint {
   font-size: 10px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-top: 1.25rem;
 }
 
 .carouselDots {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1.1rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -781,36 +802,52 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(26, 18, 8, 0.92);
+  background: rgba(26, 18, 8, 0.94);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem 4.5rem;
 }
 
 .carouselModalContent {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 90vh;
+  justify-content: center;
+  width: 100%;
+  max-width: min(720px, 96vw);
+  max-height: calc(100dvh - 3rem);
+}
+
+.carouselModalPhoneFrame {
+  flex-shrink: 1;
+  min-height: 0;
+  line-height: 0;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
 }
 
 .carouselModalImage {
-  width: auto;
-  height: auto;
-  max-width: min(390px, 90vw);
-  max-height: min(85vh, 780px);
-  object-fit: contain;
   display: block;
+  width: min(480px, 86vw) !important;
+  height: auto !important;
+  max-height: calc(100dvh - 10rem) !important;
+  max-width: none;
+  object-fit: contain;
 }
 
 .carouselModalCaption {
+  flex-shrink: 0;
   font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(245, 240, 232, 0.5);
-  margin-top: 1rem;
+  color: var(--cream);
+  margin: 1.25rem 0 0;
+  padding: 0.65rem 1.5rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(245, 240, 232, 0.35);
+  border-radius: 2px;
 }
 
 .carouselModalClose {
@@ -990,6 +1027,15 @@
     width: 2.25rem;
     height: 2.25rem;
     font-size: 1rem;
+  }
+
+  .carouselModal {
+    padding: 1rem 2.75rem;
+  }
+
+  .carouselModalImage {
+    width: min(92vw, 480px) !important;
+    max-height: calc(100dvh - 8rem) !important;
   }
 
   .carouselModalNavLeft {

@@ -124,7 +124,10 @@ export default function AppScreenshotCarousel() {
             </button>
           </div>
           <p className={styles.carouselCaption}>
-            {index + 1} / {total} · Tap to enlarge
+            <span className={styles.carouselCaptionCount}>
+              {index + 1} / {total}
+            </span>
+            <span className={styles.carouselCaptionHint}>Tap image to enlarge</span>
           </p>
           <div className={styles.carouselDots} role="tablist" aria-label="Screenshot navigation">
             {APP_SCREENSHOTS.map((_, i) => (
@@ -199,9 +202,11 @@ export default function AppScreenshotCarousel() {
               <Image
                 src={APP_SCREENSHOTS[modalIndex].src}
                 alt={APP_SCREENSHOTS[modalIndex].alt}
-                width={390}
-                height={780}
+                width={960}
+                height={1920}
                 className={styles.carouselModalImage}
+                sizes="(max-width: 768px) 86vw, 480px"
+                priority
               />
             </div>
             <p className={styles.carouselModalCaption}>

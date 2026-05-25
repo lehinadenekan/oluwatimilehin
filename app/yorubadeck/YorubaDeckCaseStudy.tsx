@@ -141,17 +141,17 @@ const skills = [
   {
     label: 'Product Management',
     heading: 'Full lifecycle ownership with data-led iteration',
-    body: 'Roadmap, backlog, launch, post-release optimisation. No PM above me. Every call mine to defend with data.',
+    body: 'Roadmap, backlog, launch, post-release optimisation.'
   },
   {
     label: 'Growth & Marketing',
     heading: 'Built a top-of-funnel from zero',
-    body: 'TikTok strategy, content as a product feature, waitlist CRO, event tracking. I grew an audience before there was a product to sell.',
+    body: 'TikTok strategy, content as a product feature, waitlist CRO, event tracking. I am growing an audience and allowing the waitlist to be well populated before launching the product.'
   },
   {
     label: 'AI & Automation',
     heading: 'Agentic workflows in production',
-    body: 'Not a side project. I built and operate AI pipelines using Claude and OpenClaw that run a real content business. Lived experience, not a certification.',
+    body: 'I built and operate AI pipelines using Claude and OpenClaw that run a real content business.'
   },
   {
     label: 'Team Leadership',
@@ -161,7 +161,7 @@ const skills = [
   {
     label: 'Analytics',
     heading: 'End-to-end instrumentation and insight',
-    body: 'GA4 custom taxonomies, Supabase dashboards, A/B testing. I know where users come from, what they do, and what makes them stay.',
+    body: 'Google Analytics 4, website events captured in Supabase, A/B testing. I know where users come from, what they do, and what makes them stay.',
   },
   {
     label: 'Applied Learning Design',
