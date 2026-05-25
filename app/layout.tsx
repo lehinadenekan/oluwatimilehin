@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Cormorant_Garamond, DM_Mono, Syne } from 'next/font/google'
 import { Suspense } from 'react'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import ScrollToTop from '@/components/ScrollToTop'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -189,6 +190,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessData) }}
         />
         {children}
+        <ScrollToTop />
         <Analytics />
         <Suspense fallback={null}>
           <GoogleAnalytics />

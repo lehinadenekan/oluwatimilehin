@@ -206,6 +206,15 @@ export const trackEvent = {
     })
   },
 
+  scrollToTop: (pagePath?: string) => {
+    trackInteraction({
+      action: 'click',
+      category: 'Navigation',
+      label: 'scroll_to_top',
+      metadata: pagePath ? { page_path: pagePath } : undefined,
+    })
+  },
+
   caseStudyNav: (section: string) => {
     trackInteraction({
       action: 'click',
